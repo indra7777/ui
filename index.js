@@ -31,10 +31,7 @@ app.get("/user",(req,res)=>{
 //post requests
 
 //contact
-app.post("/contact", (req,res)=>{
-    console.log(req.body)
-    res.render('hackathon')
-})
+app.post("/contact", contactUS)
 
 
 
