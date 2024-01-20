@@ -1,7 +1,12 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+import morgan from 'morgan'
 dotenv.config()
 const app = express()
+app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs')
 
@@ -32,7 +37,12 @@ app.post("/contact", (req,res)=>{
 
 
 
-
+mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
+.then( ()=>{
+    console.log('app connected to database  succesfully')
 app.listen(process.env.PORT,()=>{
-    console.log("server listening on port 3000")
+    console.log(`server listening on port ${process.env.PORT}`)
 })
+}).catch((err)=>{
+        console.log(err);
+    })
