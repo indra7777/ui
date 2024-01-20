@@ -2,11 +2,13 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import { contactUS } from './handlers/contactUs.js'
 
 dotenv.config()
 const app = express()
 
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs')
 
@@ -30,9 +32,8 @@ app.get("/user",(req,res)=>{
 
 //contact
 app.post("/contact", (req,res)=>{
-    //store  contact information in db
-    //code
-    res.render("index")
+    console.log(req.body)
+    res.render('hackathon')
 })
 
 
