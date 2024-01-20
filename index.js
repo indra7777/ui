@@ -2,10 +2,10 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-import morgan from 'morgan'
+
 dotenv.config()
 const app = express()
-app.use(morgan('dev'))
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs')
