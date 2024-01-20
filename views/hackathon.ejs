@@ -47,7 +47,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href=<%=process.env.BASE_URL%> class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="../public/img/ui.png" alt="">
         <!-- <h1>Yummy<span>.</span></h1> -->
@@ -55,16 +55,16 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="hackathon.html">Hackathon</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#events">Projects</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href=<%=process.env.BASE_URL%>>Home</a></li>
+          <li><a href="#">Hackathon</a></li>
+          <li><a href=<%=process.env.BASE_URL +"#about"%>>About</a></li>
+          <li><a href=<%=process.env.BASE_URL +"#events"%>>Projects</a></li>
+          <li><a href=<%=process.env.BASE_URL +"#contact"%>>Contact</a></li>
 
         </ul>
       </nav><!-- .navbar -->
 
-      <a class="btn-book-a-table" href="authentication.html">SignUp / SignIn</a>
+      <a class="btn-book-a-table" href=<%=process.env.BASE_URL+ "/user"%>>SignUp / SignIn</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
