@@ -56,7 +56,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#hero">Home</a></li>
-          <li><a href="hackathon.html">Hackathon</a></li>
+          <li><a href=<%=process.env.BASE_URL+ "/hackathon"%>>Hackathon</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#events">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -64,7 +64,7 @@
         </ul>
       </nav><!-- .navbar -->
 
-      <a class="btn-book-a-table" href="authentication.html">SignUp / SignIn</a>
+      <a class="btn-book-a-table" href=<%=process.env.BASE_URL+ "/user"%>>SignUp / SignIn</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
