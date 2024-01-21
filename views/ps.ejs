@@ -237,17 +237,17 @@ background: linear-gradient(114deg, rgba(142,69,116,1) 0%, rgba(205,73,167,1) 26
 <body>
   
   <div class="header">
-    <img class="logo" src="C:\Users\PARVATHI\OneDrive\Desktop\ui new\uncalled\profile (1)\logo.jpg" alt="Your Logo">
+    <img class="logo" src="../public/img/logo.jpg" alt="Your Logo">
     <div class="rounded-container">
       
-      <a href="home.html">HOME</a>
-      <a href="stu.html">Submit Solution</a>
+      <a href=<%=process.env.BASE_URL%>>HOME</a>
+      <a href=<%=process.env.BASE_URL+ "/explore/solution"%>>Submit Solution</a>
       
     </div>
   </div>
   
       <div class="user-profile">
-        <img class="avatar" src="C:\Users\PARVATHI\OneDrive\Desktop\ui new\uncalled\profile (1)\profile.png" alt="User Avatar">
+        <img class="avatar" src="../public/img/profile.png" alt="User Avatar">
         <!-- <p class="user-name">user</p> -->
     </div>
     <CENTER><h1 style="color: #9c144f;">Problem Statements</h1>
@@ -263,7 +263,7 @@ background: linear-gradient(114deg, rgba(142,69,116,1) 0%, rgba(205,73,167,1) 26
         </div>
         <button class="read-more-btn" onclick="toggleVisibility('container1More')">Read More</button> 
         <div id="container1More" style="display: none;">
-            <img src="C:\Users\PARVATHI\Downloads\1.jpg" alt="Image Description" width="300" height="300">
+            <img src="../public/img/events-1.jpg" alt="Image Description" width="300" height="300">
             </div>
             
         </div>
@@ -1144,13 +1144,6 @@ User-Friendly Experience: Design a user interface that provides clear feedback o
                 element.style.display = "none";
             }
         }
-        
-
-  
-  
     </script>
-   
-    
-    
 </body>
 </html>

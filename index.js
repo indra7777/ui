@@ -28,6 +28,14 @@ app.get("/user",(req,res)=>{
     res.render('authentication')
 })
 
+//explore
+app.get('/explore',(req,res)=>{
+    res.render('ps')
+})
+app.get('/explore/solution',(req,res)=>{
+    res.render('solution')
+})
+
 //post requests
 
 //contact
