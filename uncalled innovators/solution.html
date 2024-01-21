@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Your Solution</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- ... existing styles ... -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            margin-top: 1px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            animation: colorChange 5s infinite alternate; /* Change color every 5 seconds */
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #FFBDF6; /* Dodger Blue */
+            }
+            25% {
+                color: #64305D; /* Tomato */
+            }
+            50% {
+                color: #FFDEFB; /* Lime Green */
+            }
+            75% {
+                color: #8E4574; /* Gold */
+            }
+            100% {
+                color: #64305D; /* Blue Violet */
+            }
+        }
+        .profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        body {
+            font-family: 'Roboto',roboto;
+            margin: 0;
+            color: #64305D;
+            overflow: hidden;
+            background-image:  whitesmoke;
+            position: relative;
+        }
+
+        
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(100, 48, 93, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 3px solid #FF69B4; /* Pink color border */
+        }
+
+        .container:hover {
+            background-color:whitesmoke; /* Change the background color on hover */
+            transform: scale(1.02); /* Add a subtle scale effect on hover */
+        }
+
+        h2 {
+            text-align: center;
+            color: #64305D;
+        }
+
+        .box {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #8E4574;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8E4574;
+        }
+        .header-img{
+            border-radius: 10px;
+            border: 3px solid #FF69B4;
+            position: relative;
+            padding: 2px;
+            margin-top: 30px;
+            width: 50px;
+            height: 50px;
+
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #64305D;
+            font-style: roboto;
+            /* Updated color code */
+        }
+
+        .important-guidelines {
+            text-align: center;
+            background-color: #64305D;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="header-img" src="C:\Users\PARVATHI\Downloads\photo.jpg" alt="Header Image" width="50" height="50">
+    <div id="confetti-container"></div>
+    
+    <a href="#" title="user icons" class="profile">
+        <img src="C:\Users\PARVATHI\OneDrive\Desktop\ui new\profile.png" alt="profile" width="30" height="30">
+    </a><br><br>
+
+    <h1>YOUR SOLUTION</h1>
+    <div class="container">
+        <div class="box">
+            <label for="department">Choose a department:</label>
+            <select id="department" name="departments">
+                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Chemical Engineering">Chemical Engineering</option>
+            </select>
+        </div>
+
+        <div class="box">
+            <label for="problemStatementId">Problem Statement ID:</label>
+            <input type="text" id="problemStatementId" name="problemStatementId" placeholder="Enter Problem Statement ID">
+        </div>
+
+        <div class="box">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter the description..."></textarea>
+        </div>
+
+        <div class="box">
+            <label for="file">Add File:</label>
+            <input type="file" id="file" name="file">
+        </div>
+
+        <center><button onclick="submitForm()">Submit</button></center>
+    </div>
+    <div class="important-guidelines">
+        <h4>IMPORTANT GUIDELINES:</h4>
+        <p>* The solution should be provided elaborately.</p>
+        <p>* Please provide a related document or image with your solution.</p>
+        <p>NOTE: FOLLOWING THESE GUIDELINES WILL INCREASE THE CHANCES OF YOUR SOLUTION BEING SELECTED</p>
+    </div>
+    
+    
+    <script>
+        function submitForm() {
+            // Add your form submission logic here
+            alert("Form submitted!");
+
+            // Trigger confetti effect with pink color
+            confetti.start();
+        }
+
+        
+        
+    </script>
+</body>
+
+</html>
