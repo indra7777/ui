@@ -25,7 +25,12 @@ app.get('/hackathon',(req,res)=>{
 
 //login page
 app.get("/user",(req,res)=>{
-    res.render('authentication')
+    res.render('user')
+})
+app.post("/login",(req,res)=>{
+    const {email,password,type} = req.body
+    console.log(`mail:${email} & password:${password} & type:${type}`)
+    res.render('ps')
 })
 
 //explore
