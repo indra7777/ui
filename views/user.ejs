@@ -62,7 +62,7 @@
                                         <div class="section text-center">
                                             <h4 class="mb-3 pb-3">Sign Up</h4>
                                             <div class="form-group mt-2">
-                                                <select id="name" class="form-select form-style"
+                                                <select name="type" id="name" class="form-select form-style"
                                                     aria-label="Default select example">
                                                     <option selected>Select type of user</option>
                                                     <option value="sform">Student</option>
@@ -76,42 +76,50 @@
                                                     <!-- Student fields -->
                                                     <!-- ... Your existing student fields ... -->
                                                     <div class="form-group mt-2">
-                                                        <input type="text" class="form-style" placeholder="Full Name">
+                                                        <input name="fullName" type="text" class="form-style" placeholder="Full Name">
                                                         <i class="input-icon uil uil-user"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="text" class="form-style" placeholder="College Name">
+                                                        <input name="collegeName" type="text" class="form-style" placeholder="College Name">
                                                         <i class="input-icon uil uil-user"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="text" class="form-style" placeholder="Registration Number">
+                                                        <input name="registrationNumber" type="text" class="form-style" placeholder="Registration Number">
                                                         <i class="input-icon uil uil-user"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="text" class="form-style" placeholder="Stream">
+                                                        <input name="stream" type="text" class="form-style" placeholder="Stream">
                                                         <i class="input-icon uil uil-user"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="text" class="form-style" placeholder="Branch">
+                                                        <input name="branch" type="text" class="form-style" placeholder="Branch">
                                                         <i class="input-icon uil uil-user"></i>
                                                     </div>
-                                                    
                                                     <div class="form-group mt-2">
-                                                        <input type="email" class="form-style" placeholder="Email">
+                                                        <input name="currentYear" type="number" class="form-style" placeholder="Current Year">
+                                                        <i class="input-icon uil uil-at"></i>
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <input name="passedOutYear" type="number" class="form-style" placeholder="Passed out Year">
                                                         <i class="input-icon uil uil-at"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="password" class="form-style" placeholder="Password">
+                                                        <input name="email" type="email" class="form-style" placeholder="Email">
+                                                        <i class="input-icon uil uil-at"></i>
+                                                    </div>
+                                                    
+                                                    <div class="form-group mt-2">
+                                                        <input name="password" type="password" class="form-style" placeholder="Password">
                                                         <i class="input-icon uil uil-lock-alt"></i>
                                                     </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <input type="password" class="form-style" placeholder="Phone Number">
+                                                        <input type="tel" class="form-style" placeholder="Phone Number">
                                                         <i class="input-icon uil uil-phone-alt"></i>
                                                     </div>
                                                 </div>
@@ -121,43 +129,56 @@
                                                 <!-- Verify Team fields -->
                                                 <!-- ... Your existing verify team fields ... -->
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Full Name">
+                                                    <input name="fullName" type="text" class="form-style" placeholder="Full Name">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="College Name">
+                                                    <input name="industryName" type="text" class="form-style" placeholder="Industry Name">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Registration Number">
+                                                    <input name="employeeNumber" type="text" class="form-style" placeholder="Employee Number">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Stream">
+                                                    <input name="role" type="text" class="form-style" placeholder="Role in the company">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Branch">
+                                                    <input name="estdYear" type="number" class="form-style" placeholder="Established Year">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="numberOfEmployees" type="number" class="form-style" placeholder="No. of Skilled employees in company">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="siteLink" type="text" class="form-style" placeholder="Official site link">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="email" class="form-style" placeholder="Email">
+                                                    <input name="email" type="email" class="form-style" placeholder=" Official Mail id">
                                                     <i class="input-icon uil uil-at"></i>
                                                 </div>
                                                 
+                                                
+                                                
+                                                <div class="form-group mt-2">
+                                                    <input name="officialNumber" type="tel" class="form-style" placeholder="official Phone Number">
+                                                    <i class="input-icon uil uil-phone-alt"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="personalNumber" type="tel" class="form-style" placeholder="Personal Phone Number">
+                                                    <i class="input-icon uil uil-phone-alt"></i>
+                                                </div>
                                                 <div class="form-group mt-2">
                                                     <input type="password" class="form-style" placeholder="Password">
                                                     <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
                                                 </div>
 
                                             </div>
@@ -229,11 +250,13 @@
                     $('.card-back').show();
                     $('.card-front').hide();
                     $('#label-ls').hide()
+                    
                     login = false;
                 }else{
                     $('.card-back').hide();
                     $('.card-front').show();
                     $('#label-ls').show();
+                    
                     login = true;
                 }
             });
