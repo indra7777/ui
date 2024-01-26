@@ -53,6 +53,12 @@ h6 span{
 [type="checkbox"]:not(:checked){
 display: none;
 }
+
+ .form-header {
+   display: container;
+
+ }
+
 .checkbox:checked + label,
 .checkbox:not(:checked) + label{
   position: relative;
