@@ -94,7 +94,7 @@
                                                     </div>
                                                     
                                                 <div class="form-group mt-2">
-                                                    <select name="type" class="form-select form-style" aria-label="Default select example">
+                                                    <select name="stream" class="form-select form-style" aria-label="Default select example">
                                                         <option selected>Stream</option>
                                                         <option value="1">B.Tech</option>
                                                         <option value="2">Diploma </option>
@@ -104,7 +104,7 @@
                                                 </div>
                                                     
                                                     <div class="form-group mt-2">
-                                                        <select name="type" class="form-select form-style" aria-label="Default select example">
+                                                        <select name="branch" class="form-select form-style" aria-label="Default select example">
                                                             <option selected>Branch</option>
                                                             <option value="1">MECH</option>
                                                             <option value="2">CIVIL </option>
@@ -141,8 +141,8 @@
                                                 </div>
                                             </form>
                                             <form action="/industry/signup" method="post">
-                                            <div class="data vform mt-2" id="vform">
-                                                <!-- Verify Team fields -->
+                                            <div class="data iform mt-2" id="iform">
+                                                <!-- industry Team fields -->
                                                 <!-- ... Your existing verify team fields ... -->
                                                 <div class="form-group mt-2">
                                                     <input name="fullName" type="text" class="form-style" placeholder="Full Name">
@@ -155,21 +155,12 @@
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input name="employeeNumber" type="text" class="form-style" placeholder="Employee Number">
+                                                    <input name="employeeID" type="text" class="form-style" placeholder="Employee ID">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
                                                     <input name="role" type="text" class="form-style" placeholder="Role in the company">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="estdYear" type="number" class="form-style" placeholder="Established Year">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="numberOfEmployees" type="number" class="form-style" placeholder="No. of Skilled employees in company">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 <div class="form-group mt-2">
@@ -181,8 +172,7 @@
                                                     <input name="email" type="email" class="form-style" placeholder=" Official Mail id">
                                                     <i class="input-icon uil uil-at"></i>
                                                 </div>
-                                                
-                                                
+                                            
                                                 
                                                 <div class="form-group mt-2">
                                                     <input name="officialNumber" type="tel" class="form-style" placeholder="official Phone Number">
@@ -193,54 +183,66 @@
                                                     <i class="input-icon uil uil-phone-alt"></i>
                                                 </div>
                                                 <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Password">
+                                                    <input name="password" type="password" class="form-style" placeholder="Password">
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
 
                                             </div>
                                             </form>
                                             <form>
-                                            <div class="data iform mt-2" id="iform">
-                                                <!-- Industry fields -->
+                                            <div class="data vform mt-2" id="vform">
+                                                <!-- verify team fields -->
                                                 <!-- ... Your existing industry fields ... -->
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Full Name">
+                                                    <input name="fullName" type="text" class="form-style" placeholder="Full Name">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="collegeName" type="text" class="form-style" placeholder="College Name">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Industry Name">
+                                                    <input name="designation" type="text" class="form-style" placeholder="Designation">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                
+                                                
+                                                
+                                                <div class="form-group mt-2">
+                                                    <select name="dept" class="form-select form-style" aria-label="Default select example">
+                                                        <option selected>Dept</option>
+                                                        <option value="1">MECH</option>
+                                                        <option value="2">CIVIL </option>
+                                                        <option value="3">ECE</option>
+                                                        <option value="4">EEE </option>
+                                                        <option value="5">CSE</option>
+                                                        <option value="6">CHE </option>
+                                                    </select>
+                                                    <i class="input-icon uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="areaOfExpertise" type="text" class="form-style" placeholder="Area of expertise">
                                                     <i class="input-icon uil uil-user"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Employee Number">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Employee Role">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Established Year">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input type="email" class="form-style" placeholder="Email">
+                                                    <input name="experience" type="text" class="form-style" placeholder="No of years of experience">
                                                     <i class="input-icon uil uil-at"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                    <input name="email" type="email" class="form-style" placeholder="email">
+                                                    <i class="input-icon uil uil-at"></i>
                                                 </div>
                                                 
                                                 <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Phone Number">
+                                                    <input name="number" type="tel" class="form-style" placeholder=" Phone Number">
                                                     <i class="input-icon uil uil-phone-alt"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input name="password" type="password" class="form-style" placeholder="Password">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
                                             </div>
                                             <a href="https://www.web-leb.com/code" class="btn mt-4">Register</a>
