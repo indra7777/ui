@@ -2,11 +2,11 @@ import { comparePasswords,hashPassword,protect,createJWT } from './auth.js'
 import { Student } from '../models/student.js'
 
 export const createStudent =  async (req,res)=>{
-    const {name,collegeName,registrationNumber,stream,branch,email,password,phone,currentYear,passedOutYear} = req.body
+    const {name,collegeName,stream,branch,email,password,phone,currentYear,passedOutYear} = req.body
     console.log(`name:${name} & email:${email} & password:${password} & phone:${phone}  & branch:${branch}
-    & stream:${stream} & collegeName:${collegeName} & registrationNumber:${registrationNumber}`)
+    & stream:${stream} & collegeName:${collegeName} `)
 
-    if(!name | !collegeName | !registrationNumber | !stream | !branch | !email | !password | !phone | !currentYear | !passedOutYear){
+    if(!name | !collegeName | !stream | !branch | !email | !password | !phone | !currentYear | !passedOutYear){
         res.send('invalid input')
         return
     }
@@ -15,7 +15,6 @@ export const createStudent =  async (req,res)=>{
     const student = new Student({
         name:name,
         collegeName:collegeName,
-        registrationNumber:registrationNumber,
         stream:stream,
         branch:branch,
         email:email,

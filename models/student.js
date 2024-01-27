@@ -5,7 +5,6 @@ import mongoose from 'mongoose'
 const studentSchema = new mongoose.Schema({
     name: String,
     collegeName: String,
-    registrationNumber: String,
     stream: String,
     branch: String,
     email: String,
