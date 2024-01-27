@@ -29,7 +29,7 @@
                             <div class="card-3d-wrapper">
                                 <div class="card-front">
                                     <div class="center-wrap">
-                                        <form action="/login" method="post"> 
+                                        <form id="login-method" action="/login" method="post"> 
                                         <div class="section text-center">
                                             <h4 class="mb-4 pb-3">Log In</h4>
                                             <div class="form-group">
@@ -41,7 +41,7 @@
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <select name="type" class="form-select form-style"
+                                                <select  name="login-type" class="form-select form-style"
                                                     aria-label="Default select example">
                                                     <option selected>Select type of user</option>
                                                     <option value="1">Student</option>
@@ -51,7 +51,7 @@
                                                 <i class="input-icon uil-user"></i>
                                             </div>
 
-                                           <button class="btn mt-4"  type="submit">submit</button>
+                                           <button class="btn mt-4"  type="submit">Log In</button>
                                             <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
                                                     class="link">Forgot your password?</a></p>
                                         </div>
@@ -269,6 +269,24 @@
     <script>
         var login = true;
         $(document).ready(function () {
+             $('select[name="login-type"]').change(function () {
+                var action;
+                switch ($(this).val()) {
+                    case '1':
+                        action = '/login/student';
+                        break;
+                    case '2':
+                        action = '/login/team';
+                        break;
+                    case '3':
+                        action = '/login/industry';
+                        break;
+                    default:
+                        action = '/login';
+                        break;
+                }
+                $('#login-method').attr('action', action);
+            });
             $("#reg-log").on('change', function () {
                 if(login){
                     $('.card-back').show();
@@ -289,6 +307,7 @@
             $("#name").on('change', function () {
                 $(".data").hide();
                 $("#" + $(this).val()).fadeIn(500);
+                
             }).change();
         });
     </script>

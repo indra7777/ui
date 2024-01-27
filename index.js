@@ -2,11 +2,19 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
 import { contactUS } from './handlers/contactUs.js'
-
+import { comparePasswords,hashPassword,protect,createJWT } from './handlers/auth.js'
+import { Student } from './models/student.js'
+import { createStudent } from './handlers/studentSignup.js'
+import { verifyStudent } from './handlers/verifyStudent.js'
+import { createIndustry } from './handlers/createIndustry.js'
+import { verifyIndustry } from './handlers/verifyIndustry.js'
+import { createTeam } from './handlers/createTeam.js'
+import { verifyTeam } from './handlers/verifyTeam.js'
 dotenv.config()
 const app = express()
-
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -19,7 +27,7 @@ app.get("/",(req,res)=>{
     res.render("index");
 })
 //hackathon page
-app.get('/hackathon',(req,res)=>{
+app.get('/hackathon',protect,(req,res)=>{
     res.render('hackathon');
 })
 
@@ -27,42 +35,26 @@ app.get('/hackathon',(req,res)=>{
 app.get("/user",(req,res)=>{
     res.render('user')
 })
-app.post("/login",(req,res)=>{
-    const {email,password,type} = req.body
-    console.log(`mail:${email} & password:${password} & type:${type}`)
+app.post("/",(req,res)=>{
+    res.send("you are not a user")
+})
+app.post("/login/student",verifyStudent)
+app.post("/login/industry",verifyIndustry)
+app.post("/login/team",verifyTeam)
+app.get('/explore',protect,(req,res)=>{
     res.render('ps')
 })
-
-//explore
-app.get('/explore',(req,res)=>{
-    res.render('ps')
-})
-app.get('/explore/solution',(req,res)=>{
+app.get('/explore/solution',protect,(req,res)=>{
     res.render('solution')
 })
 
-//post requests
-app.post("/student/signup",(req,res)=>{
-    const {name,collegeName,registrationNumber,stream,branch,email,password,phone,currentYear,passedOutYear} = req.body
-    console.log(`name:${name} & email:${email} & password:${password} & phone:${phone}  & branch:${branch}
-    & stream:${stream} & collegeName:${collegeName} & registrationNumber:${registrationNumber}`)
-    
-    res.render('ps')
-})
 
-app.post("/industry/signup",(req,res)=>{
-  
-      const {name,industryName,employeeID,role,siteLink,email,password,officialNumber,personalNumber} = req.body
-    console.log(`name:${name} & email:${email} & password:${password} & phone:${officialNumber} & phone:${personalNumber}  & siteLink:${siteLink}
-    & role:${role} & employeeID:${employeeID} `)
-    res.render('ps')
-})
-app.post("/verify/signup",(req,res)=>{
-  
-      const {name,collegeName,designation,dept,areaOfExpertise,email,password,phone,experience} = req.body
-    console.log(`name:${name} & email:${email} & password:${password}  `)
-    res.render('ps')
-})
+
+app.post("/student/signup",createStudent)
+
+app.post("/industry/signup",createIndustry)
+
+app.post("/verify/signup",createTeam)
 
 //contact
 app.post("/contact", contactUS)
