@@ -12,6 +12,7 @@ import { createIndustry } from './handlers/createIndustry.js'
 import { verifyIndustry } from './handlers/verifyIndustry.js'
 import { createTeam } from './handlers/createTeam.js'
 import { verifyTeam } from './handlers/verifyTeam.js'
+import { Post } from './models/post.js'
 dotenv.config()
 const app = express()
 app.use(cookieParser())
@@ -59,7 +60,57 @@ app.post("/verify/signup",createTeam)
 //contact
 app.post("/contact", contactUS)
 
+//blogs
 
+app.get("/blogs", async function(req,res){
+    try {
+        const posts = await Post.find({});
+        res.render("blogs", {
+            posts: posts,
+            startingContent:"Welcome to Uncalled Innovators",
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred while retrieving posts");
+    }
+
+});
+
+
+app.get("/blogs/compose",function(req,res){
+  res.render("compose");
+});
+
+app.post("/blogs/compose",async function(req,res){
+   try {
+    const post = new Post({
+      title: req.body.postTitle,
+      content: req.body.postBody
+    });
+
+    await post.save();
+    res.redirect("/blogs");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while saving the post");
+  }
+});
+
+app.get("/blogs/posts/:id", async function(req,res){
+   const reqPostID = req.params.id;
+  try {
+    const post = await Post.findOne({ _id: reqPostID });
+     res.render("post", {
+ 
+      post:post
+ 
+    });
+ 
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while retrieving the post");
+  }
+});
 
 mongoose.connect(process.env.MONGO_URL)
 .then( ()=>{
