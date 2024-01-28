@@ -3,9 +3,8 @@
     <h1>
         <%= post.title %>
     </h1>
+    <img src= "/public/uploads/<%= post.image %>" alt="Thumbnail" width="400px" height="200px">
     <p>
         <%= post.content %>
     </p>
 
-
- <%- include("partials/footer"); -%>

@@ -8,7 +8,15 @@ const postSchema = new mongoose.Schema({
   content: {
     type: String,
     required: [true, "No content specified."]
-  }
+  },
+    image: {
+    type: String,
+    required: false,
+  },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 export const Post = mongoose.model('Post', postSchema);

@@ -1,5 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
+import multer from 'multer'
+import path from 'path'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -15,6 +17,14 @@ import { createTeam } from './handlers/createTeam.js'
 import { verifyTeam } from './handlers/verifyTeam.js'
 import { Post } from './models/post.js'
 dotenv.config()
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb){
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
 const app = express()
 app.use(cookieParser())
 app.use(morgan('dev'))
@@ -83,14 +93,20 @@ app.get("/blogs/compose",function(req,res){
   res.render("compose");
 });
 
-app.post("/blogs/compose",async function(req,res){
+app.post("/blogs/compose",upload.single('image'),async function(req,res){
    try {
+    if (!req.file) {
+      res.status(400).send("No file uploaded");
+      return;
+    }
     const post = new Post({
       title: req.body.postTitle,
-      content: req.body.postBody
+      content: req.body.postBody,
+      image:req.file ? req.file.filename : null,
     });
 
     await post.save();
+    console.log(post)
     res.redirect("/blogs");
   } catch (err) {
     console.error(err);
