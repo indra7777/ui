@@ -1,4 +1,5 @@
 import express from 'express'
+import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -16,6 +17,7 @@ import { Post } from './models/post.js'
 dotenv.config()
 const app = express()
 app.use(cookieParser())
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
