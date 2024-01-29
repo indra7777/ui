@@ -5,6 +5,7 @@ import { Team } from '../models/verifyTeam.js'
 export const createTeam = async (req, res) => {
     const {name,collegeName,designation,dept,areaOfExpertise,email,password,phone,experience} = req.body
     console.log(`name:${name} & email:${email} & password:${password}  `)
+     const Role = "Verify-Team"
     try {
         const hashedPassword = await hashPassword(password)
         const team = await Team.create({
@@ -12,6 +13,7 @@ export const createTeam = async (req, res) => {
         collegeName,
         designation,
         dept,
+        role:Role,
         areaOfExpertise,
         email,
         password: hashedPassword,

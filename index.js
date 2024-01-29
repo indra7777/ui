@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import multer from 'multer'
+import jwt from 'jsonwebtoken'
 import path from 'path'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
@@ -36,8 +37,8 @@ app.set('view engine', 'ejs')
 //get request
 
 // home page
-app.get("/",(req,res)=>{
-    res.render("index");
+app.get("/",protect,(req,res)=>{
+    res.render("dashboard");
 })
 //hackathon page
 app.get('/hackathon',protect,(req,res)=>{
@@ -55,12 +56,66 @@ app.post("/login/student",verifyStudent)
 app.post("/login/industry",verifyIndustry)
 app.post("/login/team",verifyTeam)
 app.get('/explore',protect,(req,res)=>{
+  
     res.render('ps')
 })
 app.get('/explore/solution',protect,(req,res)=>{
     res.render('solution')
 })
 
+app.get('/profile', protect, async (req, res) => {
+  try {
+    const token = req.cookies.token;
+
+  if (!token) {
+    res.render('user')
+    return
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET)
+    console.log(user)
+    const student = await Student.findById(user.id).select('-password');
+    console.log(student)
+    res.render('profile',{
+      user:student
+    })
+  } catch (e) {
+    console.error(e)
+    res.render('user')
+    return
+    
+  }
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'An error occurred while retrieving the user profile' });
+  }
+});
+
+app.post('/update-profile', protect, async (req, res) => {
+  try {
+      const updatedUser = await Student.findOneAndUpdate(
+      { _id: req.user.id },
+      {
+      name: req.body.name,
+      email: req.body.email,
+      collegeName: req.body.collegeName,
+      stream: req.body.stream,
+      branch: req.body.branch,
+      phone: req.body.phone,
+      currentYear: req.body.currentYear,
+      passedOutYear: req.body.passedOutYear,
+      },
+      { new: true }
+      );
+
+      res.render('profile',{ success: true, user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'An error occurred while updating the user profile' });
+  }
+});
 
 
 app.post("/student/signup",createStudent)
@@ -128,6 +183,12 @@ app.get("/blogs/posts/:id", async function(req,res){
     console.error(err);
     res.status(500).send("An error occurred while retrieving the post");
   }
+});
+app.get('/logout', (req, res) => {
+  // clear the token cookie
+  res.clearCookie('token');
+  // redirect the user to the login page
+  res.redirect('/');
 });
 
 mongoose.connect(process.env.MONGO_URL)

@@ -37,7 +37,11 @@ const teamSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    role:{
+      type:  String,
+      required:true
+    },
 })
 
 export const Team = mongoose.model('Team', teamSchema)

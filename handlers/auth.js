@@ -12,7 +12,8 @@ export const hashPassword = (password) => {
 export const createJWT = (user) => {
   const token = jwt.sign({
       id: user.id,
-      username: user.username
+      username: user.username,
+      // role: user.role,
     }, 
     process.env.JWT_SECRET
   )
@@ -22,9 +23,10 @@ export const createJWT = (user) => {
 export const protect = (req, res, next) => {
 
     const token = req.cookies.token;
+    console.log(token)
 
   if (!token) {
-    res.render('user')
+    res.render('index')
     return
   }
 

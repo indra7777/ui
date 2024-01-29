@@ -11,13 +11,14 @@ export const createStudent =  async (req,res)=>{
         return
     }
     const hashedPassword = await hashPassword(password)
-
+     const Role = "Student"
     const student = new Student({
         name:name,
         collegeName:collegeName,
         stream:stream,
         branch:branch,
         email:email,
+        role:Role,
         password:hashedPassword,
         phone:phone,
         currentYear:currentYear,
