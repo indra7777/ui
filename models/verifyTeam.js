@@ -1,4 +1,3 @@
-//name,collegeName,designation,dept,areaOfExpertise,email,password,phone,experience
 import mongoose from 'mongoose'
 
 const teamSchema = new mongoose.Schema({

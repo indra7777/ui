@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 const industrySchema = mongoose.Schema({
     name: String,
     industryName: String,
+    role:String,
     employeeID: String,
     role: String,
     siteLink: String,

@@ -17,6 +17,7 @@ import { verifyIndustry } from './handlers/verifyIndustry.js'
 import { createTeam } from './handlers/createTeam.js'
 import { verifyTeam } from './handlers/verifyTeam.js'
 import { Post } from './models/post.js'
+
 dotenv.config()
 const storage = multer.diskStorage({
   destination: './public/uploads/',
@@ -32,6 +33,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
+
 app.set('view engine', 'ejs')
 
 //get request
@@ -92,6 +94,10 @@ app.get('/profile', protect, async (req, res) => {
     res.status(500).json({ message: 'An error occurred while retrieving the user profile' });
   }
 });
+
+app.get('/infraseek',(req,res)=>{
+  res.render('infraseek')
+})
 
 app.post('/update-profile', protect, async (req, res) => {
   try {
@@ -184,12 +190,41 @@ app.get("/blogs/posts/:id", async function(req,res){
     res.status(500).send("An error occurred while retrieving the post");
   }
 });
+
 app.get('/logout', (req, res) => {
   // clear the token cookie
   res.clearCookie('token');
   // redirect the user to the login page
   res.redirect('/');
 });
+
+//payment hanlde
+
+// app.post('/create-checkout-session', async (req, res) => {
+//   const { product } = req.body;
+
+//   const session = await stripe.checkout.sessions.create({
+//     payment_method_types: ['card'],
+//     line_items: [
+//       {
+//         price_data: {
+//           currency: 'usd',
+//           product_data: {
+//             name: product.name,
+//             images: [product.image],
+//           },
+//           unit_amount: product.price,
+//         },
+//         quantity: 1,
+//       },
+//     ],
+//     mode: 'payment',
+//     success_url: 'https://example.com/success',
+//     cancel_url: 'https://example.com/cancel',
+//   });
+
+//   res.json({ id: session.id });
+// });
 
 mongoose.connect(process.env.MONGO_URL)
 .then( ()=>{

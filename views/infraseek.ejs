@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraseek</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
+
+
+        body {
+            background: #DFC2F2;
+            background-image: linear-gradient(to right, #ffffb3, #ffe6e6);
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        #container {
+            box-shadow: 0 15px 30px 1px grey;
+            background: rgba(255, 255, 255, 0.90);
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 3em auto;
+            height: 350px;
+            width: 700px;
+
+
+        }
+
+        .product-details {
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+            padding: 30px;
+            height: 100%;
+            float: left;
+            width: 40%;
+
+        }
+
+        #container .product-details h1 {
+            font-family: 'Bebas Neue', cursive;
+            display: inline-block;
+            position: relative;
+            font-size: 30px;
+            color: #344055;
+            margin: 0;
+
+        }
+
+        #container .product-details h1:before {
+            position: absolute;
+            content: '';
+            right: 0%;
+            top: 0%;
+            transform: translate(25px, -15px);
+            font-family: 'Bree Serif', serif;
+            display: inline-block;
+            background: #ffe6e6;
+            border-radius: 5px;
+            font-size: 14px;
+            padding: 5px;
+            color: white;
+            margin: 0;
+            animation: chan-sh 6s ease infinite;
+
+        }
+
+        .hint-star {
+            display: inline-block;
+            margin-left: 0.5em;
+            color: gold;
+            width: 50%;
+        }
+
+
+        #container .product-details>p {
+            font-family: 'EB Garamond', serif;
+            text-align: justify;
+            font-size: 18px;
+            color: #7d7d7d;
+        }
+
+        .control {
+            position: absolute;
+            bottom: 20%;
+            left: 22.8%;
+
+        }
+
+        .btn {
+            transform: translateY(0px);
+            transition: 0.3s linear;
+            background: #809fff;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            color: #eee;
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-6px);
+            background: #1a66ff;
+        }
+
+        .btn span {
+            font-family: 'Farsan', cursive;
+            transition: transform 0.3s;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 0;
+
+        }
+
+        .btn .price,
+        .shopping-cart {
+            background: #333;
+            border: 0;
+            margin: 0;
+        }
+
+        .btn .price {
+            transform: translateX(-10%);
+            padding-right: 15px;
+        }
+
+        .btn .shopping-cart {
+            transform: translateX(-100%);
+            position: absolute;
+            background: #333;
+            z-index: 1;
+            left: 0;
+            top: 0;
+        }
+
+        .btn .buy {
+            z-index: 3;
+            font-weight: bolder;
+        }
+
+        .btn:hover .price {
+            transform: translateX(-110%);
+        }
+
+        .btn:hover .shopping-cart {
+            transform: translateX(0%);
+        }
+
+        .product-image {
+            transition: all 0.3s ease-out;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            float: right;
+            width: 45%;
+            display: inline-block;
+        }
+
+        #container img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .info {
+            background: rgba(27, 26, 26, 0.9);
+            font-family: 'Bree Serif', serif;
+            transition: all 0.3s ease-out;
+            transform: translateX(100%);
+            position: absolute;
+            line-height: 1.4;
+            text-align: justify;
+            font-size: 105%;
+            cursor: no-drop;
+            color: #FFF;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            /* white-space: normal; */
+            overflow: auto;
+            white-space: wrap;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 -10px;
+            /* Adjust the margin to create some space between containers */
+        }
+
+        #container {
+            width: 48%;
+            /* Set the width to less than 50% to allow for spacing between containers */
+            box-sizing: border-box;
+            margin: 10px;
+            /* Add some margin to create space between containers */
+        }
+
+        .info h2 {
+            text-align: center
+        }
+
+        .info p {
+            text-align: justify;
+        }
+
+        .product-image:hover .info {
+            transform: translateX(0);
+        }
+
+        .info ul li {
+            transition: 0.3s ease;
+        }
+
+        .info ul li:hover {
+            transform: translateX(50px) scale(1.3);
+        }
+
+        .product-image:hover img {
+            transition: all 0.3s ease-out;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.2, 1.2);
+        }
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="row">
+        <div id="container">
+            <div class="product-details">
+                <h1>Radial Drilling Machine</h1>
+                <p class="information">A radial drilling machine consists of a large, column-mounted drill head with a
+                    radial arm that can be moved around the column. The drill head can be adjusted vertically on the
+                    arm, and the arm itself can rotate around the column horizontally. The machine typically has a
+                    worktable where the material to be drilled is secured.</p>
+                
+                <button  class="btn control checkout-button" data-name="Radial Drilling Machine" data-price="500" data-image="../public/img/gallery/gallery-1.jpg">
+                <span class="price">&#8377 500</span>
+                <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                <span class="buy">Get now</span>
+            </button>	
+		
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-1.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+      Horizontal travel : 270 mm
+      Vertical travel : 525 mm
+      Work area : 770x530 mm
+      Max. drill size : 25 mm
+      Max. spindle travel : 100 mm  
+      Base price : 500/-
+    </pre>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div class="product-details">
+                <h1>Slotting Machine</h1>
+                <p class="information">A slotting machine features a vertical ram with a cutting tool and a worktable
+                    for securing the workpiece. The vertical motion of the ram enables the slotted tool to cut into the
+                    material. The machine offers adjustments for controlling slot depth and length, and some models
+                    include a rotary table for angular cutting.</p>
+                <button class="btn control checkout-button" data-name="Slotting Machine" data-price="500" data-image="../public/img/gallery/gallery-2.jpg">
+                    <span class="price">&#8377 500</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-2.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+      Max. Min. Grinding Dia. : 3-25 mm
+      Grinding wheel size :300x80x140 mm
+      Control wheel size : 200x80x75 mm
+      Base price: 500/-    
+    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="container">
+            <div class="product-details">
+                <h1>Centre Less Grinding Machine</h1>
+                <p class="information">A centerless grinder features a grinding wheel, regulating wheel, and workrest
+                    blade. The cylindrical workpiece sits between the grinding and regulating wheels. The fast-spinning
+                    grinding wheel cuts into the workpiece, regulated by the second wheel for precision. A workrest
+                    blade supports the workpiece during grinding.</p>
+                <button class="btn control checkout-button" data-name="Centre Less Grinding Machine" data-price="500" data-image="../public/img/gallery/gallery-3.jpg">
+                    <span class="price">&#8377 500</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-3.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+      Maximum length of stroke of slotter ram (mm) : 400mm  
+      Diameter of rotary table (mm) : 915mm
+      Longitudinal movement of the table(mm) : 762 mm
+      Cross Movement of the table (mm) : 559 mm
+      Motor power (H.P) : 7.5 HP
+      Number of speed : 9
+      Floor space required : 3050 mm x 1800mm
+      Base price : 500/-             
+    </pre>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div class="product-details">
+                <h1>Shaping Machine</h1>
+                <p class="information">
+                    A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
+                    the workpiece. The ram moves linearly, allowing the cutting tool to remove material during each
+                    stroke. Adjustable mechanisms control the cut's depth and length, ensuring precise shaping.</p>
+                <button class="btn control checkout-button" data-name="Shaping Machine" data-price="500" data-image="../public/img/gallery/gallery-4.jpg">
+                    <span class="price">&#8377 500</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-4.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+      Max stroke : 630 mm
+      Table traverse : 650x370 mm
+      No. of speeds : 4/10-80 Strokes/min
+      No. of Feeds : 5/0, 14-0.7 mm/stroke
+      Tool post swivel : 60 degrees
+      Base price : 500/-         
+    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="container">
+            <div class="product-details">
+                <h1>3-D printer (ABS plastic only)</h1>
+                <p class="information">A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a
+                    traditional ball mill, typically used in laboratories and research settings. It features a compact
+                    design with four grinding bowls arranged symmetrically around the central axis. </p> 
+                <button class="btn control checkout-button" data-name="3-D printer (ABS plastic only)" data-price="500" data-image="../public/img/gallery/gallery-5.jpg">
+                    <span class="price">&#8377 500</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-5.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+    Built size : 230x150x140 mm
+    No. of extruders : Dual
+    Positioning accuracy : z- axis 0.0025 mm , XY-axis  0.011 mm
+    Printing accuracy : 0.1 mm
+    Layer thickness : 0.1 – 0.5 mm
+    Nozzle diameter : 0.4 mm
+    Shaft speed : 40-200mm/s
+    Nozzle flow rate : 24cc/hr
+    Software : flash point
+    File types : STL/OBJ/GX or read by SD card
+              
+    </pre>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div class="product-details">
+                <h1>Tubular Furnace</h1>
+                <p class="information">
+                    A tubular furnace typically consists of a cylindrical heating chamber, often made of refractory
+                    materials, and an electric heating element located along the tube's length. The material or sample
+                    to be heated is placed inside the tube, and the furnace allows for precise control of temperature
+                    through the regulation of the heating element.</p> 
+                <button class="btn control checkout-button" data-name="Tubular Furnace" data-price="5000" data-image="../public/img/gallery/gallery-6.jpg">
+                    <span class="price">&#8377 5000</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-6.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+    Length of Tube : Maximum 1200 mm
+    Heating Zone : Maximum 440 mm
+    Diameter of Tube : Maximum 120 mm
+    Working Temperature : Maximum 1700°C
+    Internal diameter : 15 mm to 150 mm
+    Overall length : 120 mm to 950 mm
+    Power supply : 24 V, 48 V, 110 V, 220 V
+    Power : 100 W to 1800 W
+    Base price : 5000/-
+      
+    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="container">
+            <div class="product-details">
+                <h1>Inverted Optical Metallurgical Microscope</h1>
+                <p class="information">An inverted metallurgical microscope is a specialized optical instrument designed
+                    for examining opaque materials, typically metallic samples, in various fields such as metallurgy,
+                    material science, and quality control. </p>
+                <button class="btn control checkout-button" data-name="Inverted Optical Metallurgical Microscope"
+                    data-price="5000" data-image="../public/img/gallery/gallery-7.jpg">
+                    <span class="price">&#8377 5000</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-7.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+    Optical System : Infinity color corrected optical system
+    Viewing head : High Transmission siedentopfTrinocular , inclined at 45 degree light distribution:20:80
+    Eyepieces : WF 10X (paired)
+    Objectives : Plan acromaticMettalurgical objectives ( 10X,20X,50X,100X & 200X)
+    Magnification : 100X to 2000X
+    Nose piece : Quadraple nose piece on bearings
+    Stage : Mechanical stage is 180mm X 155 mm, moving speed : 75mm X45mm
+    Stage plate : Metal plate
+    Illuminator : Epi illuminator has 5W led lamp adjustable brightness
+    Filters: Blue, green and yellow filters
+    Micrometer : Division is 0.01 mm
+    USB video eyepiece : 5MP camera
+    Power supply : 220V AC , 50HZ
+    Base price : 5000/-      
+    </pre>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div class="product-details">
+                <h1>Wear and Friction Monitor</h1>
+                <p class="information">
+                    A Wear and Friction Monitor is an instrument designed to quantify and monitor the wear and friction
+                    between interacting surfaces. It typically incorporates sensors, detectors, and data acquisition
+                    systems to measure parameters such as frictional forces, temperature changes, and wear rates during
+                    the operation of mechanical components.</p>
+                <button class="btn control checkout-button" data-name="Wear and Friction Monitor" data-price="5000" data-image="../public/img/gallery/gallery-8.jpg">
+                    <span class="price">&#8377 5000</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>
+            </div>
+            <div class="product-image">
+                <img src="../public/img/gallery/gallery-8.jpg" alt="">
+                <div class="info">
+                    <h2>Specifications:</h2>
+                    <pre>
+    Normal Load Range : 4.9 to 200N
+    Frictional Force Range : I to 200N
+    Wear Measurement Range : 0 to 2000 micro meters
+    Sliding Speed : 0.26 to 13 m/s
+    Disc Speed : 100 to 2000 rpm
+    Present Timer Range : up to 99 hrs:59 min:59 sec
+    Wear Disc Diameter : 165 mm (EN 32 disc 58-60 HRC)
+    Wear Disc Track Diameter : 10 to 140 mm
+    Specimen Pin Diameter : 3 to 12 mm
+    Pin Length : 20 to 30 mm
+    Specimen Holders to hold pins : up to 12 mm diameter
+    Base price : 5000/-        
+    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const buttons = document.querySelectorAll('.checkout-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name');
+            const price = button.getAttribute('data-price');
+            console.log(`name:${name} & price : ${price}`)
+            fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    product: {
+                        name: name,
+                        image: 'https://example.com/product.jpg', // replace with actual image URL
+                        price: price
+                    }
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const sessionId = data.id;
+                    const stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx'); // replace with your public key
+                    stripe.redirectToCheckout({ sessionId });
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
+</html>
