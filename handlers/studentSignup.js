@@ -2,7 +2,8 @@ import { comparePasswords,hashPassword,protect,createJWT } from './auth.js'
 import { Student } from '../models/student.js'
 
 export const createStudent =  async (req,res)=>{
-    const {name,collegeName,stream,branch,email,password,phone,currentYear,passedOutYear} = req.body
+    const {avatar , name,collegeName,stream,branch,email,password,phone,currentYear,passedOutYear} = req.body
+    // console.log(req.body)
     console.log(`name:${name} & email:${email} & password:${password} & phone:${phone}  & branch:${branch}
     & stream:${stream} & collegeName:${collegeName} `)
 
@@ -22,13 +23,16 @@ export const createStudent =  async (req,res)=>{
         password:hashedPassword,
         phone:phone,
         currentYear:currentYear,
-        passedOutYear:passedOutYear
+        passedOutYear:passedOutYear,
+        image:avatar, 
     })
 
     student.save()
         .then(() => {
             console.log(student);
-            res.render('ps');
+            res.render('dashboard',{
+                user:student
+            });
         })
         .catch((err) => {
             console.log(err);

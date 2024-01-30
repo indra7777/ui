@@ -16,7 +16,13 @@ const postSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+     userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student',
+    required: true
+  }
+
 });
 
 export const Post = mongoose.model('Post', postSchema);

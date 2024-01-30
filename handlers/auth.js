@@ -14,6 +14,7 @@ export const createJWT = (user) => {
       id: user.id,
       username: user.username,
       role: user.role,
+      image:user.image,
     }, 
     process.env.JWT_SECRET
   )
@@ -33,6 +34,7 @@ export const protect = (req, res, next) => {
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET)
     req.user = user
+   
     console.log(req.user)
     next()
   } catch (e) {

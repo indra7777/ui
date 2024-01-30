@@ -12,7 +12,15 @@ const studentSchema = new mongoose.Schema({
     password: String,
     phone: String,
     currentYear: Number,
-    passedOutYear: Number
+    passedOutYear: Number,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    image: {
+    type: String,
+    required: false,
+  }
 });
 
 export const Student = mongoose.model('Student',studentSchema)

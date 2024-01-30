@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Courses - Mentor Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+    <link href="../public/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../public/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../public/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../public/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../public/css/infrastructure.css" rel="stylesheet">
+<link href="../public/css/styles.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="../public/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: Mentor
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+    
+            <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="../public/img/ui.png" alt="">
+                <!-- <h1>Yummy<span>.</span></h1> -->
+            </a>
+    
+            <nav id="navbar" class="navbar">
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search for courses...">
+                   
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="Location1">Location1</option>
+                        <option value="Location2">Location2</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <button type="submit"><i class="fa fa-search">search</i></button>
+                </div>
+                <ul>
+
+                    <li><a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>"
+                                alt="bear"></a></li>
+    
+    
+                </ul>
+            </nav><!-- .navbar -->
+    
+            <!-- create a user icon with to dredirect profile informatin-->
+    
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main" data-aos="fade-in" class="aos-init aos-animate">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <h2>Infrastructure</h2>
+                <!-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas
+                    sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p> -->
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Courses Section ======= -->
+        <section id="courses" class="courses">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+
+                <div class="row aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="course-details.html">Radial Drilling Machine</a></h3>
+                                <p>A radial drilling machine consists of a large, column-mounted drill head with a
+                                radial arm that can be moved around the column.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                                    <!-- <div class="trainer-rank d-flex align-items-center">
+                                        <i class="bx bx-user"></i>&nbsp;50
+                                        &nbsp;&nbsp;
+                                        <i class="bx bx-heart"></i>&nbsp;65
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="course-details.html">Slotting Machine</a></h3>
+                                <p>A slotting machine features a vertical ram with a cutting tool and a worktable
+                                for securing the workpiece.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="course-details.html">Centre Less Grinding Machine</a></h3>
+                                <p>A centerless grinder features a grinding wheel, regulating wheel, and workrest
+                                blade. The cylindrical workpiece sits between the grinding and regulating wheels.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="course-details.html">Wear and Friction Monitor</a></h3>
+                                <p>A Wear and Friction Monitor is an instrument designed to quantify and monitor the wear and friction
+                                between interacting surfaces.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+                    
+                                <h3><a href="course-details.html">Shaping Machine</a></h3>
+                                <p>A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
+                                the workpiece.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+                    
+                                <h3><a href="course-details.html">3-D printer (ABS plastic only)</a></h3>
+                                <p>A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a
+                                traditional ball mill, typically used in laboratories and research settings.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="course-details.html">Inverted Optical Metallurgical Microscope</a></h3>
+                                <p>An inverted metallurgical microscope is a specialized optical instrument designed
+                                for examining opaque materials, typically metallic samples, in various fields such as metallurgy,
+                                material science, and quality control.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/events-1.jpg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>Department</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="course-details.html">Tubular Furnace</a></h3>
+                                <p>A tubular furnace typically consists of a cylindrical heating chamber, often made of refractory
+                                materials, and an electric heating element located along the tube's length.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                        <span>RVR & JC</span>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- End Course Item-->
+
+                </div>
+
+            </div>
+        </section><!-- End Courses Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <!-- End Footer -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="../public/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../public/vendor/aos/aos.js"></script>
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../public/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../public/js/infra.js"></script>
+
+    
+
+
+</body>
+
+</html>

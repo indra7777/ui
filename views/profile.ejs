@@ -17,6 +17,34 @@
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>" required>
                     </div>
+                    <div class="form-group mt-2">
+                        <img id="avatarImage" width="100px" height="100px" src="<%=user.image%>" alt="bear">
+                    </div>
+                    <div class="form-group mt-2">
+                        <select id="avatar" name="avatar" class="form-select form-style" aria-label="Default select example">
+                            <!-- <option selected>avatar</option> -->
+                            <option  value="../public/img/seeker/BEAR.png"><img src="../public/img/seeker/BEAR.png" alt="bear">Bear
+                            </option>
+                            <option value="../public/img/seeker/CIMPANZEE.png""><img src=" ../public/img/seeker/CIMPANZEE.png"
+                                alt="Cimpanzee">Cimpanzee</option>
+                            <option value="../public/img/seeker/ELEPHANT.png"><img src="../public/img/seeker/ELEPHANT.png"
+                                    alt="bear">Elephant</option>
+                            <option value="../public/img/seeker/HIPPO.png"><img src="../public/img/seeker/HIPPO.png" alt="bear">Hippo
+                            </option>
+                            <option value="../public/img/seeker/LION.png"><img src="../public/img/seeker/LION.png" alt="bear">Lion</option>
+                            <option value="../public/img/seeker/OCTOPUS.png"><img src="../public/img/seeker/OCTOPUS.png" alt="bear">Octopus
+                            </option>
+                            <option value="../public/img/seeker/PANDA.png"><img src="../public/img/seeker/PANDA.png" alt="bear">Panda
+                            </option>
+                            <option value="../public/img/seeker/PIG.png"><img src="../public/img/seeker/PIG.png" alt="bear">Pig</option>
+                            <option value="../public/img/seeker/RHINO.png"><img src="../public/img/seeker/RHINO.png" alt="bear">Rhino
+                            </option>
+                            <option value="../public/img/seeker/ZEBRA.png"><img src="../public/img/seeker/ZEBRA.png" alt="bear">Zebra
+                            </option>
+                    
+                        </select>
+                        <i class="input-icon uil-user"></i>
+                    </div>
                     <div class="form-group mb-3">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>"
@@ -63,6 +91,24 @@
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
+    <a href="/logout">logout</a>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+                // const avatarSelect = document.getElementById('avatar');
+                // const avatarImage = document.getElementById('avatarImage');
+                // if (avatarSelect && avatarImage) {
+                //     avatarImage.src = avatarSelect.value;
+                //     avatarSelect.addEventListener('change', function () {
+                //         avatarImage.src = this.value;
+                //     });
+                // }
+            });
+        document.getElementById('avatar').addEventListener('change', function () {
+
+                document.getElementById('avatarImage').src = this.value;
+            });
+    </script>
 </body>
 
 </html>

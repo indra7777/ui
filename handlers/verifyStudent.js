@@ -20,7 +20,9 @@ export const verifyStudent  = async (req,res)=>{
                     }
                     const token = createJWT(student)
                     res.cookie('token', token, { httpOnly: true }); // set token as a cookie
-                    res.render('dashboard');
+                    res.render('dashboard',{
+                user:student
+            });
 
                 })
                 .catch((err)=>{

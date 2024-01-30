@@ -44,7 +44,7 @@
                                                 <select  name="login-type" class="form-select form-style"
                                                     aria-label="Default select example">
                                                     <option selected>Select type of user</option>
-                                                    <option value="1">Student</option>
+                                                    <option value="1">Seeker</option>
                                                     <option value="2">Verify Team</option>
                                                     <option value="3">Industry</option>
                                                 </select>
@@ -68,7 +68,7 @@
                                                 <select name="role" id="name" class="form-select form-style"
                                                     aria-label="Default select example">
                                                     <option selected>Select type of user</option>
-                                                    <option value="sform">Student</option>
+                                                    <option value="sform">Seeker</option>
                                                     <option value="vform">Verify Team</option>
                                                     <option value="iform">Industry</option>
                                                 </select>
@@ -78,6 +78,27 @@
                                                 <div class="data sform mt-2" id="sform">
                                                     <!-- Student fields -->
                                                     <!-- ... Your existing student fields ... -->
+
+                                                    <div class="form-group mt-2">
+                                                        <img id="avatarImage" width="100px" height="100px" src="../public/img/seeker/BEAR.png" alt="bear">
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <select id="avatar" name="avatar" class="form-select form-style" aria-label="Default select example">
+                                                            <!-- <option selected>avatar</option> -->
+                                                            <option selected value="../public/img/seeker/BEAR.png"><img src="../public/img/seeker/BEAR.png" alt="bear">Bear</option>
+                                                            <option value="../public/img/seeker/CIMPANZEE.png""><img src="../public/img/seeker/CIMPANZEE.png" alt="Cimpanzee">Cimpanzee</option>
+                                                            <option value="../public/img/seeker/ELEPHANT.png"><img src="../public/img/seeker/ELEPHANT.png" alt="bear">Elephant</option>
+                                                            <option value="../public/img/seeker/HIPPO.png"><img src="../public/img/seeker/HIPPO.png" alt="bear">Hippo</option>
+                                                            <option value="../public/img/seeker/LION.png"><img src="../public/img/seeker/LION.png" alt="bear">Lion</option>
+                                                            <option value="../public/img/seeker/OCTOPUS.png"><img src="../public/img/seeker/OCTOPUS.png" alt="bear">Octopus</option>
+                                                            <option value="../public/img/seeker/PANDA.png"><img src="../public/img/seeker/PANDA.png" alt="bear">Panda</option>
+                                                            <option value="../public/img/seeker/PIG.png"><img src="../public/img/seeker/PIG.png" alt="bear">Pig</option>
+                                                            <option value="../public/img/seeker/RHINO.png"><img src="../public/img/seeker/RHINO.png" alt="bear">Rhino</option>
+                                                            <option value="../public/img/seeker/ZEBRA.png"><img src="../public/img/seeker/ZEBRA.png" alt="bear">Zebra</option>
+                                                    
+                                                        </select>
+                                                        <i class="input-icon uil-user"></i>
+                                                    </div>
                                                     <div class="form-group mt-2">
                                                         <input name="name" type="text" class="form-style" placeholder="Full Name">
                                                         <i class="input-icon uil uil-user"></i>
@@ -139,6 +160,7 @@
                                                         <input name="phone" type="tel" class="form-style" placeholder="Phone Number">
                                                         <i class="input-icon uil uil-phone-alt"></i>
                                                     </div>
+                                                    
                                                     <button class="btn btn-primary mt-2" type="submit">Register</button>
                                                 </div>
                                                 
@@ -147,6 +169,10 @@
                                             <div class="data iform mt-2" id="iform">
                                                 <!-- industry Team fields -->
                                                 <!-- ... Your existing verify team fields ... -->
+                                                 <div class="form-group mt-2">
+                                                    <input name="name" type="text" class="form-style" placeholder="Full Name">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
                                                 <div class="form-group mt-2">
                                                     <input name="name" type="text" class="form-style" placeholder="Full Name">
                                                     <i class="input-icon uil uil-user"></i>
@@ -312,6 +338,10 @@
                 
             }).change();
         });
+         document.getElementById('avatar').addEventListener('change', function () {
+               
+                document.getElementById('avatarImage').src = this.value;
+            });
     </script>
 
 </body>

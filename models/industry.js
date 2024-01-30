@@ -12,6 +12,10 @@ const industrySchema = mongoose.Schema({
     email: String,
     password: String,
     officialNumber: Number,
-    personalNumber: Number
+    personalNumber: Number,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 })
 export const Industry = mongoose.model('Industry',industrySchema)
