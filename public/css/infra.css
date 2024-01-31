@@ -1,0 +1,46 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.main {
+    margin-top: 75px;
+}
+
+.centered-div {
+    background-color: lightgray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.logo-img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    margin: 10px 0;
+    top: 40%;
+    left: 2%;
+}
+
+.image-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-description {
+    color: #333;
+    max-width: 100%;
+}
+
+.specifications {
+    margin-top: 20px;
+}
+
+.rounded-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: purple;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
