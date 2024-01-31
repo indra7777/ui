@@ -128,6 +128,11 @@ app.get('/personal', protect, async (req, res) => {
     const user = jwt.verify(token, process.env.JWT_SECRET)
     console.log(user)
     const student = await Student.findById(user.id).select('-password');
+    if (!student) {
+        console.error('No student found with this id');
+        res.render('user');
+        return;
+      }
     console.log(student)
     res.render('personal',{
       user:student
