@@ -45,6 +45,7 @@
     width: auto;
     height: 55%;
 }
+
   </style>
 
 </head>
@@ -52,41 +53,26 @@
 <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
 
     <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+    <header id="header" class="header fixed-top d-flex align-items">
         <div class="container d-flex align-items-center justify-content-between">
-    
             <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <img src="../public/img/ui.png" alt="">
                 <!-- <h1>Yummy<span>.</span></h1> -->
             </a>
-    
-            <nav id="navbar" class="navbar">
-                <div class="search-container">
-                    <input type="text" id="searchBar" placeholder="Search for Infra...">
-                   
-                    <select id="locationFilter">
-                        <option value="">All Locations</option>
-                        <option value="Location1">Guntur</option>
-                        <!-- <option value="Location2">Location2</option> -->
-                        <!-- Add more options as needed -->
-                    </select>
-                    <button type="submit"><i class="fa fa-search">search</i></button>
-                </div>
-                <ul>
-
-                    <li><a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>"
-                                alt="bear"></a></li>
-    
-    
-                </ul>
-            </nav><!-- .navbar -->
-    
-            <!-- create a user icon with to dredirect profile informatin-->
-    
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    
+        
+            <div class="search-container mx-auto">
+                <input type="text" id="searchBar" placeholder="Search for Infra...">
+                <select id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Location1">Guntur</option>
+                    <!-- <option value="Location2">Location2</option> -->
+                    <!-- Add more options as needed -->
+                </select>
+                <button type="submit"><i class="fa fa-search">search</i></button>
+            </div>
+        
+            <a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>" alt="bear"></a>
         </div>
     </header><!-- End Header -->
 
@@ -342,6 +328,34 @@
 
     <!-- Template Main JS File -->
     <script src="../public/js/infra.js"></script>
+    <script>
+        const searchInput = document.getElementById("searchBar");
+
+        const namesFromDOM = document.getElementsByClassName("course-item");
+        console.log(namesFromDOM)
+        searchInput.addEventListener("keyup", (event) => {
+                const { value } = event.target;
+
+                const searchQuery = value.toLowerCase();
+                console.log(searchQuery)
+                
+
+                for (const nameElement of namesFromDOM) {
+
+                    let name = nameElement.textContent.toLowerCase();
+
+                    // compare current name to search input
+                    if (name.includes(searchQuery)) {
+                        // found name matching search, display it
+                        nameElement.style.display = "block";
+                    } else {
+                        // no match, don't display name
+                        nameElement.style.display = "none";
+                        //  nameElement.remove();
+                    }
+                }
+            });
+    </script>
 
     
 
