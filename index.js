@@ -85,7 +85,7 @@ app.get('/explore/solution',protect,(req,res)=>{
     })
 })
 
-app.get('/profile', protect, async (req, res) => {
+app.get('/personal', protect, async (req, res) => {
   try {
     const token = req.cookies.token;
 
@@ -115,7 +115,7 @@ app.get('/profile', protect, async (req, res) => {
   }
 });
 
-app.get('/personal', protect, async (req, res) => {
+app.get('/profile', protect, async (req, res) => {
   try {
     const token = req.cookies.token;
 
