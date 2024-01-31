@@ -1,10 +1,48 @@
-<%- include("partials/header"); -%>
 
-    <h1>
-        <%= post.title %>
-    </h1>
-    <img src= "/public/uploads/<%= post.image %>" alt="Thumbnail" width="400px" height="200px">
-    <p>
-        <%= post.content %>
-    </p>
 
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog Post</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+    
+            .blog-post {
+                margin: 30px 0;
+            }
+    
+            .back-btn {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        <div class="container mt-5">
+            <a href="/blogs" class="btn btn-secondary back-btn">Back to Blog</a>
+    
+            <div class="blog-post">
+                <img src="/public/uploads/<%= post.image %>" alt="Blog Post" class="img-fluid">
+                <h1 class="mt-2"><%= post.title %></h1>
+                <p class="text-muted">Published on January 31, 2024</p>
+                <p><%= post.content %></p>
+                
+            </div>
+        </div>
+    
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    </body>
+    
+    </html>

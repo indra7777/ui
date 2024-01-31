@@ -44,6 +44,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    #blogs-post{
+        margin-top: 10%;
+    }
+  </style>
 </head>
 
 <body>
@@ -81,7 +86,7 @@
         </div>
     </header>
 
-    <h1>Compose</h1>
+    <!-- <h1>Compose</h1>
     <form action="/blogs/compose" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="postTitle">Title</label>
@@ -92,7 +97,27 @@
             <textarea name="postBody" class="form-control" cols="30" rows="5"></textarea>
         </div>
         <button type="submit" class="btn btn-primary" name="button">Publish</button>
-    </form>
+    </form > -->
+
+    <!-- new form -->
+    <div class="container" id="blogs-post">
+        <h1 class="text-center mt-5">Create a Blog Post</h1>
+        <form action="/blogs/compose" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" class="form-control-file" id="imageInput" name="image" accept="image/*" >
+            </div>
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input name="postTitle" type="text" class="form-control" id="postTitle" placeholder="Enter a title">
+            </div>
+            <div class="form-group">
+                <label for="postBody">Description</label>
+                <textarea  name="postBody" class="form-control" id="descriptionInput" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
 
     <!-- Vendor JS Files -->

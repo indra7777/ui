@@ -166,7 +166,7 @@ app.post("/contact", contactUS)
 app.get("/blogs",protect , async function(req,res){
     try {
         const posts = await Post.find({});
-        res.render("blogs", {
+        res.render("showBlogs", {
             posts: posts,
             startingContent:"Welcome to Uncalled Innovators",
             user:req.user,
@@ -175,6 +175,7 @@ app.get("/blogs",protect , async function(req,res){
         console.error(err);
         res.status(500).send("An error occurred while retrieving posts");
     }
+   
 
 });
 
