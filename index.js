@@ -115,6 +115,36 @@ app.get('/profile', protect, async (req, res) => {
   }
 });
 
+app.get('/personal', protect, async (req, res) => {
+  try {
+    const token = req.cookies.token;
+
+  if (!token) {
+    res.render('index')
+    return
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET)
+    console.log(user)
+    const student = await Student.findById(user.id).select('-password');
+    console.log(student)
+    res.render('personal',{
+      user:student
+    })
+  } catch (e) {
+    console.error(e)
+    res.render('user')
+    return
+    
+  }
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'An error occurred while retrieving the user profile' });
+  }
+});
+
 app.get('/infraseek',(req,res)=>{
   res.render('infraseek')
 })
