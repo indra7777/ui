@@ -52,13 +52,22 @@
     <header id="header" class="header fixed-top  d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
+            <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+            
                 <img src="../public/img/ui.png" alt="">
-                <!-- <h1>Yummy<span>.</span></h1> -->
+            
             </a>
-            <a id="profile" href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>" alt="bear"></a>
+            
+            <nav id="navbar" class="navbar">
+                <ul>                
+                    <li><a href="/blogs">Blogs</a></li>
+                    <li><a href="/infra">Infraseek</a></li>
+                    <li><a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>" alt="bear"></a></li>      
+                </ul>
+            </nav>
 
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         </div>
     </header><!-- End Header -->
 <section id="faq" class="faq section-bg">

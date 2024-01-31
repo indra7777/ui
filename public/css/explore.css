@@ -70,7 +70,7 @@ h6 {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #fff;
+    background: #ffffff;
 }
 
 #preloader:before {
@@ -196,7 +196,7 @@ h6 {
 }
 
 #header .logo img {
-    max-height: 40px;
+    max-height: 120px;
 }
 
 /**
