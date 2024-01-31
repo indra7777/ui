@@ -99,7 +99,7 @@ app.get('/profile', protect, async (req, res) => {
     console.log(user)
     const student = await Student.findById(user.id).select('-password');
     console.log(student)
-    res.render('profile',{
+    res.render('personal',{
       user:student
     })
   } catch (e) {
@@ -137,7 +137,7 @@ app.post('/update-profile', protect, async (req, res) => {
       { new: true }
       );
 
-      res.render('profile',{ success: true, user: updatedUser });
+      res.render('personal',{ success: true, user: updatedUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'An error occurred while updating the user profile' });
