@@ -63,10 +63,10 @@ app.get("/infra",protect,(req,res)=>{
   })
 })
 
-//login page
-app.get("/user",(req,res)=>{
-    res.render('user')
-})
+// //login page
+// app.get("/user",(req,res)=>{
+//     res.render('user')
+// })
 app.post("/login",(req,res)=>{
     res.send("please select user")
 })
