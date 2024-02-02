@@ -27,7 +27,7 @@ export const protect = (req, res, next) => {
     console.log(token)
 
   if (!token) {
-    res.render('index')
+    res.render('user')
     return
   }
 
