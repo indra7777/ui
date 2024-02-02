@@ -41,9 +41,11 @@ app.set('view engine', 'ejs')
 // home page
 app.get("/",(req,res)=>{
   console.log(req.user)
-    res.render("dashboard",{
-      user:req.user
-    });
+    // res.render("dashboard",{
+    //   user:req.user
+    // });
+    res.render('index')
+
 })
 app.get("/user",protect,(req,res)=>{
   console.log(req.user)
