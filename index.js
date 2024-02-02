@@ -8,7 +8,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import { contactUS } from './handlers/contactUs.js'
-import { comparePasswords,hashPassword,protect,createJWT } from './handlers/auth.js'
+import { comparePasswords,hashPassword,protect,createJWT,userCheck } from './handlers/auth.js'
 import { Student } from './models/student.js'
 import { createStudent } from './handlers/studentSignup.js'
 import { verifyStudent } from './handlers/verifyStudent.js'
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const app = express()
 app.use(cookieParser())
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -39,15 +39,15 @@ app.set('view engine', 'ejs')
 //get request
 
 // home page
-app.get("/",(req,res)=>{
-  console.log(req.user)
+app.get("/",protect,(req,res)=>{
+  
     // res.render("dashboard",{
     //   user:req.user
     // });
-    res.render('index')
-
+    res.render('dashboard')
 })
-app.get("/user",protect,(req,res)=>{
+
+app.get("/user",userCheck,protect,(req,res)=>{
   console.log(req.user)
     res.render("dashboard",{
       user:req.user
@@ -70,7 +70,7 @@ app.get("/infra",protect,(req,res)=>{
 //     res.render('user')
 // })
 app.post("/login",(req,res)=>{
-    res.send("please select user")
+    res.render('login')
 })
 app.get('/home',protect,(req,res)=>{
   res.render('dashboard',{
@@ -128,7 +128,7 @@ app.get('/personal', protect, async (req, res) => {
   }
 });
 
-app.get('/profile', protect, async (req, res) => {
+app.get('/profile',protect, async (req, res) => {
   try {
     const token = req.cookies.token;
 
@@ -276,7 +276,7 @@ app.get("/blogs/posts/:id", async function(req,res){
 
 app.get('/logout', protect,(req, res) => {
   // clear the token cookie
-  
+
   res.clearCookie('token');
   // redirect the user to the login page
   res.redirect('/');

@@ -22,9 +22,30 @@ export const createJWT = (user) => {
 }
 
 export const protect = (req, res, next) => {
-  if(!req.cookies.token){
-    res.render('user')
+ 
+    const token = req.cookies.token;
+    console.log(token)
+
+  if (!token) {
+    res.render('index')
+    return
   }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET)
+    req.user = user
+   
+    console.log(req.user)
+    next()
+  } catch (e) {
+    console.error(e)
+    res.render('index')
+    return
+    
+  }
+}
+export const userCheck = (req, res, next) => {
+ 
     const token = req.cookies.token;
     console.log(token)
 
@@ -41,7 +62,7 @@ export const protect = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('user')
+    res.render('index')
     return
     
   }

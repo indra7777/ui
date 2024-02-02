@@ -39,7 +39,7 @@
 
 
     <div class="container profile-container">
-        <a href="/" class="btn btn-secondary back-btn">Back to Home</a>
+        <a href="/home" class="btn btn-secondary back-btn">Back to Home</a>
         <h2>Edit Profile</h2>
 
         <form action="/update-profile" method="post">
@@ -93,9 +93,10 @@
             <div class="form-group">
                 <label for="stream">Stream</label>
                 <select id="stream" name="stream" placeholder="<%= user.stream %>" class="form-select form-style" aria-label="Default select example">
-                    <option >B.Tech</option>
-                    <option>Diploma</option>
-                    <option>ITI</option>
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="M.Tech">M.Tech</option>
+                    <option value="Diploma">Diploma </option>
+                    <option value="ITI">ITI </option>
                 </select>
                 <i class="input-icon uil-user"></i>
             </div>
@@ -103,13 +104,13 @@
             <div class="form-group">
                 <label for="branch">Branch</label>
                 <select id="branch" name="branch" class="form-select form-style" aria-label="Default select example">
-                    <option >MECH</option>
-                    <option>CIVIL</option>
-                    <option>ECE</option>
-                    <option>EEE</option>
-                    <option>CSE</option>
-                    <option>CHE</option>
-                    <option>Other</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL </option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE </option>
+                    <option value="CSE">CSE</option>
+                    <option value="CHE">CHE </option>
+                    <option value="Other">Other </option>
                 </select>
                 <i class="input-icon uil-user"></i>
             </div>
@@ -131,7 +132,7 @@
                 <input name="passedOutYear" type="number" class="form-control" id="passedOutYear" placeholder="Enter your passed out year"
                     value="<%= user.passedOutYear %>">
             </div>
-
+            
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
