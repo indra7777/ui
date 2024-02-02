@@ -23,13 +23,13 @@ export const createJWT = (user) => {
 
 export const protect = (req, res, next) => {
   if(!req.cookies.token){
-    res.render('index')
+    res.render('user')
   }
     const token = req.cookies.token;
     console.log(token)
 
   if (!token) {
-    res.render('index')
+    res.render('user')
     return
   }
 
