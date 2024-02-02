@@ -27,7 +27,7 @@ export const protect = (req, res, next) => {
     console.log(token)
 
   if (!token) {
-    res.render('user')
+    res.render('index')
     return
   }
 
@@ -39,7 +39,7 @@ export const protect = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('user')
+    res.render('index')
     return
     
   }
