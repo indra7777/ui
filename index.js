@@ -39,7 +39,7 @@ app.set('view engine', 'ejs')
 //get request
 
 // home page
-app.get("/",protect,(req,res)=>{
+app.get("/",(req,res)=>{
   console.log(req.user)
     res.render("dashboard",{
       user:req.user

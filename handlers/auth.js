@@ -39,7 +39,7 @@ export const protect = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('index')
+    res.render('user')
     return
     
   }
