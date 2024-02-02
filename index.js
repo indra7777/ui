@@ -72,6 +72,11 @@ app.get("/infra",protect,(req,res)=>{
 app.post("/login",(req,res)=>{
     res.send("please select user")
 })
+app.get('/home',protect,(req,res)=>{
+  res.render('dashboard',{
+    user:req.user
+  })
+})
 app.post("/login/student",verifyStudent)
 // app.post("/login/industry",verifyIndustry)
 app.post("/login/industry",(req,res)=>{
@@ -128,7 +133,7 @@ app.get('/profile', protect, async (req, res) => {
     const token = req.cookies.token;
 
   if (!token) {
-    res.render('index')
+    res.render('user')
     return
   }
 
@@ -269,8 +274,9 @@ app.get("/blogs/posts/:id", async function(req,res){
   }
 });
 
-app.get('/logout', (req, res) => {
+app.get('/logout', protect,(req, res) => {
   // clear the token cookie
+  
   res.clearCookie('token');
   // redirect the user to the login page
   res.redirect('/');
