@@ -45,6 +45,12 @@ app.get("/",protect,(req,res)=>{
       user:req.user
     });
 })
+app.get("/user",protect,(req,res)=>{
+  console.log(req.user)
+    res.render("dashboard",{
+      user:req.user
+    });
+})
 //hackathon page
 app.get('/hackathon',protect,(req,res)=>{
     res.render('hackathon',{
