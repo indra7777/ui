@@ -22,7 +22,9 @@ export const createJWT = (user) => {
 }
 
 export const protect = (req, res, next) => {
-
+  if(!req.cookies.token){
+    res.render('index')
+  }
     const token = req.cookies.token;
     console.log(token)
 
