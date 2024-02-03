@@ -17,7 +17,7 @@ export const verifyIndustry  = async (req,res)=>{
                         res.send('invalid password')
                         return
                     }
-                    res.render('ps');
+                    res.render('ind');
                 })
                 .catch((err)=>{
                     console.log(err)

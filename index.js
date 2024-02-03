@@ -85,12 +85,13 @@ app.get('/home',protect,(req,res)=>{
 })
 app.post("/login/student",verifyStudent)
 // app.post("/login/industry",verifyIndustry)
-app.post("/login/industry",(req,res)=>{
-  res.render('working')
-})
+app.post("/login/industry",verifyIndustry)
 // app.post("/login/team",verifyTeam)
 app.post("/login/team",(req,res)=>{
   res.render('working')
+})
+app.get('/problem',(req,res)=>{
+  res.render('ind')
 })
 app.get('/explore',protect,(req,res)=>{
   

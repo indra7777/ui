@@ -30,7 +30,7 @@ export const createIndustry =  async (req,res)=>{
     industry.save()
         .then(() => {
             console.log(industry);
-            res.render('ps');
+            res.render('ind');
         })
         .catch((err) => {
             console.log(err);
