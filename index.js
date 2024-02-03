@@ -44,7 +44,13 @@ app.get("/",protect,(req,res)=>{
     // res.render("dashboard",{
     //   user:req.user
     // });
-    res.render('dashboard')
+    if(!req.user){
+      res.render('index')
+    }
+    res.render('dashboard',{
+      user:req.user
+    })
+
 })
 
 app.get("/user",userCheck,protect,(req,res)=>{
