@@ -93,6 +93,9 @@ app.post("/login/team",(req,res)=>{
 app.get('/problem',(req,res)=>{
   res.render('ind')
 })
+app.post('/problem', upload.single('file'),async(req,res)=>{
+
+})
 app.get('/explore',protect,(req,res)=>{
   
     res.render('explore',{
@@ -203,9 +206,7 @@ app.post('/update-profile', protect, async (req, res) => {
 app.post("/student/signup",createStudent)
 
 // app.post("/industry/signup",createIndustry)
-app.post("/industry/signup",(req,res)=>{
-  res.render('working')
-})
+app.post("/industry/signup",createIndustry)
 
 // app.post("/verify/signup",createTeam)
 app.post("/verify/signup",(req,res)=>{

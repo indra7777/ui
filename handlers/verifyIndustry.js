@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { comparePasswords } from './auth.js'
+import { comparePasswords,createJWT } from './auth.js'
 import { Industry } from '../models/industry.js'
 
 export const verifyIndustry  = async (req,res)=>{
@@ -17,7 +17,14 @@ export const verifyIndustry  = async (req,res)=>{
                         res.send('invalid password')
                         return
                     }
-                    res.render('ind');
+                    const token = createJWT(industry)
+        res.cookie('token', token, { httpOnly: true }); // set token as a cookie
+            res.render('ind',{
+            user:industry
+        })
+        .catch((err) => {
+            console.log(err);
+        })
                 })
                 .catch((err)=>{
                     console.log(err)

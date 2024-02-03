@@ -29,16 +29,17 @@ export const createStudent =  async (req,res)=>{
 
     student.save()
         .then(() => {
-            console.log(student);
-            res.render('dashboard',{
+           const token = createJWT(student)
+                    res.cookie('token', token, { httpOnly: true }); // set token as a cookie
+                    res.render('dashboard',{
                 user:student
-            });
         })
+    })
         .catch((err) => {
             console.log(err);
         })
+    }
 
-}
 
 
 
