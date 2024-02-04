@@ -17,7 +17,7 @@ import { verifyIndustry } from './handlers/verifyIndustry.js'
 import { createTeam } from './handlers/createTeam.js'
 import { verifyTeam } from './handlers/verifyTeam.js'
 import { Post } from './models/post.js'
-
+import { Problem } from './models/problem.js'
 dotenv.config()
 const storage = multer.diskStorage({
   destination: './public/uploads/',
@@ -91,9 +91,29 @@ app.post("/login/team",(req,res)=>{
   res.render('working')
 })
 app.get('/problem',(req,res)=>{
+ 
   res.render('ind')
 })
 app.post('/problem', upload.single('file'),async(req,res)=>{
+  try {
+    if (!req.file) {
+      res.status(400).send("No file uploaded");
+      return;
+    }
+    const problem = new Problem({
+      title: req.body.title,
+      department:req.body.department,
+      description: req.body.description,
+      image:req.file ? req.file.filename : null,
+      industrialist:req.body.userId
+    });
+    await problem.save();
+    console.log(problem)
+    res.send("successfully problem is uploaded");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while saving the post");
+  }
 
 })
 app.get('/explore',protect,(req,res)=>{

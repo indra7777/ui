@@ -151,8 +151,8 @@
         
         <div class="box">
             <label for="department">Choose a department:</label>
-            <select id="department" name="departments">
-                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+            <select id="department" name="department">
+                <option selected value="Computer Science and Engineering">Computer Science and Engineering</option>
                 <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
                 <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
                 <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -163,7 +163,11 @@
         </div>
         <div class="box">
             <label for="problemStatement">Problem Statement :</label>
-            <input type="text" id="problemStatement" name="problemStatement" placeholder="Enter Problem Statement">
+            <input type="text" id="problemStatement" name="title" placeholder="Enter Problem Statement">
+        </div>
+        <div class="box">
+            <label for="userId">user id:</label>
+            <input value="<%=user.id%>" type="text" id="userId" name="userId" placeholder="<%=user.id%>">
         </div>
 
         <div class="box">
@@ -175,7 +179,7 @@
             <label for="file">Add File:</label>
             <input type="file" id="file" name="file">
         </div>
-    
+        <button class="btn primary-btn" type="submit">Submit Problem</button>
         </form>
        
     </div>

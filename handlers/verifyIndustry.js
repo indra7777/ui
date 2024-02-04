@@ -17,20 +17,21 @@ export const verifyIndustry  = async (req,res)=>{
                         res.send('invalid password')
                         return
                     }
-                    const token = createJWT(industry)
+        const token = createJWT(industry)
         res.cookie('token', token, { httpOnly: true }); // set token as a cookie
             res.render('ind',{
             user:industry
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-                })
-                .catch((err)=>{
-                    console.log(err)
-                })
-        })
+        }
+    )}
+    )
         .catch((err)=>{
             console.log(err)
         })
+    
+}
+    )
+        .catch((err)=>{
+            console.log(err)
+        })
+    
 }
