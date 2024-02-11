@@ -131,7 +131,7 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
+/* #header {
     background: #fff;
     transition: all 0.5s;
     z-index: 997;
@@ -156,7 +156,7 @@ h6 {
 
 #header .logo img {
     max-height: 40px;
-}
+} */
 
 /**
 * Get Startet Button 
@@ -191,7 +191,7 @@ h6 {
 /**
 * Desktop Navigation 
 */
-.navbar {
+/* .navbar {
     padding: 0;
 }
 
@@ -299,12 +299,12 @@ h6 {
     .navbar .dropdown .dropdown:hover>ul {
         left: -100%;
     }
-}
+} */
 
 /**
 * Mobile Navigation 
 */
-.mobile-nav-toggle {
+/* .mobile-nav-toggle {
     color: #37423b;
     font-size: 28px;
     cursor: pointer;
@@ -409,7 +409,7 @@ h6 {
 
 .navbar-mobile .dropdown>.dropdown-active {
     display: block;
-}
+} */
 
 /*--------------------------------------------------------------
 # Hero Section
