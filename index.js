@@ -215,6 +215,9 @@ app.post('/update-profile', protect, async (req, res) => {
       { new: true }
       );
 
+      const token = createJWT(updatedUser)
+      res.cookie('token', token, { httpOnly: true , maxAge:12000 });
+
       res.render('personal',{ success: true, user: updatedUser });
   } catch (error) {
     console.error(error);
@@ -337,6 +340,19 @@ app.get('/logout', protect,(req, res) => {
 
 //   res.json({ id: session.id });
 // });
+
+
+
+//try navbar or aside
+
+app.get("/navbar",(req,res)=>{
+  res.render("try")
+})
+
+
+
+
+
 
 mongoose.connect(process.env.MONGO_URL)
 .then( ()=>{

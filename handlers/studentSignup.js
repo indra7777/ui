@@ -30,7 +30,7 @@ export const createStudent =  async (req,res)=>{
     student.save()
         .then(() => {
            const token = createJWT(student)
-                    res.cookie('token', token, { httpOnly: true }); // set token as a cookie
+                    res.cookie('token', token, { httpOnly: true,maxAge:12000 }); // set token as a cookie
                     res.render('dashboard',{
                 user:student
         })

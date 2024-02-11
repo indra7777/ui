@@ -38,6 +38,7 @@
 
     <!-- Template Main CSS File -->
     <link href="../public/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/ctry.css">
     <style>
         /* body {
             background-color: #f8f9fa;
@@ -65,7 +66,7 @@
 <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
 
     <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top  d-flex align-items-center">
+    <!-- <header id="header" class="header fixed-top  d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
     
             <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
@@ -86,8 +87,47 @@
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         </div>
-    </header>
+    </header> -->
     <!-- End Header -->
+    <div class="header">
+        <img class="logo" src="../public/img/logo.jpg" alt="Your Logo">
+        <div class="container">
+            <div class="rounded-container">
+                <a href="#">ours</a>
+                <a href="#">yours</a>
+                <a href="#">.</a>
+            </div>
+            <div class="container">
+                <div class="strip" id="hover-strip">
+                    <div class="dots-container">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="vertical-container">
+                    <div class="user-profile">
+                        <img src="<%=user.image%>" alt="User Avatar" class="avatar">
+                        <p class="user-name">User</p>
+                    </div>
+                    <div class="spacer"></div>
+                    <a href="/blogs">Blogs</a>
+                    <a href="/infra">Infraseek</a>
+                    <a href="/explore">Problem Statements</a>
+                    <a href="#">Reels</a>
+                    <div class="image-link bottom-images">
+                        <a
+                            href="https://www.linkedin.com/in/uncalled-innovators-100016294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img
+                                src="../public/Icons/linkedin.png" alt="Site 2"></a>
+                        <a href="https://www.instagram.com/uncalled_innovators?igsh=MXU1bDBsb3N5amdsdQ=="><img
+                                src="../public/Icons/instagram.png" alt="Site 1"></a>
+                        <a href="https://x.com/TeamUncalled?t=rDd4njnW9kkQqhaq67eGcw&s=09"><img
+                                src="../public/Icons/twitter.png" alt="Site 3"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="container mt-5">
         <div class="row">
