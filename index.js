@@ -216,7 +216,7 @@ app.post('/update-profile', protect, async (req, res) => {
       );
 
       const token = createJWT(updatedUser)
-      res.cookie('token', token, { httpOnly: true , maxAge:12000 });
+      res.cookie('token', token, { httpOnly: true , maxAge:7000000 });
 
       res.render('personal',{ success: true, user: updatedUser });
   } catch (error) {
