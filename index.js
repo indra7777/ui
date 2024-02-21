@@ -36,21 +36,17 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 app.set('view engine', 'ejs')
 
-//get request
 
-// home page
 app.get("/",protect,(req,res)=>{
-  
-    // res.render("dashboard",{
-    //   user:req.user
-    // });
+
     if(!req.user){
       res.render('index')
-    }
-    res.render('dashboard',{
+      return
+    }else{
+      res.render('dashboard',{
       user:req.user
     })
-
+    }
 })
 
 app.get("/user",userCheck,protect,(req,res)=>{
@@ -59,29 +55,38 @@ app.get("/user",userCheck,protect,(req,res)=>{
       user:req.user
     });
 })
+
+
 //hackathon page
 app.get('/hackathon',protect,(req,res)=>{
     res.render('hackathon',{
       user:req.user
     });
 })
+
+
 app.get("/infra",protect,(req,res)=>{
   res.render("infraStructure",{
     user:req.user
   })
 })
 
-// //login page
-// app.get("/user",(req,res)=>{
-//     res.render('user')
-// })
+
 app.post("/login",(req,res)=>{
     res.render('login')
 })
+
+
 app.get('/home',protect,(req,res)=>{
   res.render('dashboard',{
     user:req.user
   })
+})
+
+app.get('/dashboard',protect,(req,res)=>{
+  res.render('dashboard',{
+    user:req.user
+    })
 })
 app.post("/login/student",verifyStudent)
 // app.post("/login/industry",verifyIndustry)
@@ -90,10 +95,15 @@ app.post("/login/industry",verifyIndustry)
 app.post("/login/team",(req,res)=>{
   res.render('working')
 })
+
+
+
 app.get('/problem',(req,res)=>{
- 
+
   res.render('ind')
 })
+
+
 app.post('/problem', upload.single('file'),async(req,res)=>{
   try {
     if (!req.file) {

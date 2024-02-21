@@ -31,9 +31,7 @@ export const createStudent =  async (req,res)=>{
         .then(() => {
            const token = createJWT(student)
                     res.cookie('token', token, { httpOnly: true,maxAge:7000000 }); // set token as a cookie
-                    res.render('dashboard',{
-                user:student
-        })
+                    res.redirect('/home')
     })
         .catch((err) => {
             console.log(err);
