@@ -18,6 +18,7 @@ import { createTeam } from './handlers/createTeam.js'
 import { verifyTeam } from './handlers/verifyTeam.js'
 import { Post } from './models/post.js'
 import { Problem } from './models/problem.js'
+import { Solution } from './models/solution.js'
 dotenv.config()
 const storage = multer.diskStorage({
   destination: './public/uploads/',
@@ -103,7 +104,7 @@ app.get('/problem',(req,res)=>{
   res.render('ind')
 })
 
-
+//problem 
 app.post('/problem', upload.single('file'),async(req,res)=>{
   try {
     if (!req.file) {
@@ -132,15 +133,103 @@ app.get('/explore',protect,(req,res)=>{
       user:req.user
     })
 })
-app.get('/explore/solution',protect,(req,res)=>{
-    res.render('solution',{
-      user:req.user
+
+//solution submit page
+//solution submit page
+app.get('/submit/:id', protect, async (req, res) => {
+  const reqProblemID = req.params.id;
+  try {
+    const userDetails = await Student.findById(req.user.id);
+
+    //checking whether student has
+    if (!userDetails) {
+      res.render('user')
+      return
+    } else {
+      console.log("userDetails", userDetails);
+      res.render('solution', {
+        user: userDetails, id: reqProblemID
+      })
+    }
+  } catch (e) {
+    console.error(e)
+    res.render('user')
+    return
+  }
+});
+
+//submitting solution to a problem
+app.post("/solution/:id",upload.single('file'),protect,async(req,res)=>{
+  try {
+    console.log(req.file);
+    if (!req.file) {
+      res.status(400).send("No file uploaded");
+      return;
+    }
+    const solution = new Solution({
+      department:req.body.department,
+      problemStatementID:req.params.id,
+      file:req.file ? req.file.filename : null,
+      description:req.body.description,
+      userId:req.user.id
+    });
+    await solution.save();
+    console.log(solution)
+    res.send("successfully solution is uploaded");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while saving the post");
+  }
+} );
+
+//view all solutions of a particular problem statement
+app.get('/explore/problems/:id',protect,async(req,res)=>{
+  const reqProblemID = req.params.id;
+  try {
+    const solutions = await Solution.find({problemStatementID:reqProblemID});
+    res.render('solutions',{
+      solutions:solutions
     })
-})
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while retrieving the post");
+  }
+} );
+
+//searching for problems based on tags or title
+app.get('/explore/search',protect,async(req,res)=>{
+  const query = req.query.q;
+  try {
+    const problems = await Problem.find({title:query});
+    res.render('search',{
+      problems:problems
+    })
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while retrieving the post");
+  }
+} );
+
+//delete a problem statement
+app.post("/admin/problems/:id",protect,async(req,res)=>{
+  const reqProblemID = req.params.id;
+  try {
+    await Problem.findByIdAndDelete(reqProblemID);
+    res.send("successfully problem is deleted");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while deleting the post");
+  }
+} );
+
+
+
+
+
 
 app.get('/personal', protect, async (req, res) => {
   try {
-    const token = req.cookies.token;
+     const token = req.cookies.token;
 
   if (!token) {
     res.render('index')

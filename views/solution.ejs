@@ -1,214 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Your Solution</title>
-    
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
     <!-- ... existing styles ... -->
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <style>
-        h1 {
-            text-align: center;
-            font-size: 40px;
-            margin-top: 1px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            letter-spacing: 2px;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            animation: colorChange 5s infinite alternate; /* Change color every 5 seconds */
-        }
+      h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-top: 1px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        animation: colorChange 5s infinite alternate; /* Change color every 5 seconds */
+      }
 
-        @keyframes colorChange {
-            0% {
-                color: #FFBDF6; /* Dodger Blue */
-            }
-            25% {
-                color: #64305D; /* Tomato */
-            }
-            50% {
-                color: #FFDEFB; /* Lime Green */
-            }
-            75% {
-                color: #8E4574; /* Gold */
-            }
-            100% {
-                color: #64305D; /* Blue Violet */
-            }
+      @keyframes colorChange {
+        0% {
+          color: #ffbdf6; /* Dodger Blue */
         }
-        .profile {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
+        25% {
+          color: #64305d; /* Tomato */
         }
-        body {
-            font-family: 'Roboto',roboto;
-            margin: 0;
-            color: #64305D;
-            overflow: hidden;
-            background-image:  whitesmoke;
-            position: relative;
+        50% {
+          color: #ffdefb; /* Lime Green */
         }
+        75% {
+          color: #8e4574; /* Gold */
+        }
+        100% {
+          color: #64305d; /* Blue Violet */
+        }
+      }
+      .profile {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+      body {
+        font-family: "Roboto", roboto;
+        margin: 0;
+        color: #64305d;
+        overflow: hidden;
+        background-image: whitesmoke;
+        position: relative;
+      }
 
-        
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(100, 48, 93, 0.1);
+        position: relative;
+        z-index: 1;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border: 3px solid #ff69b4; /* Pink color border */
+      }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background-color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(100, 48, 93, 0.1);
-            position: relative;
-            z-index: 1;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: 3px solid #FF69B4; /* Pink color border */
-        }
+      .container:hover {
+        background-color: whitesmoke; /* Change the background color on hover */
+        transform: scale(1.02); /* Add a subtle scale effect on hover */
+      }
 
-        .container:hover {
-            background-color:whitesmoke; /* Change the background color on hover */
-            transform: scale(1.02); /* Add a subtle scale effect on hover */
-        }
+      h2 {
+        text-align: center;
+        color: #64305d;
+      }
 
-        h2 {
-            text-align: center;
-            color: #64305D;
-        }
+      .box {
+        margin-bottom: 10px;
+      }
 
-        .box {
-            margin-bottom: 10px;
-        }
+      label {
+        display: block;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+      textarea {
+        width: 100%;
+        height: 100px;
+        resize: vertical;
+        padding: 9px;
+        border: 1px solid #ccc;
+        border-radius: 9px;
+        box-sizing: border-box;
+      }
 
-        textarea {
-            width: 100%;
-            height: 100px;
-            resize: vertical;
-            padding: 9px;
-            border: 1px solid #ccc;
-            border-radius: 9px;
-            box-sizing: border-box;
-        }
+      input[type="file"] {
+        margin-top: 5px;
+      }
 
-        input[type="file"] {
-            margin-top: 5px;
-        }
+      button {
+        padding: 10px;
+        background-color: #8e4574;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
 
-        button {
-            padding: 10px;
-            background-color: #8E4574;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+      button:hover {
+        background-color: #8e4574;
+      }
+      .header-img {
+        border-radius: 10px;
+        border: 3px solid #ff69b4;
+        position: relative;
+        padding: 2px;
+        margin-top: 30px;
+        width: 50px;
+        height: 50px;
+      }
 
-        button:hover {
-            background-color: #8E4574;
-        }
-        .header-img{
-            border-radius: 10px;
-            border: 3px solid #FF69B4;
-            position: relative;
-            padding: 2px;
-            margin-top: 30px;
-            width: 50px;
-            height: 50px;
+      h2 {
+        text-align: center;
+        color: #64305d;
+        font-style: roboto;
+        /* Updated color code */
+      }
 
-
-        }
-
-        h2 {
-            text-align: center;
-            color: #64305D;
-            font-style: roboto;
-            /* Updated color code */
-        }
-
-        .important-guidelines {
-            text-align: center;
-            background-color: #64305D;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
+      .important-guidelines {
+        text-align: center;
+        background-color: #64305d;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <img class="header-img" src="../public/img/logo.jpg" alt="Header Image" width="50" height="50">
+  <body>
+    <img
+      class="header-img"
+      src="../public/img/logo.jpg"
+      alt="Header Image"
+      width="50"
+      height="50"
+    />
     <div id="confetti-container"></div>
-    
+
     <a href="#" title="user icons" class="profile">
-        <img src="../public/img/profile.png" alt="profile" width="30" height="30">
-    </a><br><br>
+      <img
+        src="../public/img/profile.png"
+        alt="profile"
+        width="30"
+        height="30"
+      /> </a
+    ><br /><br />
 
     <h1>YOUR SOLUTION</h1>
-    <div class="container">
+    <form
+      action="/solution/<%= id %>"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <div class="container">
         <div class="box">
-            <label for="department">Choose a department:</label>
-            <select id="department" name="departments">
-                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
-                <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
-                <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
-                <option value="Mechanical Engineering">Mechanical Engineering</option>
-                <option value="Civil Engineering">Civil Engineering</option>
-                <option value="Chemical Engineering">Chemical Engineering</option>
-            </select>
+          <label for="Name">Name:</label>
+          <input id="Name" type="text" name="name" value="<%= user.name %>" />
+        </div>
+        <div class="box">
+          <label for="department">Choose a department:</label>
+          <select id="department" name="department">
+            <option value="Computer Science and Engineering">
+              Computer Science and Engineering
+            </option>
+            <option value="Electronics and Communication Engineering">
+              Electronics and Communication Engineering
+            </option>
+            <option value="Electrical and Electronics Engineering">
+              Electrical and Electronics Engineering
+            </option>
+            <option value="Mechanical Engineering">
+              Mechanical Engineering
+            </option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+          </select>
         </div>
 
         <div class="box">
-            <label for="problemStatementId">Problem Statement ID:</label>
-            <input type="text" id="problemStatementId" name="problemStatementId" placeholder="Enter Problem Statement ID">
+          <label for="problemStatementId">Problem Statement ID:</label>
+          <input
+            type="text"
+            value="<%= id %>"
+            id="problemStatementId"
+            name="problemStatementId"
+            placeholder="Enter Problem Statement ID"
+          />
         </div>
 
         <div class="box">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" placeholder="Enter the description..."></textarea>
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Enter the description..."
+          ></textarea>
         </div>
 
         <div class="box">
-            <label for="file">Add File:</label>
-            <input type="file" id="file" name="file">
+          <label for="file">Add File:</label>
+          <input type="file" id="file" name="file" />
         </div>
 
-        <center><button onclick="submitForm()">Submit</button></center>
-    </div>
-    <div class="important-guidelines">
+        <button type="submit">Submit Solution</button>
+      </div>
+      <div class="important-guidelines">
         <h4>IMPORTANT GUIDELINES:</h4>
         <p>* The solution should be provided elaborately.</p>
         <p>* Please provide a related document or image with your solution.</p>
-        <p>NOTE: FOLLOWING THESE GUIDELINES WILL INCREASE THE CHANCES OF YOUR SOLUTION BEING SELECTED</p>
-    </div>
-    
-    
+        <p>
+          NOTE: FOLLOWING THESE GUIDELINES WILL INCREASE THE CHANCES OF YOUR
+          SOLUTION BEING SELECTED
+        </p>
+      </div>
+    </form>
+
     <script>
-        function submitForm() {
-            // Add your form submission logic here
-            alert("Form submitted!");
+      // function submitForm() {
+      //     // Add your form submission logic here
+      //     alert("Form submitted!");
 
-            // Trigger confetti effect with pink color
-            confetti.start();
-        }
-
+      //     // Trigger confetti effect with pink color
+      //     confetti.start();
+      // }
     </script>
-</body>
-
+  </body>
 </html>
