@@ -450,7 +450,7 @@ app.get("/navbar",(req,res)=>{
 
 
 app.get('/internships',(req,res)=>{
-  res.send('working')
+  res.render('internships')
 })
 
 
