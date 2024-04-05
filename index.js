@@ -19,11 +19,7 @@ import { verifyTeam } from './handlers/verifyTeam.js'
 import { Post } from './models/post.js'
 import { Problem } from './models/problem.js'
 import { Solution } from './models/solution.js'
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 dotenv.config()
 const storage = multer.diskStorage({
   destination: './public/uploads/',
@@ -455,7 +451,7 @@ app.get("/navbar",(req,res)=>{
 
 
 app.get('/internships',(req,res)=>{
-  res.sendFile(join(__dirname, './public/internships.html'));
+  res.render('internships')
 })
 
 
