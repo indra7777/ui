@@ -101,30 +101,19 @@
     <div class="header">
       <h1>Internships</h1>
     </div>
-    <div class="container" id="container1">
+    <% for( let i = 0; i < intern.length; i++ ) { %>
+    <div class="container" id="container<%= intern[i].day %>">
       <div class="internship">
-        <div class="day">Day-1</div>
+        <div class="day">Day-<%= intern[i].day %></div>
         <div class="internship-title" onclick="toggleDescription('desc1')">
-          Intel Careers
+          <%= intern[i].company %>
         </div>
         <div class="internship-description" id="desc1">
-          <p>
-            Development of algorithms and applications for large-scale
-            experimentation and data-driven solutions. Utilization of predictive
-            modeling, statistics, and other analytical techniques to extract
-            insights from structured and unstructured data. Creation of
-            visualizations, applications, dashboards, and presentations to
-            effectively communicate insights. Optimization of artificial
-            intelligence/machine learning frameworks and contribution to
-            research and development in data science. Collaboration with
-            development teams and business units to ensure scalability and
-            implementation of models across clients' solutions
-          </p>
+          <p><%= intern[i].description %></p>
           <p>
             <strong>Link:</strong>
-            <a
-              href="https://jobs.intel.com/en/job/bengaluru/data-scientist-intern/41147/63009033520"
-              >Intel Careers</a
+            <a href=<%=intern[i].link %>
+              target="_blank" >Click here to apply!</a
             >
           </p>
         </div>
@@ -138,68 +127,7 @@
         <!--div class="last-date">Last Date: 2024-05-31</div-->
       </div>
     </div>
-    <div class="container" id="container2">
-      <div class="internship">
-        <div class="day">Day-2</div>
-        <div class="internship-title" onclick="toggleDescription('desc2')">
-          MitchDesigns
-        </div>
-        <div class="internship-description" id="desc2">
-          <p>
-            Internship Opportunity: Frontend Development Internship with
-            MitchDesigns, spanning May to July 2024. Benefits: Real project
-            experience, mentorship from industry experts, focus on website
-            development, and pocket money provided. Program Structure:
-            Mentor-guided coding challenges, emphasis on teamwork, and a highly
-            selective program accepting only two interns. Ideal Candidate:
-            Proficient in coding, passionate about problem-solving, and
-            potential for securing a full-time role post-internship. Pathway to
-            Professionalism: Limited spots available (only two), transition from
-            intern to professional, and possibility of permanent employment with
-            MitchDesigns.
-          </p>
-          <p>
-            <strong>Link:</strong>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScK_JVRrm64kBxHwH9IU863MGQalwgjgZ5qdFjHE9PjJo_ahw/viewform"
-              >MitchDesigns</a
-            >
-          </p>
-        </div>
-        <button
-          class="show-description-button"
-          onclick="toggleDescription('desc2')"
-        >
-          Know More
-        </button>
-      </div>
-    </div>
-    <div class="container" id="container3">
-      <div class="internship">
-        <div class="day">Day-3</div>
-
-        <div class="internship-description" id="desc3">Yet to be updated</div>
-        <button
-          class="show-description-button"
-          onclick="toggleDescription('desc3')"
-        >
-          Know More
-        </button>
-      </div>
-    </div>
-    <div class="container" id="container4">
-      <div class="internship">
-        <div class="day">Day-4</div>
-
-        <div class="internship-description" id="desc4">Yet to be updated</div>
-        <button
-          class="show-description-button"
-          onclick="toggleDescription('desc4')"
-        >
-          Know More
-        </button>
-      </div>
-    </div>
+    <% } %>
 
     <script>
       function toggleDescription(id, link) {
