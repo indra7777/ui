@@ -108,7 +108,7 @@
         <div class="internship-title" onclick="toggleDescription('desc1')">
           <%= intern[i].company %>
         </div>
-        <div class="internship-description" id="desc1">
+        <div class="internship-description" id="desc<%= intern[i].day %>">
           <p><%= intern[i].description %></p>
           <p>
             <strong>Link:</strong>
@@ -119,7 +119,7 @@
         </div>
         <button
           class="show-description-button"
-          onclick="toggleDescription('desc1')"
+          onclick="toggleDescription('desc<%= intern[i].day %>')"
         >
           Know More
         </button>
@@ -140,6 +140,7 @@
             window.open(link, "_blank");
           }
         }
+
       }
     </script>
   </body>
