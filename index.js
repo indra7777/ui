@@ -63,7 +63,7 @@ app.get("/user", userCheck, protect, (req, res) => {
 
 //hackathon page
 app.get('/hackathon', protect, (req, res) => {
-  res.render('hackathon', {
+  res.render('hack2', {
     user: req.user
   });
 })
