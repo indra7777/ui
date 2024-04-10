@@ -61,19 +61,20 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
-              
+
                 <img src="../public/img/ui.png" alt="">
-                
+
             </a>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    
+
                     <li><a href=<%=process.env.BASE_URL+ "/hackathon" %>>Hackathon</a></li>
-                   
+
                     <li><a href="/explore">Explore</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
                     <li><a href="/infra">Infraseek</a></li>
+                    <li><a href="/blogs">Blogs</a></li>
+
                     <li><a href="/internships">Internships</a></li>
                     <li><a href="/profile"><img src="<%=user.image%>" id="avatarImage" width="10%" height="8%"  alt="bear"></a></li>
                 <li><a href="/logout">logout</a></li>
@@ -82,13 +83,13 @@
             </nav><!-- .navbar -->
 
             <!-- create a user icon with to dredirect profile informatin-->
-            
+
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
         </div>
     </header>
-    
+
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
