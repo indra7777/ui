@@ -171,24 +171,27 @@
 
     <div class="container mt-5">
       <div class="row">
-        <% posts.forEach(post=>{ %>
-        <div class="col-md-4">
-          <div class="blog-post">
-            <img
-              src="/public/uploads/<%= post.image %>"
-              alt="Blog Post 1"
-              class="img-fluid"
-            />
-            <h2 class="mt-2"><%= post.title %></h2>
-            <p><%= post.content.substring(0,100)+"..." %></p>
-            <a href="/blogs/posts/<%= post._id %>" class="btn btn-primary"
-              >Read More</a
-            >
+        <% posts.forEach(post => { %>
+          <div class="col-md-4">
+            <div class="blog-post">
+              
+              <% if (post.image) { %> <!-- Check if the image exists -->
+                <img
+                  src="/public/uploads/<%= post.image %>"
+                  alt="Blog Post Image"
+                  class="img-fluid"
+                />
+              <% } %>
+              
+              <h2 class="mt-2"><%= post.title %></h2>
+              <p><%= post.content.substring(0, 100) + "..." %></p>
+              <a href="/blogs/posts/<%= post._id %>" class="btn btn-primary">Read More</a>
+            </div>
           </div>
-        </div>
         <% }); %>
       </div>
     </div>
+    
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
