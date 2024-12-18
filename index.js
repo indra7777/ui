@@ -405,10 +405,10 @@ app.get("/blogs/compose", protect, function(req, res) {
 
 app.post("/blogs/compose", protect, upload.single('image'), async function(req, res) {
   try {
-    if (!req.file) {
+    /* if (!req.file) {
       res.status(400).send("No file uploaded");
       return;
-    }
+    } */
     const post = new Post({
       title: req.body.postTitle,
       content: req.body.postBody,
