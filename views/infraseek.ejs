@@ -241,6 +241,51 @@
         .product-image:hover img {
             transform: scale(1.2, 1.2);
         }
+
+        .product-container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-image-container {
+            flex: 1;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .specifications {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+            }
+        }
     </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -250,34 +295,36 @@
     
     <div class="row">
         <div id="container">
-            <div class="product-details">
-                <h1>Radial Drilling Machine</h1>
-                <p class="information">A radial drilling machine consists of a large, column-mounted drill head with a
-                    radial arm that can be moved around the column. The drill head can be adjusted vertically on the
-                    arm, and the arm itself can rotate around the column horizontally. The machine typically has a
-                    worktable where the material to be drilled is secured.</p>
-                
-                <button  class="btn control checkout-button" data-name="Radial Drilling Machine" data-price="500" data-image="../public/img/gallery/gallery-1.jpg">
-                <span class="price">&#8377 500</span>
-                <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                <span class="buy">Get now</span>
-            </button>	
-		
+            <div class="product-container">
+                <div class="product-info">
+                    <h1>Radial Drilling Machine</h1>
+                    <p class="information">A radial drilling machine consists of a large, column-mounted drill head with a
+                        radial arm that can be moved around the column. The drill head can be adjusted vertically on the
+                        arm, and the arm itself can rotate around the column horizontally. The machine typically has a
+                        worktable where the material to be drilled is secured.</p>
+                    
+                    <button  class="btn control checkout-button" data-name="Radial Drilling Machine" data-price="500" data-image="../public/img/gallery/gallery-1.jpg">
+                    <span class="price">&#8377 500</span>
+                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                    <span class="buy">Get now</span>
+                </button>	
             </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-1.jpg" alt="">
-                <div class="info">
+        
+            <div class="product-image-container">
+                <img src="../public/img/gallery/gallery-1.jpg" alt="Radial Drilling Machine">
+                <div class="specifications">
                     <h2>Specifications:</h2>
-                    <pre>
-      Horizontal travel : 270 mm
-      Vertical travel : 525 mm
-      Work area : 770x530 mm
-      Max. drill size : 25 mm
-      Max. spindle travel : 100 mm  
-      Base price : 500/-
-    </pre>
+                    <table class="specs-table">
+                        <tr><td>Horizontal travel</td><td>270 mm</td></tr>
+                        <tr><td>Vertical travel</td><td>525 mm</td></tr>
+                        <tr><td>Work area</td><td>770x530 mm</td></tr>
+                        <tr><td>Max. drill size</td><td>25 mm</td></tr>
+                        <tr><td>Max. spindle travel</td><td>100 mm</td></tr>
+                        <tr><td>Base price</td><td>₹500/-</td></tr>
+                    </table>
                 </div>
             </div>
+        </div>
         </div>
         <div id="container">
             <div class="product-details">
