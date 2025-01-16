@@ -106,7 +106,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a href="/blogs/compose">compose</a></li>
+            <li><a href="/blogs/compose">Compose</a></li>
             <li><a href="/infra">Infraseek</a></li>
             <li><a href="/hackathon">Hackathons</a></li>
             <li><a href="/explore">Challenges</a></li>
@@ -169,29 +169,57 @@
         </div>
     </div> -->
 
-    <div class="container mt-5">
-      <div class="row">
-        <% posts.forEach(post => { %>
-          <div class="col-md-4">
-            <div class="blog-post">
-              
-              <% if (post.image) { %> <!-- Check if the image exists -->
-                <img
-                  src="/public/uploads/<%= post.image %>"
-                  alt="Blog Post Image"
-                  class="img-fluid"
-                />
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-header">
+          <h2>Latest Stories</h2>
+          <p>Explore our collection of insights, innovations, and ideas</p>
+        </div>
+
+        <div class="row">
+          <% posts.forEach(post => { %>
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card">
+              <% if (post.image) { %>
+              <img
+                src="/public/uploads/<%= post.image %>"
+                alt="<%= post.title %>"
+                class="blog-image"
+              />
+              <% } else { %>
+              <img
+                src="/public/img/default-blog.jpg"
+                alt="Default"
+                class="blog-image"
+              />
               <% } %>
-              
-              <h2 class="mt-2"><%= post.title %></h2>
-              <p><%= post.content.substring(0, 100) + "..." %></p>
-              <a href="/blogs/posts/<%= post._id %>" class="btn btn-primary">Read More</a>
+
+              <div class="blog-content">
+                <h3 class="blog-title"><%= post.title %></h3>
+
+                <div class="blog-metadata">
+                  <span
+                    ><i class="bi bi-calendar"></i> <%= new
+                    Date(post.createdAt).toLocaleDateString() %></span
+                  >
+                  <span><i class="bi bi-person"></i> <%= post.userId %></span>
+                </div>
+
+                <p class="blog-excerpt">
+                  <%= post.content.substring(0, 150) %>...
+                </p>
+
+                <a href="/blogs/posts/<%= post._id %>" class="blog-read-more"
+                  >Read More</a
+                >
+              </div>
             </div>
           </div>
-        <% }); %>
+          <% }); %>
+        </div>
       </div>
-    </div>
-    
+    </section>
+
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
