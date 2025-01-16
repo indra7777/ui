@@ -249,37 +249,36 @@
     </style>
   </head>
   <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center justify-content-between">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+          <img src="../public/img/ui_full.png" alt="" />
+        </a>
 
-            <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/hackathon">Hackathon</a></li>
+            <li><a href="/explore">Challenges</a></li>
+            <li><a href="/infra">Infraseek</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li>
+              <a href="/profile"
+                ><img
+                  src="<%=user.image%>"
+                  id="avatarImage"
+                  width="10%"
+                  height="8%"
+                  alt="bear"
+              /></a>
+            </li>
+            <li><a href="/logout">logout</a></li>
+          </ul>
+        </nav>
 
-                <img src="../public/img/ui_full.png" alt="">
-
-            </a>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-
-                    <li><a href="/hackathon">Hackathon</a></li>
-
-                    <li><a href="/explore">Challenges</a></li>
-                    <li><a href="/infra">Infraseek</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
-                    <li><a href="/profile"><img src="<%=user.image%>" id="avatarImage" width="10%" height="8%"  alt="bear"></a></li>
-                <li><a href="/logout">logout</a></li>
-
-                </ul>
-            </nav><!-- .navbar -->
-
-            <!-- create a user icon with to dredirect profile informatin-->
-
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-        </div>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      </div>
     </header>
 
     <!-- Problem Statements Section -->
