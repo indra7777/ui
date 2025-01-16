@@ -243,35 +243,28 @@ document.addEventListener('DOMContentLoaded', () => {
   
 });
 
-fetch('/api/problems')
-  .then(response => response.json())
-  .then(problems => {
-    const container = document.querySelector(".events-wrapper");
-    problems.forEach(problem => {
-      container.innerHTML += `
-        <div class="swiper-slide event-item d-flex flex-column justify-content-center">
-          <div class="card">
-            <div class="content">
-              <p class="heading">${problem.title}</p>
-              <p class="para parent-para">${problem.description.substring(0, 150)}...</p>
-              <a href="/explore#problem-${problem._id}" class="btn btn-primary">View Problem</a>
-            </div>
-          </div>
-        </div>`;
-    });
+let heads = ["Energy-Efficient HVAC System Design", "Waste Water Treatment Optimization", "Traffic Management & Optimization", "Renewable Energy Integration",
+"Supply Chain Efficiency Improvement", "Industrial Automation for Quality Control", "Water Resource Management", "Agricultural Technology for Crop Yield Enhancement",
+"Medical Device Innovation"]
 
-    // Initialize Swiper (keep existing Swiper initialization code)
-    new Swiper('.slides-3', {
-      speed: 600,
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false
-      },
-      // ... rest of your existing Swiper config
-    });
-  })
-  .catch(error => console.error('Error:', error));
+let problems = ["Problem: High energy consumption in commercial buildings...", /* existing problems array */]
+
+// Map each problem to its ID in explore.ejs
+let problemIds = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] 
+
+var container = document.querySelector(".events-wrapper");
+for(let i=0; i<problems.length; i++){
+  container.innerHTML+=`
+    <div class="swiper-slide event-item d-flex flex-column justify-content-center">
+      <div class="card">
+        <div class="content">
+          <p class="heading">${heads[i]}</p>
+          <p class="para parent-para">${problems[i]}</p>
+          <a href="/explore#problem-${problemIds[i]}" class="btn btn-primary">View Problem</a>
+        </div>
+      </div>
+    </div>`;
+}
 
 // testimonial slider
  new Swiper('.testimonials-slider', {

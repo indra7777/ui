@@ -492,19 +492,6 @@ app.get('/internships', (req, res) => {
   res.render('internships')
 })
 
-// Add this route to fetch problem statements for events section
-app.get('/api/problems', async (req, res) => {
-  try {
-    const problems = await Problem.find()
-      .select('_id title description department')
-      .limit(6);
-    res.json(problems);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch problems' });
-  }
-});
-
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
     console.log('app connected to database  succesfully')
