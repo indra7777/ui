@@ -243,14 +243,40 @@ document.addEventListener('DOMContentLoaded', () => {
   
 });
 
-let heads = ["Energy-Efficient HVAC System Design", "Waste Water Treatment Optimization", "Traffic Management & Optimization", "Renewable Energy Integration",
-"Supply Chain Efficiency Improvement", "Industrial Automation for Quality Control", "Water Resource Management", "Agricultural Technology for Crop Yield Enhancement",
-"Medical Device Innovation"]
+let heads = ["Radial Drilling Machine", "Child Safety Monitoring System", "Vehical and Smart Home Management Integration", "Machine Support and Packaging Solution",
+"Personal Protection Compliance System", "Sustainable Bottle Packaging Solution", "Smart Kitchen System", "Piston Ring Deformation Due to Heat Treatment",
+"Secure Valet Parking System", "Automated Baggage Tracking and Delivery System", "Instant Food Delivery and Donation Platform", "Piston Outer Bore Diameter Consistency", "Creating a Tailored AI Model for Education and Practical Applications", 
+"Integrated Smart Factory System for Predictive Maintenance and Quality Control", "Advanced Safety Monitoring System for Construction Sites", "Advanced Noise Anomaly Detection System for Manufacturing Equipment Health Monitoring", 
+"Customized Virtual Assistance System for Industry-Specific Knowledge Access", "Comprehensive Work at Height Safety Monitoring System for Vertical Infrastructure Construction",
+"Advanced Dropped Objects Detection System for Public Spaces and Hazardous Environments", "Real-time Intelligent Alert System for Hazardous Work Environments",
+"Design a PCB to Replace the Fin Card in Solar Inverters"]
 
-let problems = ["Problem: High energy consumption in commercial buildings...", /* existing problems array */]
+let problems = [
+  "Problem: In radial drilling machines, accurately determining and controlling drilling depth is challenging, requiring an automated solution.",
+  "Problem: Need for a comprehensive monitoring system to ensure child safety in various environments through real-time tracking and alerts.",
+  "Problem: Integration gap between vehicle systems and smart home automation, requiring seamless connectivity and control.",
+  "Problem: Manufacturing industry needs efficient machine support and packaging solutions to reduce downtime and improve productivity.",
+  "Problem: Ensuring consistent use of personal protective equipment in industrial settings through automated monitoring.",
+  "Problem: Current bottle packaging methods are unsustainable, requiring eco-friendly alternatives that maintain product integrity.",
+  "Problem: Traditional kitchen systems lack smart integration for efficient cooking, inventory management, and waste reduction.",
+  "Problem: Heat treatment processes cause piston ring deformation, affecting engine performance and reliability.",
+  "Problem: Current valet parking systems lack security and real-time tracking capabilities for vehicle protection.",
+  "Problem: Airport baggage handling systems need automation for efficient tracking and delivery of luggage.",
+  "Problem: Food waste and distribution inefficiencies in restaurants and catering services need addressing.",
+  "Problem: Inconsistent piston outer bore diameter affects engine performance and manufacturing quality.",
+  "Problem: Need for customized AI models that bridge theoretical education with practical industry applications.",
+  "Problem: Manufacturing facilities require integrated systems for predictive maintenance and quality control.",
+  "Problem: Construction sites need advanced safety monitoring systems to prevent accidents and ensure compliance.",
+  "Problem: Manufacturing equipment health monitoring requires sophisticated noise analysis for early problem detection.",
+  "Problem: Industries need specialized virtual assistance systems for accessing domain-specific knowledge.",
+  "Problem: Vertical infrastructure construction requires comprehensive safety monitoring for work at height.",
+  "Problem: Public spaces and hazardous environments need systems to detect and respond to dropped objects.",
+  "Problem: Hazardous work environments require real-time alert systems for worker safety.",
+  "Problem: Solar inverters need an efficient PCB replacement for the traditional fin card to improve performance."
+];
 
 // Map each problem to its ID in explore.ejs
-let problemIds = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] 
+let problemIds = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"]
 
 var container = document.querySelector(".events-wrapper");
 for(let i=0; i<problems.length; i++){
