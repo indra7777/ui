@@ -286,7 +286,7 @@ for(let i=0; i<problems.length; i++){
         <div class="content">
           <p class="heading">${heads[i]}</p>
           <p class="para parent-para">${problems[i]}</p>
-          <a href="/explore#problem-${problemIds[i]}" class="btn btn-primary">View Problem</a>
+          <a href="/explore#problem-${i+1}" class="btn btn-primary">View Challenge</a>
         </div>
       </div>
     </div>`;
