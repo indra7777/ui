@@ -495,7 +495,9 @@ app.get('/internships', (req, res) => {
 // Add this route to fetch problem statements for events section
 app.get('/api/problems', async (req, res) => {
   try {
-    const problems = await Problem.find().limit(6); // Limit to 6 problems for the slider
+    const problems = await Problem.find()
+      .select('_id title description department')
+      .limit(6);
     res.json(problems);
   } catch (err) {
     console.error(err);

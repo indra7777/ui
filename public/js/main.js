@@ -242,62 +242,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 });
-let heads = ["Energy-Efficient HVAC System Design","Waste Water Treatment Optimization","Traffic Management & Optimization","Renewable Energy Integration",
-"Supply Chain Efficiency Improvement","Industrial Automation for Quality Control","Water Resource Management","Agricultural Technology for Crop Yield Enhancement",
-"Medical Device Innovation"]
-let problems = ["Problem: High energy consumption in commercial buildings due to inefficient heating, ventilation, and air conditioning (HVAC) systems.",
-"Problem: Inadequate wastewater treatment leading to environmental pollution.",
-"Problem: Traffic congestion in urban areas causing delays and pollution.",
-"Problem: Limited integration of renewable energy sources into the electrical grid.",
-"Problem: Inefficient supply chain management leading to delays and increased costs..",
-"Problem: Inconsistent product quality in manufacturing processes.",
-"Problem: Water scarcity and inefficient water usage in agriculture and industry.",
-"Problem: Low crop yields due to outdated agricultural practices.",
-"Problem: Lack of accessible and affordable medical devices for healthcare."];
 
-let solutions = ["Solution: Design and implement an energy-efficient HVAC system with smart controls to reduce energy usage and costs.",
-"Solution: Develop an optimized wastewater treatment process that removes contaminants effectively and meets environmental regulations.",
-"Solution: Create a smart traffic management system that uses real-time data to optimize traffic flow and reduce congestion.",
-"Solution: Design and implement a grid-tied renewable energy system (solar, wind, etc.) with energy storage for a reliable and sustainable power supply.",
-"Solution: Develop software or tools for optimizing supply chain logistics, inventory management, and demand forecasting.",
-"Solution: Create automated quality control systems using sensors, machine learning, and robotics to enhance product quality and reduce defects.",
-"Solution: Develop water management strategies, including efficient irrigation systems and water recycling techniques.",
-"Solution: Design and implement innovative agricultural technologies, such as precision farming and automated crop monitoring.",
-"Solution: Engineer low-cost medical devices, such as diagnostic tools or prosthetics, to improve healthcare accessibility."]
-var actives = [0,0,0,0,0,0,0,0,0]
-var container = document.querySelector(".events-wrapper");
-var paras = document.getElementsByClassName("parent-para");
-console.log(paras)
-for(let i=0;i<problems.length;i++){
-  container.innerHTML+=`<div class="swiper-slide event-item d-flex flex-column justify-content-center">
-  <div class="card">
-    <div class="content">
-      <p class="heading">${heads[i]}
-      </p>
-      <p class="para parent-para">
-        ${problems[i]}
-      </p>
-      <button onclick="changeContent(this,${i})" class="btn">Solution</button>
-    </div>
-  </div>
-</div><!-- End Event item -->`
-}
-function changeContent(item,indx){
-  if(actives[indx] === 0){
-    console.log(item.previousSibling.previousSibling)
-    item.previousSibling.previousSibling.innerHTML=solutions[indx];
-    item.innerText = "Problem"
-    actives[indx] = 1;
-  }
-  else{
-    item.previousSibling.previousSibling.innerHTML=problems[indx]
-    item.innerText = "Solution"
-    actives[indx] = 0;
-  }
-  // console.log(actives)
-  // actives[indx] = 1;
-  // console.log(actives)
-}
+fetch('/api/problems')
+  .then(response => response.json())
+  .then(problems => {
+    const container = document.querySelector(".events-wrapper");
+    problems.forEach(problem => {
+      container.innerHTML += `
+        <div class="swiper-slide event-item d-flex flex-column justify-content-center">
+          <div class="card">
+            <div class="content">
+              <p class="heading">${problem.title}</p>
+              <p class="para parent-para">${problem.description.substring(0, 150)}...</p>
+              <a href="/explore#problem-${problem._id}" class="btn btn-primary">View Problem</a>
+            </div>
+          </div>
+        </div>`;
+    });
+
+    // Initialize Swiper (keep existing Swiper initialization code)
+    new Swiper('.slides-3', {
+      speed: 600,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      // ... rest of your existing Swiper config
+    });
+  })
+  .catch(error => console.error('Error:', error));
+
 // testimonial slider
  new Swiper('.testimonials-slider', {
     speed: 600,
