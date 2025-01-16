@@ -186,12 +186,6 @@
                 alt="<%= post.title %>"
                 class="blog-image"
               />
-              <% } else { %>
-              <img
-                src="/public/img/default-blog.jpg"
-                alt="Default"
-                class="blog-image"
-              />
               <% } %>
 
               <div class="blog-content">
@@ -202,7 +196,7 @@
                     ><i class="bi bi-calendar"></i> <%= new
                     Date(post.createdAt).toLocaleDateString() %></span
                   >
-                  <span><i class="bi bi-person"></i> <%= post.userId %></span>
+                  <span><i class="bi bi-person"></i> <%= post.user %></span>
                 </div>
 
                 <p class="blog-excerpt">
