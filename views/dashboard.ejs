@@ -481,6 +481,41 @@
     <!-- Template Main JS File -->
     <script src="../public/js/main.js"></script>
 
+    <script>
+    // Add this after your existing scripts
+    document.addEventListener('DOMContentLoaded', function() {
+      const eventsWrapper = document.querySelector('.events-wrapper');
+      
+      fetch('/api/problems')
+        .then(response => response.json())
+        .then(problems => {
+          problems.forEach(problem => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide event-item d-flex flex-column justify-content-end';
+            slide.innerHTML = `
+              <h3>${problem.title}</h3>
+              <div class="description">
+                ${problem.description.substring(0, 150)}...
+              </div>
+              <a href="/explore#problem-${problem._id}" class="btn btn-primary">View Problem</a>
+            `;
+            eventsWrapper.appendChild(slide);
+          });
+          
+          // Initialize Swiper after adding slides
+          new Swiper(".slides-3", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            }
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    </script>
+
 </body>
 
 </html>
