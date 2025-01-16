@@ -17,6 +17,7 @@ body {
   padding: 120px 0 60px;
   min-height: calc(100vh - 80px);
   background-color: #f8f9fa;
+  overflow-y: scroll;
 }
 
 .blog-card {
