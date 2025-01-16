@@ -18,18 +18,18 @@ body {
   min-height: calc(100vh - 80px);
   background-color: #f8f9fa;
   overflow-y: auto;
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar:hover {
     width: 8px;
   }
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track:hover {
     background: #f1f1f1;
     border-radius: 4px;
   }
-  &::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb:hover {
     background: #8e4574;
     border-radius: 4px;
   }
-  &::-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:active {
     background: #733960;
   }
 }
