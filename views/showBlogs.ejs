@@ -178,14 +178,13 @@
           <% posts.forEach(post => { %>
           <div class="col-lg-4 col-md-6">
             <div class="blog-card">
-              <% if (post.image) { %>
+              <% if (post.image && post.image.trim() !== '') { %>
               <img
-                src="/public/uploads/<%= post.image %>"
+                src="<%= post.image %>"
                 alt="<%= post.title %>"
                 class="blog-image"
               />
               <% } %>
-
               <div class="blog-content">
                 <h3 class="blog-title"><%= post.title %></h3>
 

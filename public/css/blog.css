@@ -43,6 +43,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 300px;
 }
 
 .blog-card:hover {
@@ -61,6 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 100%;
 }
 
 .blog-title {
