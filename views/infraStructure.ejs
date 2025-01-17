@@ -121,7 +121,6 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            margin-bottom: 30px;
         }
 
         .course-item:hover {
@@ -240,96 +239,45 @@
 <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
 
     <!-- ======= Header ======= -->
-    <!-- <header id="header" class="header fixed-top d-flex align-items">
+    <header id="header" class="header fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-                
                 <img src="../public/img/logo.jpg" alt="">
-               
             </a>
-        
-            <div class="search-container mx-auto">
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/hackathon">Hackathon</a></li>
+                    <li><a href="/explore">Challenges</a></li>
+                    <li><a href="/blogs">Blogs</a></li>
+                    <li><a href="/infra">Infraseek</a></li>
+                    <li>
+                        <a href="/profile">
+                            <img id="avatarImage" width="40" height="40" style="border-radius: 50%" src="<%=user.image%>" alt="Profile">
+                        </a>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" style="padding-top: 100px;">
+        <div class="container mb-4">
+            <div class="search-container">
                 <input type="text" id="searchBar" placeholder="Search for Infra...">
                 <select id="locationFilter">
                     <option value="">All Locations</option>
                     <option value="Location1">Guntur</option>
-                   
                 </select>
-                <button type="submit"><i class="fa fa-search">search</i></button>
-            </div>
-        
-            <a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>" alt="bear"></a>
-        </div>
-    </header> -->
-    <!-- End Header -->
-    <div class="header">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-                <a href="/" class="logo">
-                    <img src="../public/img/logo.jpg" alt="Your Logo" style="height: 50px;">
-                </a>
-                
-                <div class="search-container">
-                    <input type="text" id="searchBar" placeholder="Search for Infra...">
-                    <select id="locationFilter">
-                        <option value="">All Locations</option>
-                        <option value="Location1">Guntur</option>
-                    </select>
-                    <button type="submit"><i class="bi bi-search"></i> Search</button>
-                </div>
-
-                <div class="dots-container" id="menuToggle">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
+                <button type="submit"><i class="bi bi-search"></i> Search</button>
             </div>
         </div>
-    </div>
 
-    <div class="vertical-container" id="menu">
-        <div class="user-profile mb-4">
-            <img src="<%=user.image%>" alt="User Avatar" class="avatar" style="width: 60px; height: 60px; border-radius: 50%;">
-            <p class="user-name mt-2">User</p>
-        </div>
-        <div class="nav-links d-flex flex-column gap-3">
-            <a href="/blogs" class="nav-link">Blogs</a>
-            <a href="/infra" class="nav-link">Infraseek</a>
-            <a href="/explore" class="nav-link">Challenges</a>
-            <a href="/logout" class="nav-link">Logout</a>
-        </div>
-        <div class="social-links mt-auto">
-            <div class="d-flex gap-3 mt-4">
-                <a href="https://www.linkedin.com/in/uncalled-innovators-100016294" target="_blank">
-                    <img src="../public/Icons/linkedin.png" alt="LinkedIn" style="width: 24px;">
-                </a>
-                <a href="https://www.instagram.com/uncalled_innovators" target="_blank">
-                    <img src="../public/Icons/instagram.png" alt="Instagram" style="width: 24px;">
-                </a>
-                <a href="https://x.com/TeamUncalled" target="_blank">
-                    <img src="../public/Icons/twitter.png" alt="Twitter" style="width: 24px;">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <main id="main" data-aos="fade-in" class="aos-init aos-animate">
-
-        <!-- ======= Breadcrumbs ======= -->
-        <!-- <div class="breadcrumbs">
-            <div class="container">
-                <h2>Infraseek</h2>
-            
-            </div>
-        </div> -->
-        <!-- End Breadcrumbs -->
-
-        <!-- ======= Courses Section ======= -->
         <section id="courses" class="courses">
-            <div class="container aos-init aos-animate" data-aos="fade-up">
-
-                <div class="row aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
-
+            <div class="container">
+                <div class="row gy-4">
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine1.jpeg" class="img-fluid" alt="...">
@@ -469,9 +417,8 @@
                 </div>
 
             </div>
-        </section><!-- End Courses Section -->
-
-    </main><!-- End #main -->
+        </section>
+    </main>
 
     <!-- ======= Footer ======= -->
     <!-- End Footer -->
