@@ -3,25 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Infraseek</title>
+    <title>Infraseek - Uncalled Innovators</title>
+
+    <!--favicon -->
     <link
-      href="../public/vendor/bootstrap/css/bootstrap.min.css"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Bootstrap Icons -->
     <link
       href="../public/vendor/bootstrap-icons/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link href="../public/css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../public/css/infra.css" />
-  </head>
 
+    <!-- Main CSS -->
+    <style>
+      :root {
+        --primary-color: #8e4574;
+        --secondary-color: #ff7eff;
+        --background-color: #f8f9fa;
+        --text-color: #333;
+        --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .header {
+        background: #fff;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .infraseek-hero {
+        padding: 120px 0 60px;
+        background: linear-gradient(135deg, #ffe6e6 0%, #dfc2f2 100%);
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .infraseek-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .infraseek-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .infraseek-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .card-description {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .card-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn-primary:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(142, 69, 116, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: var(--transition);
+        padding: 20px;
+        color: #fff;
+      }
+
+      .infraseek-card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .overlay-content {
+        max-height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .overlay-content h3 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .overlay-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .infraseek-hero {
+          padding: 100px 0 40px;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .infraseek-grid {
+          grid-template-columns: 1fr;
+          padding: 0 15px;
+        }
+
+        .card-content {
+          padding: 20px;
+        }
+      }
+
+      /* Mobile Navigation */
+      .mobile-nav-toggle {
+        font-size: 28px;
+        cursor: pointer;
+        display: none;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 1024px) {
+        .mobile-nav-toggle {
+          display: block;
+          position: fixed;
+          right: 20px;
+          top: 20px;
+          z-index: 9999;
+        }
+
+        .navbar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          max-width: 400px;
+          bottom: 0;
+          transition: 0.3s;
+          z-index: 9997;
+        }
+
+        .navbar ul {
+          position: absolute;
+          inset: 0;
+          padding: 50px 0 10px 0;
+          margin: 0;
+          background: rgba(255, 255, 255, 0.9);
+          overflow-y: auto;
+          transition: 0.3s;
+          z-index: 9998;
+        }
+
+        .navbar.mobile-nav-active {
+          right: 0;
+        }
+      }
+    </style>
+  </head>
   <body>
-    <!-- ======= Header ======= -->
+    <!-- Header -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="container d-flex align-items-center justify-content-between">
         <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-          <img src="../public/img/ui_full.png" alt="" />
+          <img src="../public/img/ui_full.png" alt="Uncalled Innovators" />
         </a>
 
         <nav id="navbar" class="navbar">
@@ -30,6 +299,7 @@
             <li><a href="/explore">Challenges</a></li>
             <li><a href="/blogs">Blogs</a></li>
             <li><a href="/infra">Infraseek</a></li>
+            <li><a href="/">Home</a></li>
             <li>
               <a href="/profile"
                 ><img
@@ -37,7 +307,7 @@
                   width="10%"
                   height="8%"
                   src="<%=user.image%>"
-                  alt="bear"
+                  alt="Profile"
               /></a>
             </li>
           </ul>
@@ -48,191 +318,117 @@
       </div>
     </header>
 
-    <div class="container my-5">
-      <div class="row">
-        <!-- Radial Drilling Machine -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine1.jpeg"
-              class="img-fluid"
-              alt="Radial Drilling Machine"
-            />
-            <div class="course-content">
-              <h3>Radial Drilling Machine</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/radial.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="infraseek-hero">
+      <div class="hero-content">
+        <h1>Welcome to Infraseek</h1>
+        <p>
+          Discover cutting-edge infrastructure solutions and innovations that
+          shape the future of technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="infraseek-grid">
+      <!-- Card 1 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about.jpg" alt="Infrastructure Solution" />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Smart City Infrastructure</h3>
+          <p class="card-description">
+            Innovative solutions for modern urban development and smart city
+            infrastructure management.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Learn More</a>
           </div>
         </div>
-
-        <!-- Slotting Machine -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine2.jpeg"
-              class="img-fluid"
-              alt="Slotting Machine"
-            />
-            <div class="course-content">
-              <h3>Slotting Machine</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Slotting.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Smart City Details</h3>
+            <p>
+              Our smart city infrastructure solutions incorporate IoT sensors,
+              data analytics, and automated systems to create efficient and
+              sustainable urban environments. Features include:
+            </p>
+            <ul>
+              <li>Intelligent traffic management</li>
+              <li>Smart waste management</li>
+              <li>Energy-efficient lighting</li>
+              <li>Environmental monitoring</li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <!-- Centre Lathe -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine3.jpeg"
-              class="img-fluid"
-              alt="Centre Lathe"
-            />
-            <div class="course-content">
-              <h3>Centre Lathe</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Centre.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+      <!-- Card 2 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about-2.jpg" alt="Digital Infrastructure" />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Digital Infrastructure</h3>
+          <p class="card-description">
+            Next-generation digital infrastructure solutions for enterprise and
+            cloud computing.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Explore</a>
           </div>
         </div>
-
-        <!-- Shaping Machine -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine4.jpeg"
-              class="img-fluid"
-              alt="Shaping Machine"
-            />
-            <div class="course-content">
-              <h3>Shaping Machine</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Shaping.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Digital Infrastructure Solutions</h3>
+            <p>
+              Comprehensive digital infrastructure solutions designed for modern
+              enterprises:
+            </p>
+            <ul>
+              <li>Cloud computing integration</li>
+              <li>Network optimization</li>
+              <li>Security infrastructure</li>
+              <li>Scalable architecture</li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <!-- Wear Testing Machine -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine5.jpeg"
-              class="img-fluid"
-              alt="Wear Testing Machine"
-            />
-            <div class="course-content">
-              <h3>Wear Testing Machine</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Wear.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+      <!-- Card 3 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about.jpg" alt="Sustainable Infrastructure" />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Sustainable Infrastructure</h3>
+          <p class="card-description">
+            Eco-friendly infrastructure solutions for a sustainable future.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Discover</a>
           </div>
         </div>
-
-        <!-- 3D Printer -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine6.jpeg"
-              class="img-fluid"
-              alt="3D Printer"
-            />
-            <div class="course-content">
-              <h3>3D Printer</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/3-Dprinter.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Inverted Metallurgical Microscope -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine7.jpeg"
-              class="img-fluid"
-              alt="Inverted Metallurgical Microscope"
-            />
-            <div class="course-content">
-              <h3>Inverted Metallurgical Microscope</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/inverted.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tubular Furnace -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine8.jpeg"
-              class="img-fluid"
-              alt="Tubular Furnace"
-            />
-            <div class="course-content">
-              <h3>Tubular Furnace</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Tubular.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mini CNC Machine -->
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="course-item">
-            <img
-              src="../public/img/infra/Machine9.jpeg"
-              class="img-fluid"
-              alt="Mini CNC Machine"
-            />
-            <div class="course-content">
-              <h3>Mini CNC Machine</h3>
-              <p>Base Price: ₹500</p>
-              <div class="text-center">
-                <a href="/public/infra/Mini.html" class="btn btn-primary"
-                  >View Details</a
-                >
-              </div>
-            </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Sustainability Features</h3>
+            <p>
+              Our sustainable infrastructure solutions focus on environmental
+              preservation and resource efficiency:
+            </p>
+            <ul>
+              <li>Renewable energy integration</li>
+              <li>Water conservation systems</li>
+              <li>Green building technologies</li>
+              <li>Waste reduction solutions</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Vendor JS Files -->
     <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/main.js"></script>
   </body>
