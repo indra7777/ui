@@ -217,6 +217,16 @@
                 box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             }
         }
+
+        .row {
+            margin: -15px;
+        }
+        .col-lg-4 {
+            padding: 15px;
+        }
+        .course-item {
+            height: 100%;
+        }
     </style>
 
     <!-- =======================================================
@@ -242,7 +252,7 @@
     <header id="header" class="header fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-                <img src="../public/img/logo.jpg" alt="">
+                <img src="../public/img/ui_full.png" alt="Uncalled Innovators">
             </a>
 
             <nav id="navbar" class="navbar">
@@ -258,8 +268,9 @@
                         </a>
                     </li>
                 </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
+
+            <i class="bi bi-list mobile-nav-toggle"></i>
         </div>
     </header>
 
@@ -277,8 +288,8 @@
 
         <section id="courses" class="courses">
             <div class="container">
-                <div class="row gy-4">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine1.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -293,7 +304,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine2.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -307,7 +318,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine4.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -317,12 +329,12 @@
                                 </div>
                                 <h3><a href="../public/infra/Shaping.html">Shaping Machine</a></h3>
                                 <p>A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
-                                    the workpiece.</p>
+                                the workpiece.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine3.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -335,9 +347,9 @@
                                 blade. The cylindrical workpiece sits between the grinding and regulating wheels.</p>
                             </div>
                         </div>
-                    </div> 
-                    
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine9.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -351,8 +363,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine5.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -366,7 +378,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine7.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -381,7 +394,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine8.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -395,7 +409,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="course-item">
                             <img src="../public/img/infra/Machine6.jpeg" class="img-fluid" alt="...">
                             <div class="course-content">
@@ -410,12 +425,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    <!-- End Course Item-->
-
                 </div>
-
             </div>
         </section>
     </main>
@@ -476,8 +486,14 @@
         }
     </script>
 
-    
-
+    <script>
+        // Mobile nav toggle
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+            document.querySelector('#navbar').classList.toggle('navbar-mobile');
+            this.classList.toggle('bi-list');
+            this.classList.toggle('bi-x');
+        });
+    </script>
 
 </body>
 
