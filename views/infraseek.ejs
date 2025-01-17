@@ -1,603 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infraseek - Uncalled Innovators</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infraseek</title>
     <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="../public/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap');
+      :root {
+        --primary-color: #8e4574;
+        --secondary-color: #ff7eff;
+        --background-color: #f8f9fa;
+        --text-color: #333;
+        --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s ease;
+      }
 
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            background: #DFC2F2;
-            background-image: linear-gradient(to right, #ffffb3, #ffe6e6);
-            background-attachment: fixed;
-            background-size: cover;
-            padding: 20px;
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .header {
+        background: #fff;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .infraseek-hero {
+        padding: 120px 0 60px;
+        background: linear-gradient(135deg, #ffe6e6 0%, #dfc2f2 100%);
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .infraseek-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .infraseek-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .infraseek-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .card-description {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .card-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn-primary:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(142, 69, 116, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: var(--transition);
+        padding: 20px;
+        color: #fff;
+      }
+
+      .infraseek-card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .overlay-content {
+        max-height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .overlay-content h3 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .overlay-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .infraseek-hero {
+          padding: 100px 0 40px;
         }
 
-        #container {
-            box-shadow: 0 15px 30px 1px grey;
-            background: rgba(255, 255, 255, 0.90);
-            text-align: center;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 3em auto;
-            height: 350px;
-            width: 700px;
-
-
+        .hero-content h1 {
+          font-size: 2rem;
         }
 
-        .product-details {
-            position: relative;
-            text-align: left;
-            overflow: hidden;
-            padding: 30px;
-            height: 100%;
-            float: left;
-            width: 40%;
-
+        .infraseek-grid {
+          grid-template-columns: 1fr;
+          padding: 0 15px;
         }
 
-        #container .product-details h1 {
-            font-family: 'Bebas Neue', cursive;
-            display: inline-block;
-            position: relative;
-            font-size: 30px;
-            color: #344055;
-            margin: 0;
+        .card-content {
+          padding: 20px;
+        }
+      }
 
+      /* Mobile Navigation */
+      .mobile-nav-toggle {
+        font-size: 28px;
+        cursor: pointer;
+        display: none;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 1024px) {
+        .mobile-nav-toggle {
+          display: block;
+          position: fixed;
+          right: 20px;
+          top: 20px;
+          z-index: 9999;
         }
 
-        #container .product-details h1:before {
-            position: absolute;
-            content: '';
-            right: 0%;
-            top: 0%;
-            transform: translate(25px, -15px);
-            font-family: 'Bree Serif', serif;
-            display: inline-block;
-            background: #ffe6e6;
-            border-radius: 5px;
-            font-size: 14px;
-            padding: 5px;
-            color: white;
-            margin: 0;
-            animation: chan-sh 6s ease infinite;
-
+        .navbar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          max-width: 400px;
+          bottom: 0;
+          transition: 0.3s;
+          z-index: 9997;
         }
 
-        .hint-star {
-            display: inline-block;
-            margin-left: 0.5em;
-            color: gold;
-            width: 50%;
+        .navbar ul {
+          position: absolute;
+          inset: 0;
+          padding: 50px 0 10px 0;
+          margin: 0;
+          background: rgba(255, 255, 255, 0.9);
+          overflow-y: auto;
+          transition: 0.3s;
+          z-index: 9998;
         }
 
-
-        #container .product-details>p {
-            font-family: 'EB Garamond', serif;
-            text-align: justify;
-            font-size: 18px;
-            color: #7d7d7d;
+        .navbar.mobile-nav-active {
+          right: 0;
         }
-
-        .control {
-            position: absolute;
-            bottom: 20%;
-            left: 22.8%;
-
-        }
-
-        .btn {
-            transform: translateY(0px);
-            transition: 0.3s linear;
-            background: #809fff;
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            outline: none;
-            border: none;
-            color: #eee;
-            padding: 0;
-            margin: 0;
-        }
-
-        .btn:hover {
-            transform: translateY(-6px);
-            background: #1a66ff;
-        }
-
-        .btn span {
-            font-family: 'Farsan', cursive;
-            transition: transform 0.3s;
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            margin: 0;
-
-        }
-
-        .btn .price,
-        .shopping-cart {
-            background: #333;
-            border: 0;
-            margin: 0;
-        }
-
-        .btn .price {
-            transform: translateX(-10%);
-            padding-right: 15px;
-        }
-
-        .btn .shopping-cart {
-            transform: translateX(-100%);
-            position: absolute;
-            background: #333;
-            z-index: 1;
-            left: 0;
-            top: 0;
-        }
-
-        .btn .buy {
-            z-index: 3;
-            font-weight: bolder;
-        }
-
-        .btn:hover .price {
-            transform: translateX(-110%);
-        }
-
-        .btn:hover .shopping-cart {
-            transform: translateX(0%);
-        }
-
-        .product-image {
-            transition: all 0.3s ease-out;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-            float: right;
-            width: 45%;
-            display: inline-block;
-        }
-
-        #container img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .info {
-            background: rgba(27, 26, 26, 0.9);
-            font-family: 'Bree Serif', serif;
-            transition: all 0.3s ease-out;
-            transform: translateX(100%);
-            position: absolute;
-            line-height: 1.4;
-            text-align: justify;
-            font-size: 105%;
-            cursor: no-drop;
-            color: #FFF;
-            height: 100%;
-            width: 100%;
-            left: 0;
-            top: 0;
-            /* white-space: normal; */
-            overflow: auto;
-            white-space: wrap;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin: 0 -10px;
-            /* Adjust the margin to create some space between containers */
-        }
-
-        #container {
-            width: 48%;
-            /* Set the width to less than 50% to allow for spacing between containers */
-            box-sizing: border-box;
-            margin: 10px;
-            /* Add some margin to create space between containers */
-        }
-
-        .info h2 {
-            text-align: center
-        }
-
-        .info p {
-            text-align: justify;
-        }
-
-        .product-image:hover .info {
-            transform: translateX(0);
-        }
-
-        .info ul li {
-            transition: 0.3s ease;
-        }
-
-        .info ul li:hover {
-            transform: translateX(50px) scale(1.3);
-        }
-
-        .product-image:hover img {
-            transition: all 0.3s ease-out;
-        }
-
-        .product-image:hover img {
-            transform: scale(1.2, 1.2);
-        }
-
-        .product-container {
-            display: flex;
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .product-info {
-            flex: 1;
-        }
-
-        .product-image-container {
-            flex: 1;
-            aspect-ratio: 4/3;
-            max-width: 600px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .product-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .specifications {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: #f5f5f5;
-            border-radius: 8px;
-        }
-
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .specs-table td {
-            padding: 0.5rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        @media (max-width: 768px) {
-            .product-container {
-                flex-direction: column;
-            }
-            .product-image-container {
-                max-width: 100%;
-                aspect-ratio: 16/9;
-            }
-        }
+      }
     </style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <img src="../public/img/ui_full.png" alt="Uncalled Innovators" />
+        </a>
 
-</head>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/hackathon">Hackathon</a></li>
+            <li><a href="/explore">Challenges</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/infra">Infraseek</a></li>
+            <li><a href="/">Home</a></li>
+            <li>
+              <a href="/profile"
+                ><img
+                  id="avatarImage"
+                  width="10%"
+                  height="8%"
+                  src="<%=user.image%>"
+                  alt="Profile"
+              /></a>
+            </li>
+          </ul>
+        </nav>
 
-<body>
-    
-    <div class="row">
-        <div id="container">
-            <div class="product-container">
-                <div class="product-info">
-                    <h1>Radial Drilling Machine</h1>
-                    <p class="information">A radial drilling machine consists of a large, column-mounted drill head with a
-                        radial arm that can be moved around the column. The drill head can be adjusted vertically on the
-                        arm, and the arm itself can rotate around the column horizontally. The machine typically has a
-                        worktable where the material to be drilled is secured.</p>
-                    
-                    <button  class="btn control checkout-button" data-name="Radial Drilling Machine" data-price="500" data-image="../public/img/gallery/gallery-1.jpg">
-                    <span class="price">&#8377 500</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>	
-            </div>
-        
-            <div class="product-image-container">
-                <img src="../public/img/gallery/gallery-1.jpg" alt="Radial Drilling Machine">
-                <div class="specifications">
-                    <h2>Specifications:</h2>
-                    <table class="specs-table">
-                        <tr><td>Horizontal travel</td><td>270 mm</td></tr>
-                        <tr><td>Vertical travel</td><td>525 mm</td></tr>
-                        <tr><td>Work area</td><td>770x530 mm</td></tr>
-                        <tr><td>Max. drill size</td><td>25 mm</td></tr>
-                        <tr><td>Max. spindle travel</td><td>100 mm</td></tr>
-                        <tr><td>Base price</td><td>₹500/-</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div id="container">
-            <div class="product-details">
-                <h1>Slotting Machine</h1>
-                <p class="information">A slotting machine features a vertical ram with a cutting tool and a worktable
-                    for securing the workpiece. The vertical motion of the ram enables the slotted tool to cut into the
-                    material. The machine offers adjustments for controlling slot depth and length, and some models
-                    include a rotary table for angular cutting.</p>
-                <button class="btn control checkout-button" data-name="Slotting Machine" data-price="500" data-image="../public/img/gallery/gallery-2.jpg">
-                    <span class="price">&#8377 500</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-2.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-      Max. Min. Grinding Dia. : 3-25 mm
-      Grinding wheel size :300x80x140 mm
-      Control wheel size : 200x80x75 mm
-      Base price: 500/-    
-    </pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div id="container">
-            <div class="product-details">
-                <h1>Centre Less Grinding Machine</h1>
-                <p class="information">A centerless grinder features a grinding wheel, regulating wheel, and workrest
-                    blade. The cylindrical workpiece sits between the grinding and regulating wheels. The fast-spinning
-                    grinding wheel cuts into the workpiece, regulated by the second wheel for precision. A workrest
-                    blade supports the workpiece during grinding.</p>
-                <button class="btn control checkout-button" data-name="Centre Less Grinding Machine" data-price="500" data-image="../public/img/gallery/gallery-3.jpg">
-                    <span class="price">&#8377 500</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-3.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-      Maximum length of stroke of slotter ram (mm) : 400mm  
-      Diameter of rotary table (mm) : 915mm
-      Longitudinal movement of the table(mm) : 762 mm
-      Cross Movement of the table (mm) : 559 mm
-      Motor power (H.P) : 7.5 HP
-      Number of speed : 9
-      Floor space required : 3050 mm x 1800mm
-      Base price : 500/-             
-    </pre>
-                </div>
-            </div>
-        </div>
-        <div id="container">
-            <div class="product-details">
-                <h1>Shaping Machine</h1>
-                <p class="information">
-                    A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
-                    the workpiece. The ram moves linearly, allowing the cutting tool to remove material during each
-                    stroke. Adjustable mechanisms control the cut's depth and length, ensuring precise shaping.</p>
-                <button class="btn control checkout-button" data-name="Shaping Machine" data-price="500" data-image="../public/img/gallery/gallery-4.jpg">
-                    <span class="price">&#8377 500</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-4.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-      Max stroke : 630 mm
-      Table traverse : 650x370 mm
-      No. of speeds : 4/10-80 Strokes/min
-      No. of Feeds : 5/0, 14-0.7 mm/stroke
-      Tool post swivel : 60 degrees
-      Base price : 500/-         
-    </pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div id="container">
-            <div class="product-details">
-                <h1>3-D printer (ABS plastic only)</h1>
-                <p class="information">A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a
-                    traditional ball mill, typically used in laboratories and research settings. It features a compact
-                    design with four grinding bowls arranged symmetrically around the central axis. </p> 
-                <button class="btn control checkout-button" data-name="3-D printer (ABS plastic only)" data-price="500" data-image="../public/img/gallery/gallery-5.jpg">
-                    <span class="price">&#8377 500</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      </div>
+    </header>
 
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-5.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-    Built size : 230x150x140 mm
-    No. of extruders : Dual
-    Positioning accuracy : z- axis 0.0025 mm , XY-axis  0.011 mm
-    Printing accuracy : 0.1 mm
-    Layer thickness : 0.1 – 0.5 mm
-    Nozzle diameter : 0.4 mm
-    Shaft speed : 40-200mm/s
-    Nozzle flow rate : 24cc/hr
-    Software : flash point
-    File types : STL/OBJ/GX or read by SD card
-              
-    </pre>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="infraseek-hero">
+      <div class="hero-content">
+        <h1>Welcome to Infraseek</h1>
+        <p>
+          Discover cutting-edge infrastructure solutions and innovations that
+          shape the future of technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="infraseek-grid">
+      <!-- Card 1 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about.jpg" alt="Infrastructure Solution" />
         </div>
-        <div id="container">
-            <div class="product-details">
-                <h1>Tubular Furnace</h1>
-                <p class="information">
-                    A tubular furnace typically consists of a cylindrical heating chamber, often made of refractory
-                    materials, and an electric heating element located along the tube's length. The material or sample
-                    to be heated is placed inside the tube, and the furnace allows for precise control of temperature
-                    through the regulation of the heating element.</p> 
-                <button class="btn control checkout-button" data-name="Tubular Furnace" data-price="5000" data-image="../public/img/gallery/gallery-6.jpg">
-                    <span class="price">&#8377 5000</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-6.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-    Length of Tube : Maximum 1200 mm
-    Heating Zone : Maximum 440 mm
-    Diameter of Tube : Maximum 120 mm
-    Working Temperature : Maximum 1700°C
-    Internal diameter : 15 mm to 150 mm
-    Overall length : 120 mm to 950 mm
-    Power supply : 24 V, 48 V, 110 V, 220 V
-    Power : 100 W to 1800 W
-    Base price : 5000/-
-      
-    </pre>
-                </div>
-            </div>
+        <div class="card-content">
+          <h3 class="card-title">Smart City Infrastructure</h3>
+          <p class="card-description">
+            Innovative solutions for modern urban development and smart city
+            infrastructure management.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Learn More</a>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="container">
-            <div class="product-details">
-                <h1>Inverted Optical Metallurgical Microscope</h1>
-                <p class="information">An inverted metallurgical microscope is a specialized optical instrument designed
-                    for examining opaque materials, typically metallic samples, in various fields such as metallurgy,
-                    material science, and quality control. </p>
-                <button class="btn control checkout-button" data-name="Inverted Optical Metallurgical Microscope"
-                    data-price="5000" data-image="../public/img/gallery/gallery-7.jpg">
-                    <span class="price">&#8377 5000</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-7.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-    Optical System : Infinity color corrected optical system
-    Viewing head : High Transmission siedentopfTrinocular , inclined at 45 degree light distribution:20:80
-    Eyepieces : WF 10X (paired)
-    Objectives : Plan acromaticMettalurgical objectives ( 10X,20X,50X,100X & 200X)
-    Magnification : 100X to 2000X
-    Nose piece : Quadraple nose piece on bearings
-    Stage : Mechanical stage is 180mm X 155 mm, moving speed : 75mm X45mm
-    Stage plate : Metal plate
-    Illuminator : Epi illuminator has 5W led lamp adjustable brightness
-    Filters: Blue, green and yellow filters
-    Micrometer : Division is 0.01 mm
-    USB video eyepiece : 5MP camera
-    Power supply : 220V AC , 50HZ
-    Base price : 5000/-      
-    </pre>
-                </div>
-            </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Smart City Details</h3>
+            <p>
+              Our smart city infrastructure solutions incorporate IoT sensors,
+              data analytics, and automated systems to create efficient and
+              sustainable urban environments. Features include:
+            </p>
+            <ul>
+              <li>Intelligent traffic management</li>
+              <li>Smart waste management</li>
+              <li>Energy-efficient lighting</li>
+              <li>Environmental monitoring</li>
+            </ul>
+          </div>
         </div>
-        <div id="container">
-            <div class="product-details">
-                <h1>Wear and Friction Monitor</h1>
-                <p class="information">
-                    A Wear and Friction Monitor is an instrument designed to quantify and monitor the wear and friction
-                    between interacting surfaces. It typically incorporates sensors, detectors, and data acquisition
-                    systems to measure parameters such as frictional forces, temperature changes, and wear rates during
-                    the operation of mechanical components.</p>
-                <button class="btn control checkout-button" data-name="Wear and Friction Monitor" data-price="5000" data-image="../public/img/gallery/gallery-8.jpg">
-                    <span class="price">&#8377 5000</span>
-                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    <span class="buy">Get now</span>
-                </button>
-            </div>
-            <div class="product-image">
-                <img src="../public/img/gallery/gallery-8.jpg" alt="">
-                <div class="info">
-                    <h2>Specifications:</h2>
-                    <pre>
-    Normal Load Range : 4.9 to 200N
-    Frictional Force Range : I to 200N
-    Wear Measurement Range : 0 to 2000 micro meters
-    Sliding Speed : 0.26 to 13 m/s
-    Disc Speed : 100 to 2000 rpm
-    Present Timer Range : up to 99 hrs:59 min:59 sec
-    Wear Disc Diameter : 165 mm (EN 32 disc 58-60 HRC)
-    Wear Disc Track Diameter : 10 to 140 mm
-    Specimen Pin Diameter : 3 to 12 mm
-    Pin Length : 20 to 30 mm
-    Specimen Holders to hold pins : up to 12 mm diameter
-    Base price : 5000/-        
-    </pre>
-                </div>
-            </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about-2.jpg" alt="Digital Infrastructure" />
         </div>
+        <div class="card-content">
+          <h3 class="card-title">Digital Infrastructure</h3>
+          <p class="card-description">
+            Next-generation digital infrastructure solutions for enterprise and
+            cloud computing.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Explore</a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Digital Infrastructure Solutions</h3>
+            <p>
+              Comprehensive digital infrastructure solutions designed for modern
+              enterprises:
+            </p>
+            <ul>
+              <li>Cloud computing integration</li>
+              <li>Network optimization</li>
+              <li>Security infrastructure</li>
+              <li>Scalable architecture</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="infraseek-card">
+        <div class="card-image">
+          <img src="../public/img/about.jpg" alt="Sustainable Infrastructure" />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Sustainable Infrastructure</h3>
+          <p class="card-description">
+            Eco-friendly infrastructure solutions for a sustainable future.
+          </p>
+          <div class="card-action">
+            <a href="#" class="btn-primary">Discover</a>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <div class="overlay-content">
+            <h3>Sustainability Features</h3>
+            <p>
+              Our sustainable infrastructure solutions focus on environmental
+              preservation and resource efficiency:
+            </p>
+            <ul>
+              <li>Renewable energy integration</li>
+              <li>Water conservation systems</li>
+              <li>Green building technologies</li>
+              <li>Waste reduction solutions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-</body>
-
-<script>
-    const buttons = document.querySelectorAll('.checkout-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const name = button.getAttribute('data-name');
-            const price = button.getAttribute('data-price');
-            console.log(`name:${name} & price : ${price}`)
-            fetch('/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    product: {
-                        name: name,
-                        image: 'https://example.com/product.jpg', // replace with actual image URL
-                        price: price
-                    }
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const sessionId = data.id;
-                    const stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx'); // replace with your public key
-                    stripe.redirectToCheckout({ sessionId });
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        });
-    });
-</script>
-
+    <!-- Vendor JS Files -->
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/js/main.js"></script>
+  </body>
 </html>
