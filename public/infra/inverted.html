@@ -1,67 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inverted Metallurgical Microscope - Infraseek</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infra Seek</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/infra.css">
-</head>
-<body>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <div class="container my-5">
-        <!-- <h1 class="main text-center">Infra Seek</h1> -->
-        <div class="centered-div">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="../img/infra/Machine7.jpeg" alt="Logo" class="logo-img">
-                    <ul class="list-unstyled">
-                        <li><strong>Location:</strong> R.V.R & J.C College of Engineering</li>
-                        <li><strong>Base price:</strong> 500/-</li>
-                    </ul>
-                </div>
-                <div class="col-md-8">
-                    <div class="image-title">
-                        <h2>INVERTED METTALURGICAL MICROSCOPE</h2>
-                    </div>
-                    <div class="specifications">
-                        <h4>Specifications:</h3>
-                        <ul class="list-unstyled">
-                            <li>Optical System: Infinity color corrected optical system</li>
-                            <li>Viewing Head: High Transmission siedentopf Trinocular, inclined at 45 degrees, light distribution: 20:80</li>
-                            <li>Eyepieces: WF 10X (paired)</li>
-                            <li>Objectives: Plan acromatic Metallurgical objectives (10X, 20X, 50X, 100X & 200X)</li>
-                            <li>Magnification: 100X to 2000X</li>
-                            <li>Nosepiece: Quadruple nosepiece on bearings</li>
-                            <li>Stage: Mechanical stage is 180mm X 155mm, moving speed: 75mm X 45mm</li>
-                            <li>Stage Plate: Metal plate</li>
-                            <li>Illuminator: Epi illuminator has 5W LED lamp adjustable brightness</li>
-                            <li>Filters: Blue, green, and yellow filters</li>
-                            <li>Micrometer: Division is 0.01 mm</li>
-                            <li>USB Video Eyepiece: 5MP camera</li>
-                            <li>Power Supply: 220V AC, 50HZ</li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- Vendor CSS Files -->
+    <link
+      href="../../public/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../public/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../../public/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="../../public/css/main.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary-color: #8e4574;
+        --secondary-color: #ff7eff;
+        --text-color: #333;
+        --bg-color: #f8f9fa;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--bg-color);
+        padding-top: 80px;
+      }
+
+      /* Mobile Navigation Styles */
+      .mobile-nav-toggle {
+        font-size: 28px;
+        cursor: pointer;
+        display: none;
+        line-height: 0;
+        transition: 0.5s;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 9999;
+      }
+
+      @media (max-width: 1024px) {
+        .mobile-nav-toggle {
+          display: block;
+        }
+
+        .navbar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          max-width: 400px;
+          bottom: 0;
+          transition: 0.3s;
+          z-index: 9997;
+        }
+
+        .navbar ul {
+          position: absolute;
+          inset: 0;
+          padding: 50px 0 10px 0;
+          margin: 0;
+          background: rgba(255, 255, 255, 0.9);
+          overflow-y: auto;
+          transition: 0.3s;
+          z-index: 9998;
+          flex-direction: column;
+        }
+
+        .navbar a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 20px;
+          font-family: var(--font-primary);
+          font-size: 16px;
+          font-weight: 500;
+          color: var(--text-color);
+          white-space: nowrap;
+          transition: 0.3s;
+        }
+
+        .navbar.navbar-mobile {
+          right: 0;
+        }
+
+        .mobile-nav-active {
+          overflow: hidden;
+        }
+
+        .mobile-nav-active .mobile-nav-toggle {
+          position: fixed;
+        }
+      }
+
+      .infra-detail {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        padding: 40px;
+        margin: 20px 0;
+      }
+
+      .infra-title {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .infra-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 30px;
+      }
+
+      .specs-list {
+        background: var(--bg-color);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+
+      .specs-list li {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .specs-list li i {
+        color: var(--primary-color);
+        margin-right: 10px;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+        margin: 30px 0;
+      }
+
+      .book-btn {
+        background: var(--primary-color);
+        color: white;
+        padding: 15px 40px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .book-btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .price-tag {
+        background: rgba(142, 69, 116, 0.1);
+        color: var(--primary-color);
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        display: inline-block;
+        margin: 20px 0;
+      }
+
+      @media (max-width: 768px) {
+        .infra-detail {
+          padding: 20px;
+        }
+
+        .infra-title {
+          font-size: 2rem;
+        }
+
+        .infra-image {
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header" class="header fixed-top">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <img src="../../public/img/ui_full.png" alt="Uncalled Innovators" />
+        </a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hackathon">Hackathon</a></li>
+            <li><a href="/explore">Challenges</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/infra">Infraseek</a></li>
+          </ul>
+        </nav>
+
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="infra-detail">
+          <h1 class="infra-title">Inverted Metallurgical Microscope</h1>
+
+          <img
+            src="../../public/img/infra/Machine7.jpeg"
+            alt="Inverted Metallurgical Microscope"
+            class="infra-image"
+          />
+
+          <div class="price-tag">
+            <i class="bi bi-tag-fill"></i> Base Price: ₹500
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h3><i class="bi bi-gear-fill"></i> Specifications</h3>
+              <ul class="specs-list list-unstyled">
+                <li>
+                  <i class="bi bi-arrow-right-circle"></i> Magnification: 50x to
+                  1000x
+                </li>
+                <li>
+                  <i class="bi bi-arrow-right-circle"></i> Eyepiece: 10x wide
+                  field
+                </li>
+                <li>
+                  <i class="bi bi-arrow-right-circle"></i> Objectives: 5x, 10x,
+                  20x, 50x, 100x
+                </li>
+                <li>
+                  <i class="bi bi-arrow-right-circle"></i> LED illumination
+                  system
+                </li>
+                <li>
+                  <i class="bi bi-arrow-right-circle"></i> Digital camera
+                  interface
+                </li>
+              </ul>
             </div>
-
-            <div class="image-description">
-                <p>
-                    <strong>Description:</strong> An inverted metallurgical microscope is a specialized optical instrument designed for examining opaque materials, typically metallic samples, in various fields such as metallurgy, material science, and quality control. Unlike traditional microscopes, the inverted design features the light source and condenser located below the specimen, while the objectives and eyepieces are positioned above.
-                </p>
-                <div class="text-center">
-                    <button class="rounded-button">Book Slot</button>
-                </div>
+            <div class="col-md-6">
+              <h3><i class="bi bi-geo-alt-fill"></i> Location</h3>
+              <ul class="specs-list list-unstyled">
+                <li>
+                  <i class="bi bi-building"></i> R.V.R & J.C College of
+                  Engineering
+                </li>
+              </ul>
             </div>
+          </div>
+
+          <div class="description">
+            <h3><i class="bi bi-info-circle-fill"></i> Description</h3>
+            <p>
+              An inverted metallurgical microscope is a specialized optical
+              instrument designed for examining opaque materials, typically
+              metallic samples. Unlike traditional microscopes, the inverted
+              design features objectives below the specimen stage, with
+              illumination from above. This configuration is particularly useful
+              for metallography, material science research, and quality control
+              applications, allowing for detailed examination of material
+              structures and properties.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScmCqJwdSLl9VY8rC0ffjclfHGVPUoO9HdFFgUFTJe0Mtit0Q/viewform"
+              class="book-btn"
+            >
+              <i class="bi bi-calendar-check"></i> Book Now
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
+    </main>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-
+    <!-- Vendor JS Files -->
+    <script src="../../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../public/js/main.js"></script>
+  </body>
 </html>
