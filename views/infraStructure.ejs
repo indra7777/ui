@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Courses - Mentor Bootstrap Template</title>
+    <title>Infraseek - Uncalled Innovators</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -19,9 +19,7 @@
     <meta name="theme-color" content="#ffffff">
     
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Vendor CSS Files -->
     <link href="../public/vendor/aos/aos.css" rel="stylesheet">
@@ -33,11 +31,176 @@
 
     <!-- Template Main CSS File -->
     <link href="../public/css/infrastructure.css" rel="stylesheet">
-<link href="../public/css/styles.css" rel="stylesheet">
+    <link href="../public/css/styles.css" rel="stylesheet">
+    <link href="../public/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/ctry.css">
 
-<!-- Template Main CSS File -->
-<link href="../public/css/main.css" rel="stylesheet">
-<link rel="stylesheet" href="../public/css/ctry.css">
+    <style>
+        :root {
+            --primary-color: #8e4574;
+            --secondary-color: #ff7eff;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container input,
+        .search-container select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-container button:hover {
+            background: var(--secondary-color);
+        }
+
+        .course-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .course-content h3 a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .course-content h3 a:hover {
+            color: var(--secondary-color);
+        }
+
+        .course-content p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+
+            .search-container input,
+            .search-container select,
+            .search-container button {
+                width: 100%;
+            }
+
+            .course-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        .vertical-container {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            height: 100vh;
+            background: white;
+            padding: 20px;
+            width: 250px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .vertical-container.active {
+            right: 0;
+        }
+
+        .dots-container {
+            cursor: pointer;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1001;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin: 3px 0;
+        }
+
+        #main {
+            padding-top: 100px;
+        }
+    </style>
 
     <!-- =======================================================
   * Template Name: Mentor
@@ -82,48 +245,56 @@
     </header> -->
     <!-- End Header -->
     <div class="header">
-        <img class="logo" src="../public/img/logo.jpg" alt="Your Logo">
         <div class="container">
-        <div class="search-container mx-auto">
-            <input type="text" id="searchBar" placeholder="Search for Infra...">
-            <select id="locationFilter">
-                <option value="">All Locations</option>
-                <option value="Location1">Guntur</option>
-        
-            </select>
-            <button type="submit"><i class="fa fa-search">search</i></button>
-        </div>
-            <div class="container">
-                <div class="strip" id="hover-strip">
-                    <div class="dots-container">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="/" class="logo">
+                    <img src="../public/img/logo.jpg" alt="Your Logo" style="height: 50px;">
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search for Infra...">
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="Location1">Guntur</option>
+                    </select>
+                    <button type="submit"><i class="bi bi-search"></i> Search</button>
                 </div>
-                <div class="vertical-container">
-                    <div class="user-profile">
-                        <img src="<%=user.image%>" alt="User Avatar" class="avatar">
-                        <p class="user-name">User</p>
-                    </div>
-                    <div class="spacer"></div>
-                    <a href="/blogs">Blogs</a>
-                    <a href="/infra">Infraseek</a>
-                    <a href="/explore">Challenges</a>
-                    <a href="/logout">Logout</a>
-                    <div class="image-link bottom-images">
-                        <a
-                            href="https://www.linkedin.com/in/uncalled-innovators-100016294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img
-                                src="../public/Icons/linkedin.png" alt="Site 2"></a>
-                        <a href="https://www.instagram.com/uncalled_innovators?igsh=MXU1bDBsb3N5amdsdQ=="><img
-                                src="../public/Icons/instagram.png" alt="Site 1"></a>
-                        <a href="https://x.com/TeamUncalled?t=rDd4njnW9kkQqhaq67eGcw&s=09"><img
-                                src="../public/Icons/twitter.png" alt="Site 3"></a>
-                    </div>
+
+                <div class="dots-container" id="menuToggle">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="vertical-container" id="menu">
+        <div class="user-profile mb-4">
+            <img src="<%=user.image%>" alt="User Avatar" class="avatar" style="width: 60px; height: 60px; border-radius: 50%;">
+            <p class="user-name mt-2">User</p>
+        </div>
+        <div class="nav-links d-flex flex-column gap-3">
+            <a href="/blogs" class="nav-link">Blogs</a>
+            <a href="/infra" class="nav-link">Infraseek</a>
+            <a href="/explore" class="nav-link">Challenges</a>
+            <a href="/logout" class="nav-link">Logout</a>
+        </div>
+        <div class="social-links mt-auto">
+            <div class="d-flex gap-3 mt-4">
+                <a href="https://www.linkedin.com/in/uncalled-innovators-100016294" target="_blank">
+                    <img src="../public/Icons/linkedin.png" alt="LinkedIn" style="width: 24px;">
+                </a>
+                <a href="https://www.instagram.com/uncalled_innovators" target="_blank">
+                    <img src="../public/Icons/instagram.png" alt="Instagram" style="width: 24px;">
+                </a>
+                <a href="https://x.com/TeamUncalled" target="_blank">
+                    <img src="../public/Icons/twitter.png" alt="Twitter" style="width: 24px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
     <main id="main" data-aos="fade-in" class="aos-init aos-animate">
 
         <!-- ======= Breadcrumbs ======= -->
@@ -377,32 +548,43 @@
     <!-- Template Main JS File -->
     <script src="../public/js/infra.js"></script>
     <script>
-        const searchInput = document.getElementById("searchBar");
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
 
-        const namesFromDOM = document.getElementsByClassName("course-item");
-        console.log(namesFromDOM)
-        searchInput.addEventListener("keyup", (event) => {
-                const { value } = event.target;
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.getElementById('menuToggle');
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
 
-                const searchQuery = value.toLowerCase();
-                console.log(searchQuery)
-                
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const location = document.getElementById('locationFilter').value;
+            filterItems(searchTerm, location);
+        });
 
-                for (const nameElement of namesFromDOM) {
+        document.getElementById('locationFilter').addEventListener('change', function(e) {
+            const location = e.target.value;
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            filterItems(searchTerm, location);
+        });
 
-                    let name = nameElement.textContent.toLowerCase();
-
-                    // compare current name to search input
-                    if (name.includes(searchQuery)) {
-                        // found name matching search, display it
-                        nameElement.style.display = "block";
-                    } else {
-                        // no match, don't display name
-                        nameElement.style.display = "none";
-                        //  nameElement.remove();
-                    }
-                }
+        function filterItems(searchTerm, location) {
+            const items = document.querySelectorAll('.course-item');
+            items.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const itemLocation = item.querySelector('h4').textContent;
+                const matchesSearch = title.includes(searchTerm);
+                const matchesLocation = !location || itemLocation.includes(location);
+                item.closest('.col-lg-4').style.display = 
+                    (matchesSearch && matchesLocation) ? 'block' : 'none';
             });
+        }
     </script>
 
     
