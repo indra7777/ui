@@ -1,92 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Infraseek</title>
     <link
+      href="../public/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link
+      href="../public/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../public/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="../public/css/infra.css" />
-  <style>
-      .btn-view-details {
-        font-family: "Poppins", sans-serif;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 14px;
-        letter-spacing: 1px;
-        display: inline-block;
-        padding: 10px 28px;
-        border-radius: 5px;
-        transition: 0.5s;
-        border: 2px solid #8e4574;
-        color: #8e4574;
-        text-decoration: none;
-        margin-top: 15px;
-        background: transparent;
-        cursor: pointer;
-      }
-
-      .btn-view-details:hover {
-        background: #8e4574;
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .course-item {
-        border-radius: 15px;
-        border: 1px solid #eef0ef;
-        margin-bottom: 30px;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        padding: 20px;
-      }
-
-      .course-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .logo-img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 15px;
-      }
-
-      .image-title h2 {
-        color: #37423b;
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-
-      .specifications h4 {
-        color: #5a6c60;
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-
-      .specifications ul {
-        color: #5a6c60;
-        font-size: 15px;
-        padding-left: 20px;
-      }
-
-      .image-description p {
-        color: #5a6c60;
-        font-size: 15px;
-        line-height: 1.6;
-        margin: 15px 0;
-      }
-    </style>
   </head>
 
   <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <img src="../public/img/ui_full.png" alt="" />
+        </a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/hackathon">Hackathon</a></li>
+            <li><a href="/explore">Challenges</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/infra">Infraseek</a></li>
+            <li>
+              <a href="/profile"
+                ><img
+                  id="avatarImage"
+                  width="10%"
+                  height="8%"
+                  src="<%=user.image%>"
+                  alt="bear"
+              /></a>
+            </li>
+          </ul>
+        </nav>
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      </div>
+    </header>
+
     <div class="container my-5">
       <div class="row">
         <!-- Radial Drilling Machine -->
@@ -101,183 +62,178 @@
               <h3>Radial Drilling Machine</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/radial.html" class="btn btn-primary"
+                <a href="/public/infra/radial.html" class="btn btn-primary"
                   >View Details</a
                 >
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
         <!-- Slotting Machine -->
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine2.jpeg"
               class="img-fluid"
               alt="Slotting Machine"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Slotting Machine</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Slotting.html" class="btn btn-primary"
+                <a href="/public/infra/Slotting.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                                    </div>
-                                    
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Centre Lathe -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine3.jpeg"
               class="img-fluid"
               alt="Centre Lathe"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Centre Lathe</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Centre.html" class="btn btn-primary"
+                <a href="/public/infra/Centre.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Shaping Machine -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine4.jpeg"
               class="img-fluid"
               alt="Shaping Machine"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Shaping Machine</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Shaping.html" class="btn btn-primary"
+                <a href="/public/infra/Shaping.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Wear Testing Machine -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine5.jpeg"
               class="img-fluid"
               alt="Wear Testing Machine"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Wear Testing Machine</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Wear.html" class="btn btn-primary"
+                <a href="/public/infra/Wear.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 3D Printer -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine6.jpeg"
               class="img-fluid"
               alt="3D Printer"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>3D Printer</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/3-Dprinter.html" class="btn btn-primary"
+                <a href="/public/infra/3-Dprinter.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Inverted Metallurgical Microscope -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine7.jpeg"
               class="img-fluid"
               alt="Inverted Metallurgical Microscope"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Inverted Metallurgical Microscope</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/inverted.html" class="btn btn-primary"
+                <a href="/public/infra/inverted.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Tubular Furnace -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine8.jpeg"
               class="img-fluid"
               alt="Tubular Furnace"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Tubular Furnace</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Tubular.html" class="btn btn-primary"
+                <a href="/public/infra/Tubular.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Mini CNC Machine -->
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="course-item">
+          <div class="course-item">
             <img
               src="../public/img/infra/Machine9.jpeg"
               class="img-fluid"
               alt="Mini CNC Machine"
             />
-                            <div class="course-content">
+            <div class="course-content">
               <h3>Mini CNC Machine</h3>
               <p>Base Price: ₹500</p>
               <div class="text-center">
-                <a href="/infra/Mini.html" class="btn btn-primary"
+                <a href="/public/infra/Mini.html" class="btn btn-primary"
                   >View Details</a
                 >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Scripts -->
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/js/main.js"></script>
   </body>
-</html>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
 </html>
