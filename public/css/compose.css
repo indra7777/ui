@@ -107,15 +107,60 @@ textarea.form-control {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .compose-section {
+    padding: 100px 15px 40px;
+  }
+
   .compose-container {
-    margin: 20px;
+    margin: 10px;
+    padding: 20px;
+    width: 95%;
   }
 
   .compose-header h2 {
     font-size: 1.8rem;
   }
 
+  .compose-header p {
+    font-size: 1rem;
+  }
+
+  .form-control-file {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .image-preview {
+    max-height: 200px;
+  }
+
+  textarea.form-control {
+    min-height: 150px;
+  }
+
   .submit-btn {
     width: 100%;
+    margin-top: 10px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 480px) {
+  .compose-container {
+    margin: 5px;
+    padding: 15px;
+  }
+
+  .compose-header h2 {
+    font-size: 1.5rem;
   }
 }
