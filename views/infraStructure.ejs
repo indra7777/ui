@@ -1,527 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Infraseek - Uncalled Innovators</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Vendor CSS Files -->
-    <link href="../public/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../public/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../public/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../public/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="../public/css/infrastructure.css" rel="stylesheet">
-    <link href="../public/css/styles.css" rel="stylesheet">
-    <link href="../public/css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/ctry.css">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infraseek</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../public/css/infra.css" />
     <style>
-        :root {
-            --primary-color: #8e4574;
-            --secondary-color: #ff7eff;
-            --background-color: #f8f9fa;
-            --text-color: #333;
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
-        }
+      .btn-view-details {
+        font-family: "Poppins", sans-serif;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 10px 28px;
+        border-radius: 5px;
+        transition: 0.5s;
+        border: 2px solid #8e4574;
+        color: #8e4574;
+        text-decoration: none;
+        margin-top: 15px;
+        background: transparent;
+        cursor: pointer;
+      }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+      .btn-view-details:hover {
+        background: #8e4574;
+        color: #fff;
+        text-decoration: none;
+      }
 
-        .header {
-            background: #fff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-        }
+      .course-item {
+        border-radius: 15px;
+        border: 1px solid #eef0ef;
+        margin-bottom: 30px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        padding: 20px;
+      }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
+      .course-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
 
-        .navbar a {
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 8px 16px;
-            transition: var(--transition);
-        }
+      .logo-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
 
-        .navbar a:hover {
-            color: var(--primary-color);
-        }
+      .image-title h2 {
+        color: #37423b;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
 
-        .search-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+      .specifications h4 {
+        color: #5a6c60;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
 
-        .search-container input,
-        .search-container select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-        }
+      .specifications ul {
+        color: #5a6c60;
+        font-size: 15px;
+        padding-left: 20px;
+      }
 
-        .search-container button {
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .search-container button:hover {
-            background: var(--secondary-color);
-        }
-
-        .course-item {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .course-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .course-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .course-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .course-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .course-header h4 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        .price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            padding: 6px 12px;
-            background: rgba(142, 69, 116, 0.1);
-            border-radius: 6px;
-        }
-
-        .course-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .course-content h3 a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .course-content h3 a:hover {
-            color: var(--secondary-color);
-        }
-
-        .course-content p {
-            color: #666;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        @media (max-width: 768px) {
-            .search-container {
-                flex-direction: column;
-                padding: 0 15px;
-            }
-
-            .search-container input,
-            .search-container select,
-            .search-container button {
-                width: 100%;
-            }
-
-            .course-item {
-                margin-bottom: 20px;
-            }
-
-            .navbar {
-                display: none;
-            }
-
-            .navbar.mobile-nav-active {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: white;
-                padding: 20px;
-                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            }
-        }
-
-        .row {
-            margin: -15px;
-        }
-        .col-lg-4 {
-            padding: 15px;
-        }
-        .course-item {
-            height: 100%;
-        }
+      .image-description p {
+        color: #5a6c60;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
     </style>
+  </head>
 
-    <!-- =======================================================
-  * Template Name: Mentor
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-    .img-fluid {
-    width: auto;
-    height: 55%;
-}
-
-  </style>
-
-</head>
-
-<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-                <img src="../public/img/ui_full.png" alt="Uncalled Innovators">
-            </a>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/hackathon">Hackathon</a></li>
-                    <li><a href="/explore">Challenges</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
-                    <li><a href="/infra">Infraseek</a></li>
-                    <li>
-                        <a href="/profile">
-                            <img id="avatarImage" width="40" height="40" style="border-radius: 50%" src="<%=user.image%>" alt="Profile">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </div>
-    </header>
-
-    <main id="main" style="padding-top: 100px;">
-        <div class="container mb-4">
-            <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search for Infra...">
-                <select id="locationFilter">
-                    <option value="">All Locations</option>
-                    <option value="Location1">Guntur</option>
-                </select>
-                <button type="submit"><i class="bi bi-search"></i> Search</button>
+  <body>
+    <div class="container my-5">
+      <div class="row">
+        <!-- Radial Drilling Machine -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine1.jpeg"
+              class="img-fluid"
+              alt="Radial Drilling Machine"
+            />
+            <div class="course-content">
+              <h3>Radial Drilling Machine</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/radial.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
             </div>
+          </div>
         </div>
 
-        <section id="courses" class="courses">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine1.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 500</p>
-                                </div>
-                                <h3>Radial Drilling Machine</h3>
-                                <p>A radial drilling machine consists of a large, column-mounted drill head with a
-                                radial arm that can be moved around the column.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/radial.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine2.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 500</p>
-                                </div>
-                                <h3>Slotting Machine</h3>
-                                <p>A slotting machine features a vertical ram with a cutting tool and a worktable
-                                for securing the workpiece.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Slotting.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine4.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 500</p>
-                                </div>
-                                <h3>Shaping Machine</h3>
-                                <p>A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
-                                the workpiece.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Shaping.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine3.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 500</p>
-                                </div>
-                                <h3>Centre Less Grinding Machine</h3>
-                                <p>A centerless grinder features a grinding wheel, regulating wheel, and workrest
-                                blade. The cylindrical workpiece sits between the grinding and regulating wheels.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Centre.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine9.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 5000</p>
-                                </div>
-                                <h3>Wear and Friction Monitor</h3>
-                                <p>A Wear and Friction Monitor is an instrument designed to quantify and monitor the wear and friction
-                                between interacting surfaces.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Wear.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine5.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 500</p>
-                                </div>
-                                <h3>3-D printer (ABS plastic only)</h3>
-                                <p>A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a
-                                traditional ball mill, typically used in laboratories and research settings.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/3-Dprinter.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine7.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 5000</p>
-                                </div>
-                                <h3>Inverted Optical Metallurgical Microscope</h3>
-                                <p>An inverted metallurgical microscope is a specialized optical instrument designed
-                                for examining opaque materials, typically metallic samples, in various fields such as metallurgy,
-                                material science, and quality control.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/inverted.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine8.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 5000</p>
-                                </div>
-                                <h3>Tubular Furnace</h3>
-                                <p>A tubular furnace typically consists of a cylindrical heating chamber, often made of refractory
-                                materials, and an electric heating element located along the tube's length.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Tubular.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-item">
-                            <img src="../public/img/infra/Machine6.jpeg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="course-header">
-                                    <h4>RVR & JC</h4>
-                                    <p class="price">&#8377 5000</p>
-                                </div>
-                                <h3>Mini Ball Mill (Four Bowl Configuration)</h3>
-                                <p>A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a traditional ball mill, typically used in
-                                laboratories and research settings. It features a compact design with four grinding bowls arranged symmetrically around
-                                the central axis.</p>
-                                <div class="card-action">
-                                    <a href="../public/infra/Mini.html" class="btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Slotting Machine -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine2.jpeg"
+              class="img-fluid"
+              alt="Slotting Machine"
+            />
+            <div class="course-content">
+              <h3>Slotting Machine</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Slotting.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
+        </div>
 
-    <!-- ======= Footer ======= -->
-    <!-- End Footer -->
+        <!-- Centre Lathe -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine3.jpeg"
+              class="img-fluid"
+              alt="Centre Lathe"
+            />
+            <div class="course-content">
+              <h3>Centre Lathe</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Centre.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Shaping Machine -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine4.jpeg"
+              class="img-fluid"
+              alt="Shaping Machine"
+            />
+            <div class="course-content">
+              <h3>Shaping Machine</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Shaping.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+        <!-- Wear Testing Machine -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine5.jpeg"
+              class="img-fluid"
+              alt="Wear Testing Machine"
+            />
+            <div class="course-content">
+              <h3>Wear Testing Machine</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Wear.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- Vendor JS Files -->
-    <script src="../public/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../public/vendor/aos/aos.js"></script>
-    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../public/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../public/vendor/php-email-form/validate.js"></script>
+        <!-- 3D Printer -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine6.jpeg"
+              class="img-fluid"
+              alt="3D Printer"
+            />
+            <div class="course-content">
+              <h3>3D Printer</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/3-Dprinter.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- Template Main JS File -->
-    <script src="../public/js/infra.js"></script>
-    <script>
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('active');
-        });
+        <!-- Inverted Metallurgical Microscope -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine7.jpeg"
+              class="img-fluid"
+              alt="Inverted Metallurgical Microscope"
+            />
+            <div class="course-content">
+              <h3>Inverted Metallurgical Microscope</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/inverted.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menuToggle');
-            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-                menu.classList.remove('active');
-            }
-        });
+        <!-- Tubular Furnace -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine8.jpeg"
+              class="img-fluid"
+              alt="Tubular Furnace"
+            />
+            <div class="course-content">
+              <h3>Tubular Furnace</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Tubular.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-        // Search functionality
-        document.getElementById('searchBar').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const location = document.getElementById('locationFilter').value;
-            filterItems(searchTerm, location);
-        });
+        <!-- Mini CNC Machine -->
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img
+              src="../public/img/infra/Machine9.jpeg"
+              class="img-fluid"
+              alt="Mini CNC Machine"
+            />
+            <div class="course-content">
+              <h3>Mini CNC Machine</h3>
+              <p>Base Price: ₹500</p>
+              <div class="text-center">
+                <a href="/infra/Mini.html" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        document.getElementById('locationFilter').addEventListener('change', function(e) {
-            const location = e.target.value;
-            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
-            filterItems(searchTerm, location);
-        });
-
-        function filterItems(searchTerm, location) {
-            const items = document.querySelectorAll('.course-item');
-            items.forEach(item => {
-                const title = item.querySelector('h3').textContent.toLowerCase();
-                const itemLocation = item.querySelector('h4').textContent;
-                const matchesSearch = title.includes(searchTerm);
-                const matchesLocation = !location || itemLocation.includes(location);
-                item.closest('.col-lg-4').style.display = 
-                    (matchesSearch && matchesLocation) ? 'block' : 'none';
-            });
-        }
-    </script>
-
-    <script>
-        // Mobile nav toggle
-        document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
-            document.querySelector('#navbar').classList.toggle('navbar-mobile');
-            this.classList.toggle('bi-list');
-            this.classList.toggle('bi-x');
-        });
-    </script>
-
-</body>
-
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

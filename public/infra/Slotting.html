@@ -4,296 +4,143 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slotting Machine - Infraseek</title>
-
-    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-
-    <!-- Vendor CSS Files -->
-    <link
-      href="../../public/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="../../public/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="../../public/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="../../public/css/main.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="../css/infra.css" />
     <style>
-      :root {
-        --primary-color: #8e4574;
-        --secondary-color: #ff7eff;
-        --text-color: #333;
-        --bg-color: #f8f9fa;
+      .machine-details {
+        padding: 30px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
       }
 
-      body {
-        font-family: "Poppins", sans-serif;
-        background: var(--bg-color);
-        padding-top: 80px;
-      }
-
-      /* Mobile Navigation Styles */
-      .mobile-nav-toggle {
-        font-size: 28px;
-        cursor: pointer;
-        display: none;
-        line-height: 0;
-        transition: 0.5s;
-        position: fixed;
-        right: 20px;
-        top: 20px;
-        z-index: 9999;
-      }
-
-      @media (max-width: 1024px) {
-        .mobile-nav-toggle {
-          display: block;
-        }
-
-        .navbar {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 100%;
-          max-width: 400px;
-          bottom: 0;
-          transition: 0.3s;
-          z-index: 9997;
-        }
-
-        .navbar ul {
-          position: absolute;
-          inset: 0;
-          padding: 50px 0 10px 0;
-          margin: 0;
-          background: rgba(255, 255, 255, 0.9);
-          overflow-y: auto;
-          transition: 0.3s;
-          z-index: 9998;
-          flex-direction: column;
-        }
-
-        .navbar a {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 10px 20px;
-          font-family: var(--font-primary);
-          font-size: 16px;
-          font-weight: 500;
-          color: var(--text-color);
-          white-space: nowrap;
-          transition: 0.3s;
-        }
-
-        .navbar.navbar-mobile {
-          right: 0;
-        }
-
-        .mobile-nav-active {
-          overflow: hidden;
-        }
-
-        .mobile-nav-active .mobile-nav-toggle {
-          position: fixed;
-        }
-      }
-
-      .infra-detail {
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        padding: 40px;
-        margin: 20px 0;
-      }
-
-      .infra-title {
-        color: var(--primary-color);
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-        font-weight: 600;
-      }
-
-      .infra-image {
+      .machine-image {
         width: 100%;
         height: 400px;
         object-fit: cover;
-        border-radius: 15px;
-        margin-bottom: 30px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .machine-title {
+        color: #37423b;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .specs-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .specs-section h3 {
+        color: #5a6c60;
+        font-size: 20px;
+        margin-bottom: 15px;
       }
 
       .specs-list {
-        background: var(--bg-color);
-        padding: 25px;
-        border-radius: 15px;
-        margin: 20px 0;
+        list-style: none;
+        padding: 0;
       }
 
       .specs-list li {
-        margin-bottom: 15px;
-        font-size: 1.1rem;
-        display: flex;
-        align-items: center;
-      }
-
-      .specs-list li i {
-        color: var(--primary-color);
-        margin-right: 10px;
+        margin-bottom: 10px;
+        color: #5a6c60;
       }
 
       .description {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #666;
-        margin: 30px 0;
-      }
-
-      .book-btn {
-        background: var(--primary-color);
-        color: white;
-        padding: 15px 40px;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-      }
-
-      .book-btn:hover {
-        background: var(--secondary-color);
-        transform: translateY(-2px);
-        color: white;
-      }
-
-      .price-tag {
-        background: rgba(142, 69, 116, 0.1);
-        color: var(--primary-color);
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 1.3rem;
-        font-weight: 600;
-        display: inline-block;
+        color: #5a6c60;
+        line-height: 1.6;
         margin: 20px 0;
       }
 
-      @media (max-width: 768px) {
-        .infra-detail {
-          padding: 20px;
-        }
+      .book-button {
+        background: #8e4574;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+      }
 
-        .infra-title {
-          font-size: 2rem;
-        }
-
-        .infra-image {
-          height: 300px;
-        }
+      .book-button:hover {
+        background: #ff7eff;
+        color: #fff;
+        text-decoration: none;
+        transform: translateY(-2px);
       }
     </style>
   </head>
-
   <body>
-    <!-- Header -->
-    <header id="header" class="header fixed-top">
-      <div class="container d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-          <img src="../../public/img/ui_full.png" alt="Uncalled Innovators" />
-        </a>
+    <div class="container my-5">
+      <div class="machine-details">
+        <h1 class="machine-title">Slotting Machine</h1>
 
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/hackathon">Hackathon</a></li>
-            <li><a href="/explore">Challenges</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/infra">Infraseek</a></li>
-          </ul>
-        </nav>
+        <img
+          src="../img/infra/Machine2.jpeg"
+          alt="Slotting Machine"
+          class="machine-image"
+        />
 
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </div>
-    </header>
-
-    <main>
-      <div class="container">
-        <div class="infra-detail">
-          <h1 class="infra-title">Slotting Machine</h1>
-
-          <img
-            src="../../public/img/infra/Machine2.jpeg"
-            alt="Slotting Machine"
-            class="infra-image"
-          />
-
-          <div class="price-tag">
-            <i class="bi bi-tag-fill"></i> Base Price: ₹500
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <h3><i class="bi bi-gear-fill"></i> Specifications</h3>
-              <ul class="specs-list list-unstyled">
-                <li>
-                  <i class="bi bi-arrow-right-circle"></i> Stroke length: 200 mm
-                </li>
-                <li>
-                  <i class="bi bi-arrow-right-circle"></i> Work table size:
-                  450x200 mm
-                </li>
-                <li>
-                  <i class="bi bi-arrow-right-circle"></i> Max. tool size: 20 mm
-                </li>
-                <li>
-                  <i class="bi bi-arrow-right-circle"></i> Strokes per minute:
-                  40-120
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <h3><i class="bi bi-geo-alt-fill"></i> Location</h3>
-              <ul class="specs-list list-unstyled">
-                <li>
-                  <i class="bi bi-building"></i> R.V.R & J.C College of
-                  Engineering
-                </li>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="specs-section">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li>Maximum Stroke Length: 160mm</li>
+                <li>Table Size: 250 x 250mm</li>
+                <li>Motor Power: 1HP</li>
+                <li>Strokes per Minute: 70</li>
+                <li>Tool Head Travel: 160mm</li>
               </ul>
             </div>
           </div>
-
-          <div class="description">
-            <h3><i class="bi bi-info-circle-fill"></i> Description</h3>
-            <p>
-              A slotting machine features a vertical ram with a cutting tool and
-              a worktable for securing the workpiece. It is primarily used for
-              cutting internal keyways, grooves, and slots. The machine's
-              reciprocating motion allows for precise vertical cutting
-              operations.
-            </p>
-          </div>
-
-          <div class="text-center">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScmCqJwdSLl9VY8rC0ffjclfHGVPUoO9HdFFgUFTJe0Mtit0Q/viewform"
-              class="book-btn"
-            >
-              <i class="bi bi-calendar-check"></i> Book Now
-            </a>
+          <div class="col-md-6">
+            <div class="specs-section">
+              <h3>Location & Price</h3>
+              <ul class="specs-list">
+                <li>Location: R.V.R & J.C College of Engineering</li>
+                <li>Base Price: ₹500</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
 
-    <!-- Vendor JS Files -->
-    <script src="../../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/js/main.js"></script>
+        <div class="description">
+          <h3>Description</h3>
+          <p>
+            A slotting machine is a reciprocating type of machine tool where the
+            cutting tool moves up and down in a vertical slide. It is used for
+            machining internal features like keyways, splines, and various
+            slots. The machine is particularly useful for work that cannot be
+            done by a shaper or planer.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScmCqJwdSLl9VY8rC0ffjclfHGVPUoO9HdFFgUFTJe0Mtit0Q/viewform"
+            class="book-button"
+            >Book Now</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
