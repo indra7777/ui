@@ -1,435 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <title>Infraseek - Uncalled Innovators</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
     <!--favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../public/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../public/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../public/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="../public/favicon/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="../public/favicon/safari-pinned-tab.svg"
-      color="#5bbad5"
-    />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
-
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../public/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
     <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+    <link href="../public/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../public/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../public/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../public/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
-    <link
-      href="../public/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <!-- Template Main CSS File -->
+    <link href="../public/css/infrastructure.css" rel="stylesheet">
+    <link href="../public/css/styles.css" rel="stylesheet">
+    <link href="../public/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/ctry.css">
 
-    <!-- Main CSS -->
     <style>
-      :root {
-        --primary-color: #8e4574;
-        --secondary-color: #ff7eff;
-        --background-color: #f8f9fa;
-        --text-color: #333;
-        --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        --transition: all 0.3s ease;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        background: var(--background-color);
-        color: var(--text-color);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .header {
-        background: #fff;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        padding: 15px 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 100;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .infraseek-hero {
-        padding: 120px 0 60px;
-        background: linear-gradient(135deg, #ffe6e6 0%, #dfc2f2 100%);
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-      }
-
-      .hero-content p {
-        font-size: 1.1rem;
-        color: #666;
-        margin-bottom: 30px;
-      }
-
-      .infraseek-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        padding: 0 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .infraseek-card {
-        background: #fff;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--card-shadow);
-        transition: var(--transition);
-        position: relative;
-      }
-
-      .infraseek-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .card-content {
-        padding: 25px;
-      }
-
-      .card-title {
-        font-size: 1.4rem;
-        color: var(--primary-color);
-        margin-bottom: 15px;
-      }
-
-      .card-description {
-        font-size: 0.95rem;
-        color: #666;
-        margin-bottom: 20px;
-      }
-
-      .card-action {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .btn-primary {
-        background: var(--primary-color);
-        color: #fff;
-        padding: 10px 25px;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-
-      .btn-primary:hover {
-        background: var(--secondary-color);
-        transform: translateY(-2px);
-      }
-
-      .card-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(142, 69, 116, 0.9);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: var(--transition);
-        padding: 20px;
-        color: #fff;
-      }
-
-      .infraseek-card:hover .card-overlay {
-        opacity: 1;
-      }
-
-      .overlay-content {
-        max-height: 100%;
-        overflow-y: auto;
-        padding: 20px;
-      }
-
-      .overlay-content h3 {
-        margin-bottom: 15px;
-        font-size: 1.2rem;
-      }
-
-      .overlay-content p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-      }
-
-      @media (max-width: 768px) {
-        .infraseek-hero {
-          padding: 100px 0 40px;
+        :root {
+            --primary-color: #8e4574;
+            --secondary-color: #ff7eff;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
         }
 
-        .hero-content h1 {
-          font-size: 2rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-        .infraseek-grid {
-          grid-template-columns: 1fr;
-          padding: 0 15px;
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
         }
 
-        .card-content {
-          padding: 20px;
-        }
-      }
-
-      /* Mobile Navigation */
-      .mobile-nav-toggle {
-        font-size: 28px;
-        cursor: pointer;
-        display: none;
-        color: var(--primary-color);
-      }
-
-      @media (max-width: 1024px) {
-        .mobile-nav-toggle {
-          display: block;
-          position: fixed;
-          right: 20px;
-          top: 20px;
-          z-index: 9999;
+        .search-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .navbar {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 100%;
-          max-width: 400px;
-          bottom: 0;
-          transition: 0.3s;
-          z-index: 9997;
+        .search-container input,
+        .search-container select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
         }
 
-        .navbar ul {
-          position: absolute;
-          inset: 0;
-          padding: 50px 0 10px 0;
-          margin: 0;
-          background: rgba(255, 255, 255, 0.9);
-          overflow-y: auto;
-          transition: 0.3s;
-          z-index: 9998;
+        .search-container button {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .navbar.mobile-nav-active {
-          right: 0;
+        .search-container button:hover {
+            background: var(--secondary-color);
         }
-      }
+
+        .course-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .course-content h3 a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .course-content h3 a:hover {
+            color: var(--secondary-color);
+        }
+
+        .course-content p {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+
+            .search-container input,
+            .search-container select,
+            .search-container button {
+                width: 100%;
+            }
+
+            .course-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        .vertical-container {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            height: 100vh;
+            background: white;
+            padding: 20px;
+            width: 250px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .vertical-container.active {
+            right: 0;
+        }
+
+        .dots-container {
+            cursor: pointer;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1001;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin: 3px 0;
+        }
+
+        #main {
+            padding-top: 100px;
+        }
     </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
-          <img src="../public/img/ui_full.png" alt="Uncalled Innovators" />
-        </a>
 
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a href="/hackathon">Hackathon</a></li>
-            <li><a href="/explore">Challenges</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/infra">Infraseek</a></li>
-            <li><a href="/">Home</a></li>
-            <li>
-              <a href="/profile"
-                ><img
-                  id="avatarImage"
-                  width="10%"
-                  height="8%"
-                  src="<%=user.image%>"
-                  alt="Profile"
-              /></a>
-            </li>
-          </ul>
-        </nav>
+    <!-- =======================================================
+  * Template Name: Mentor
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    .img-fluid {
+    width: auto;
+    height: 55%;
+}
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      </div>
-    </header>
+  </style>
 
-    <!-- Hero Section -->
-    <section class="infraseek-hero">
-      <div class="hero-content">
-        <h1>Welcome to Infraseek</h1>
-        <p>
-          Discover cutting-edge infrastructure solutions and innovations that
-          shape the future of technology.
-        </p>
-      </div>
-    </section>
+</head>
 
-    <!-- Main Content -->
-    <div class="infraseek-grid">
-      <!-- Card 1 -->
-      <div class="infraseek-card">
-        <div class="card-image">
-          <img src="../public/img/about.jpg" alt="Infrastructure Solution" />
-        </div>
-        <div class="card-content">
-          <h3 class="card-title">Smart City Infrastructure</h3>
-          <p class="card-description">
-            Innovative solutions for modern urban development and smart city
-            infrastructure management.
-          </p>
-          <div class="card-action">
-            <a href="#" class="btn-primary">Learn More</a>
-          </div>
-        </div>
-        <div class="card-overlay">
-          <div class="overlay-content">
-            <h3>Smart City Details</h3>
-            <p>
-              Our smart city infrastructure solutions incorporate IoT sensors,
-              data analytics, and automated systems to create efficient and
-              sustainable urban environments. Features include:
-            </p>
-            <ul>
-              <li>Intelligent traffic management</li>
-              <li>Smart waste management</li>
-              <li>Energy-efficient lighting</li>
-              <li>Environmental monitoring</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
 
-      <!-- Card 2 -->
-      <div class="infraseek-card">
-        <div class="card-image">
-          <img src="../public/img/about-2.jpg" alt="Digital Infrastructure" />
+    <!-- ======= Header ======= -->
+    <!-- <header id="header" class="header fixed-top d-flex align-items">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+                
+                <img src="../public/img/logo.jpg" alt="">
+               
+            </a>
+        
+            <div class="search-container mx-auto">
+                <input type="text" id="searchBar" placeholder="Search for Infra...">
+                <select id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Location1">Guntur</option>
+                   
+                </select>
+                <button type="submit"><i class="fa fa-search">search</i></button>
+            </div>
+        
+            <a href="/profile"><img id="avatarImage" width="10%" height="8%" src="<%=user.image%>" alt="bear"></a>
         </div>
-        <div class="card-content">
-          <h3 class="card-title">Digital Infrastructure</h3>
-          <p class="card-description">
-            Next-generation digital infrastructure solutions for enterprise and
-            cloud computing.
-          </p>
-          <div class="card-action">
-            <a href="#" class="btn-primary">Explore</a>
-          </div>
-        </div>
-        <div class="card-overlay">
-          <div class="overlay-content">
-            <h3>Digital Infrastructure Solutions</h3>
-            <p>
-              Comprehensive digital infrastructure solutions designed for modern
-              enterprises:
-            </p>
-            <ul>
-              <li>Cloud computing integration</li>
-              <li>Network optimization</li>
-              <li>Security infrastructure</li>
-              <li>Scalable architecture</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    </header> -->
+    <!-- End Header -->
+    <div class="header">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="/" class="logo">
+                    <img src="../public/img/logo.jpg" alt="Your Logo" style="height: 50px;">
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search for Infra...">
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="Location1">Guntur</option>
+                    </select>
+                    <button type="submit"><i class="bi bi-search"></i> Search</button>
+                </div>
 
-      <!-- Card 3 -->
-      <div class="infraseek-card">
-        <div class="card-image">
-          <img src="../public/img/about.jpg" alt="Sustainable Infrastructure" />
+                <div class="dots-container" id="menuToggle">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
         </div>
-        <div class="card-content">
-          <h3 class="card-title">Sustainable Infrastructure</h3>
-          <p class="card-description">
-            Eco-friendly infrastructure solutions for a sustainable future.
-          </p>
-          <div class="card-action">
-            <a href="#" class="btn-primary">Discover</a>
-          </div>
-        </div>
-        <div class="card-overlay">
-          <div class="overlay-content">
-            <h3>Sustainability Features</h3>
-            <p>
-              Our sustainable infrastructure solutions focus on environmental
-              preservation and resource efficiency:
-            </p>
-            <ul>
-              <li>Renewable energy integration</li>
-              <li>Water conservation systems</li>
-              <li>Green building technologies</li>
-              <li>Waste reduction solutions</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
 
+    <div class="vertical-container" id="menu">
+        <div class="user-profile mb-4">
+            <img src="<%=user.image%>" alt="User Avatar" class="avatar" style="width: 60px; height: 60px; border-radius: 50%;">
+            <p class="user-name mt-2">User</p>
+        </div>
+        <div class="nav-links d-flex flex-column gap-3">
+            <a href="/blogs" class="nav-link">Blogs</a>
+            <a href="/infra" class="nav-link">Infraseek</a>
+            <a href="/explore" class="nav-link">Challenges</a>
+            <a href="/logout" class="nav-link">Logout</a>
+        </div>
+        <div class="social-links mt-auto">
+            <div class="d-flex gap-3 mt-4">
+                <a href="https://www.linkedin.com/in/uncalled-innovators-100016294" target="_blank">
+                    <img src="../public/Icons/linkedin.png" alt="LinkedIn" style="width: 24px;">
+                </a>
+                <a href="https://www.instagram.com/uncalled_innovators" target="_blank">
+                    <img src="../public/Icons/instagram.png" alt="Instagram" style="width: 24px;">
+                </a>
+                <a href="https://x.com/TeamUncalled" target="_blank">
+                    <img src="../public/Icons/twitter.png" alt="Twitter" style="width: 24px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main id="main" data-aos="fade-in" class="aos-init aos-animate">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <!-- <div class="breadcrumbs">
+            <div class="container">
+                <h2>Infraseek</h2>
+            
+            </div>
+        </div> -->
+        <!-- End Breadcrumbs -->
+
+        <!-- ======= Courses Section ======= -->
+        <section id="courses" class="courses">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+
+                <div class="row aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine1.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="../public/infra/radial.html">Radial Drilling Machine</a></h3>
+                                <p>A radial drilling machine consists of a large, column-mounted drill head with a
+                                radial arm that can be moved around the column.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                                    <!-- <div class="trainer-rank d-flex align-items-center">
+                                        <i class="bx bx-user"></i>&nbsp;50
+                                        &nbsp;&nbsp;
+                                        <i class="bx bx-heart"></i>&nbsp;65
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine2.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="../public/infra/Slotting.html">Slotting Machine</a></h3>
+                                <p>A slotting machine features a vertical ram with a cutting tool and a worktable
+                                for securing the workpiece.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                    
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine4.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/Shaping.html">Shaping Machine</a></h3>
+                                <p>A shaping machine features a horizontal ram with a mounted cutting tool and a worktable for securing
+                                    the workpiece.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine3.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+
+                                <h3><a href="../public/infra/Centre.html">Centre Less Grinding Machine</a></h3>
+                                <p>A centerless grinder features a grinding wheel, regulating wheel, and workrest
+                                blade. The cylindrical workpiece sits between the grinding and regulating wheels.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                     
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine9.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/Wear.html">Wear and Friction Monitor</a></h3>
+                                <p>A Wear and Friction Monitor is an instrument designed to quantify and monitor the wear and friction
+                                between interacting surfaces.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                      
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine5.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 500</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/3-Dprinter.html">3-D printer (ABS plastic only)</a></h3>
+                                <p>A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a
+                                traditional ball mill, typically used in laboratories and research settings.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine7.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/inverted.html">Inverted Optical Metallurgical Microscope</a></h3>
+                                <p>An inverted metallurgical microscope is a specialized optical instrument designed
+                                for examining opaque materials, typically metallic samples, in various fields such as metallurgy,
+                                material science, and quality control.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                       
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine8.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/Tubular.html">Tubular Furnace</a></h3>
+                                <p>A tubular furnace typically consists of a cylindrical heating chamber, often made of refractory
+                                materials, and an electric heating element located along the tube's length.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="course-item">
+                            <img src="../public/img/infra/Machine6.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>RVR & JC</h4>
+                                    <p class="price">&#8377 5000</p>
+                                </div>
+                    
+                                <h3><a href="../public/infra/Mini.html">Mini Ball Mill (Four Bowl Configuration)</a></h3>
+                                <p>A Mini Ball Mill with a four-bowl configuration is a scaled-down version of a traditional ball mill, typically used in
+                                laboratories and research settings. It features a compact design with four grinding bowls arranged symmetrically around
+                                the central axis.</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        
+                                        <!--<span>RVR & JC</span> -->
+                                    </div>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- End Course Item-->
+
+                </div>
+
+            </div>
+        </section><!-- End Courses Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <!-- End Footer -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
     <!-- Vendor JS Files -->
+    <script src="../public/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../public/vendor/aos/aos.js"></script>
     <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../public/js/main.js"></script>
-  </body>
+    <script src="../public/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../public/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../public/js/infra.js"></script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.getElementById('menuToggle');
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const location = document.getElementById('locationFilter').value;
+            filterItems(searchTerm, location);
+        });
+
+        document.getElementById('locationFilter').addEventListener('change', function(e) {
+            const location = e.target.value;
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            filterItems(searchTerm, location);
+        });
+
+        function filterItems(searchTerm, location) {
+            const items = document.querySelectorAll('.course-item');
+            items.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const itemLocation = item.querySelector('h4').textContent;
+                const matchesSearch = title.includes(searchTerm);
+                const matchesLocation = !location || itemLocation.includes(location);
+                item.closest('.col-lg-4').style.display = 
+                    (matchesSearch && matchesLocation) ? 'block' : 'none';
+            });
+        }
+    </script>
+
+    
+
+
+</body>
+
 </html>
