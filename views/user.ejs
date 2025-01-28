@@ -124,6 +124,9 @@
                   <div class="card-back" id="class-back">
                     <div class="center-wrap">
                       <div class="section text-center">
+                        <a href="/user" class="btn btn-secondary back-btn"
+                          ><i class="back-btn"></i> Log in</a
+                        >
                         <h4 class="mb-3 pb-3">Sign Up</h4>
                         <% if (typeof registerError !== 'undefined') { %>
                         <div class="alert alert-danger mt-3">
@@ -138,13 +141,14 @@
                           <div class="form-group mt-2">
                             <select
                               name="role"
-                              id="userType"
+                              id="name"
                               class="form-select form-style"
                               aria-label="Default select example"
                             >
-                              <option value="student" selected>Student</option>
-                              <option value="industry">Industry</option>
-                              <option value="verify">Verify Team</option>
+                              <option selected>Select type of user</option>
+                              <option value="sform">Seeker</option>
+                              <option value="vform">Verify Team</option>
+                              <option value="iform">Industry</option>
                             </select>
                             <i class="input-icon uil-user"></i>
                           </div>
@@ -479,7 +483,7 @@
           .change();
 
         // Signup form type change
-        $("#userType").change(function () {
+        $("#name").change(function () {
           const selectedType = $(this).val();
 
           // Hide all specific fields first
@@ -487,15 +491,15 @@
 
           // Show fields based on selection
           switch (selectedType) {
-            case "student":
+            case "sform":
               $("#studentFields").show();
               $("#signupForm").attr("action", "/student/signup");
               break;
-            case "industry":
+            case "iform":
               $("#industryFields").show();
               $("#signupForm").attr("action", "/industry/signup");
               break;
-            case "verify":
+            case "vform":
               $("#verifyFields").show();
               $("#signupForm").attr("action", "/verify/signup");
               break;
