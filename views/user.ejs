@@ -1,367 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Uncalled Innovators</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/authentication.css">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../public/css/authentication.css" />
     <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="section">
-        <div class="container">
-            <div class="row full-height justify-content-center">
-                <div class="col-12 text-center align-self-center py-5">
-                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                        <!-- <div class="form-header"> -->
-                        <h6 id="label-ls" class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                        <label for="reg-log"></label>
-                        <!-- </div> -->
-                        <div class="card-3d-wrap mx-auto">
-                            <!-- login form -->
-                            <div class="card-3d-wrapper">
-                                <div class="card-front">
-                                    <div class="center-wrap">
-                                        <form id="login-method" action="/login" method="post"> 
-                                        <div class="section text-center">
-                                            <h4 class="mb-4 pb-3">Log In</h4>
-                                            <div class="form-group">
-                                                <input name="email" type="email" class="form-style" placeholder="Email">
-                                                <i class="input-icon uil uil-at"></i>
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <input name="password" type="password" class="form-style" placeholder="Password">
-                                                <i class="input-icon uil uil-lock-alt"></i>
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <select  name="login-type" class="form-select form-style"
-                                                    aria-label="Default select example">
-                                                    <option selected>Select type of user</option>
-                                                    <option value="1">Seeker</option>
-                                                    <option value="2">Verify Team</option>
-                                                    <option value="3">Industry</option>
-                                                </select>
-                                                <i class="input-icon uil-user"></i>
-                                            </div>
+      <div class="container">
+        <div class="row full-height justify-content-center">
+          <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center">
+              <!-- <div class="form-header"> -->
+              <h6 id="label-ls" class="mb-0 pb-3">
+                <span>Log In </span><span>Sign Up</span>
+              </h6>
+              <input
+                class="checkbox"
+                type="checkbox"
+                id="reg-log"
+                name="reg-log"
+              />
+              <label for="reg-log"></label>
+              <!-- </div> -->
+              <div class="card-3d-wrap mx-auto">
+                <!-- login form -->
+                <div class="card-3d-wrapper">
+                  <div class="card-front">
+                    <div class="center-wrap">
+                      <form id="login-method" action="/login" method="post">
+                        <div class="section text-center">
+                          <h4 class="mb-4 pb-3">Log In</h4>
+                          <div class="form-group">
+                            <input
+                              name="email"
+                              type="email"
+                              class="form-style"
+                              placeholder="Email"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              name="password"
+                              type="password"
+                              class="form-style"
+                              placeholder="Password"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <select
+                              name="login-type"
+                              class="form-select form-style"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Select type of user</option>
+                              <option value="1">Seeker</option>
+                              <option value="2">Verify Team</option>
+                              <option value="3">Industry</option>
+                            </select>
+                            <i class="input-icon uil-user"></i>
+                          </div>
 
-                                           <button class="btn mt-4"  type="submit">Log In</button>
-                                            <% if (typeof loginError !== 'undefined') { %>
-                                            <div class="alert alert-danger mt-3">
-                                                <%= loginError %>
-                                            </div>
-                                            <% } %>
-                                            <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
-                                                    class="link">Forgot your password?</a></p>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                           
-                                <!-- signup form -->
-                                <div class="card-back" id="class-back">
-                                    <div class="center-wrap">
-                                        <div class="section text-center">
-                                            <a href="/user" class="btn btn-secondary back-btn"><i class="back-btn"></i> Log in</a>
-                                            <h4 class="mb-3 pb-3">Sign Up</h4>
-                                            <% if (typeof registerError !== 'undefined') { %>
-                                            <div class="alert alert-danger mt-3">
-                                                <%= registerError %>
-                                            </div>
-                                            <% } %>
-                                            <div class="form-group mt-2">
-                                                <select name="role" id="name" class="form-select form-style"
-                                                    aria-label="Default select example">
-                                                    <option selected>Select type of user</option>
-                                                    <option value="sform">Seeker</option>
-                                                    <option value="vform">Verify Team</option>
-                                                    <option value="iform">Industry</option>
-                                                </select>
-                                                <i class="input-icon uil-user"></i>
-                                            </div>
-                                            <form action="/student/signup" method="post">
-                                                <div class="data sform mt-2" id="sform">
-                                                    <!-- Student fields -->
-                                                    <!-- ... Your existing student fields ... -->
-                                                   
-
-                                                    <div class="form-group mt-2">
-                                                        <img id="avatarImage" width="100px" height="100px" src="../public/img/seeker/BEAR.png" alt="bear">
-                                                    </div>
-                                                    <div class="form-group mt-2">
-                                                        <select id="avatar" name="avatar" class="form-select form-style" aria-label="Default select example">
-                                                            <!-- <option selected>avatar</option> -->
-                                                            <option selected value="../public/img/seeker/BEAR.png"><img src="../public/img/seeker/BEAR.png" alt="bear">Bear</option>
-                                                            <option value="../public/img/seeker/CIMPANZEE.png""><img src="../public/img/seeker/CIMPANZEE.png" alt="Cimpanzee">Cimpanzee</option>
-                                                            <option value="../public/img/seeker/ELEPHANT.png"><img src="../public/img/seeker/ELEPHANT.png" alt="bear">Elephant</option>
-                                                            <option value="../public/img/seeker/HIPPO.png"><img src="../public/img/seeker/HIPPO.png" alt="bear">Hippo</option>
-                                                            <option value="../public/img/seeker/LION.png"><img src="../public/img/seeker/LION.png" alt="bear">Lion</option>
-                                                            <option value="../public/img/seeker/OCTOPUS.png"><img src="../public/img/seeker/OCTOPUS.png" alt="bear">Octopus</option>
-                                                            <option value="../public/img/seeker/PANDA.png"><img src="../public/img/seeker/PANDA.png" alt="bear">Panda</option>
-                                                            <option value="../public/img/seeker/PIG.png"><img src="../public/img/seeker/PIG.png" alt="bear">Pig</option>
-                                                            <option value="../public/img/seeker/RHINO.png"><img src="../public/img/seeker/RHINO.png" alt="bear">Rhino</option>
-                                                            <option value="../public/img/seeker/ZEBRA.png"><img src="../public/img/seeker/ZEBRA.png" alt="bear">Zebra</option>
-                                                    
-                                                        </select>
-                                                        <i class="input-icon uil-user"></i>
-                                                    </div>
-                                                    <div class="form-group mt-2">
-                                                        <input name="name" type="text" class="form-style" placeholder="Full Name">
-                                                        <i class="input-icon uil uil-user"></i>
-                                                    </div>
-                                                    
-                                                    <div class="form-group mt-2">
-                                                        <input name="collegeName" type="text" class="form-style" placeholder="College Name">
-                                                        <i class="input-icon uil uil-user"></i>
-                                                    </div>
-                                                    
-                                                    <!-- <div class="form-group mt-2">
-                                                        <input name="registrationNumber" type="text" class="form-style" placeholder="Registration Number">
-                                                        <i class="input-icon uil uil-user"></i>
-                                                    </div>
-                                                     -->
-                                                <div class="form-group mt-2">
-                                                    <select name="stream" class="form-select form-style" aria-label="Default select example">
-                                                        <option selected>Stream</option>
-                                                        <option value="B.Tech">B.Tech</option>
-                                                        <option value="M.Tech">M.Tech</option>
-                                                        <option value="Diploma">Diploma </option>
-                                                        <option value="ITI">ITI </option>
-                                                    </select>
-                                                    <i class="input-icon uil-user"></i>
-                                                </div>
-                                                    
-                                                    <div class="form-group mt-2">
-                                                        <select name="branch" class="form-select form-style" aria-label="Default select example">
-                                                            <option selected>Branch</option>
-                                                            <option value="MECH">MECH</option>
-                                                            <option value="CIVIL">CIVIL </option>
-                                                            <option value="ECE">ECE</option>
-                                                            <option value="EEE">EEE </option>
-                                                            <option value="CSE">CSE</option>
-                                                            <option value="CHE">CHE </option>
-                                                            <option value="Other">Other </option>
-                                                        </select>
-                                                        <i class="input-icon uil-user"></i>
-                                                    </div>
-                                                    <div class="form-group mt-2">
-                                                        <input name="currentYear" type="number" class="form-style" placeholder="Current Year">
-                                                        <i class="input-icon uil uil-at"></i>
-                                                    </div>
-                                                    <div class="form-group mt-2">
-                                                        <input name="passedOutYear" type="number" class="form-style" placeholder="Pass out Year">
-                                                        <i class="input-icon uil uil-at"></i>
-                                                    </div>
-                                                    
-                                                    <div class="form-group mt-2">
-                                                        <input name="email" type="email" class="form-style" placeholder="Email">
-                                                        <i class="input-icon uil uil-at"></i>
-                                                    </div>
-                                                    
-                                                    <div class="form-group mt-2">
-                                                        <input name="password" type="password" class="form-style" placeholder="Password">
-                                                        <i class="input-icon uil uil-lock-alt"></i>
-                                                    </div>
-                                                    
-                                                    <div class="form-group mt-2">
-                                                        <input name="phone" type="tel" class="form-style" placeholder="Phone Number">
-                                                        <i class="input-icon uil uil-phone-alt"></i>
-                                                    </div>
-                                                    
-                                                    <button class="btn btn-primary mt-2" type="submit">Register</button>
-                                                </div>
-                                                
-                                            </form>
-                                            <form action="/industry/signup" method="post">
-                                            <div class="data iform mt-2" id="iform">
-                                                <!-- industry Team fields -->
-                                                <!-- ... Your existing verify team fields ... -->
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="name" type="text" class="form-style" placeholder="Full Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="industryName" type="text" class="form-style" placeholder="Industry Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="employeeID" type="text" class="form-style" placeholder="Employee ID">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="role" type="text" class="form-style" placeholder="Role in the company">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="siteLink" type="text" class="form-style" placeholder="Official site link">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="email" type="email" class="form-style" placeholder=" Official Mail id">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
-                                            
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="officialNumber" type="tel" class="form-style" placeholder="official Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="personalNumber" type="tel" class="form-style" placeholder="Personal Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="password" type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                <button class="btn btn-primary mt-2" type="submit">Register</button>
-                                            </div>
-                                            </form>
-                                           <form action="verify/signup" method="post">
-
-                                           
-                                            <div class="data vform mt-2" id="vform">
-                                                <!-- verify team fields -->
-                                                <!-- ... Your existing industry fields ... -->
-                                                <div class="form-group mt-2">
-                                                    <input name="name" type="text" class="form-style" placeholder="Full Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="collegeName" type="text" class="form-style" placeholder="College Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="designation" type="text" class="form-style" placeholder="Designation">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                
-                                                
-                                                <div class="form-group mt-2">
-                                                    <select name="dept" class="form-select form-style" aria-label="Default select example">
-                                                        <option selected>Branch</option>
-                                                        <option value="MECH">MECH</option>
-                                                        <option value="CIVIL">CIVIL </option>
-                                                        <option value="ECE">ECE</option>
-                                                        <option value="EEE">EEE </option>
-                                                        <option value="CSE">CSE</option>
-                                                        <option value="CHE">CHE </option>
-                                                        <option value="Other">Other </option>
-                                                    </select>
-                                                    <i class="input-icon uil-user"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="areaOfExpertise" type="text" class="form-style" placeholder="Area of expertise">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="experience" type="text" class="form-style" placeholder="No of years of experience">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="email" type="email" class="form-style" placeholder="email">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
-                                                
-                                                <div class="form-group mt-2">
-                                                    <input name="phone" type="tel" class="form-style" placeholder=" Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <input name="password" type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                <button class="btn btn-primary mt-2" type="submit">Register</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                </div>
-                             
-                                <!-- signup form end -->
-                            </div>
+                          <button class="btn mt-4" type="submit">Log In</button>
+                          <% if (typeof loginError !== 'undefined') { %>
+                          <div class="alert alert-danger mt-3">
+                            <%= loginError %>
+                          </div>
+                          <% } %>
+                          <p class="mb-0 mt-4 text-center">
+                            <a href="https://www.web-leb.com/code" class="link"
+                              >Forgot your password?</a
+                            >
+                          </p>
                         </div>
+                      </form>
                     </div>
+                  </div>
+
+                  <!-- signup form -->
+                  <div class="card-back" id="class-back">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-3 pb-3">Sign Up</h4>
+                        <% if (typeof registerError !== 'undefined') { %>
+                        <div class="alert alert-danger mt-3">
+                          <%= registerError %>
+                        </div>
+                        <% } %>
+                        <form
+                          id="signupForm"
+                          action="/student/signup"
+                          method="post"
+                        >
+                          <div class="form-group mt-2">
+                            <select
+                              name="role"
+                              id="userType"
+                              class="form-select form-style"
+                              aria-label="Default select example"
+                            >
+                              <option value="student" selected>Student</option>
+                              <option value="industry">Industry</option>
+                              <option value="verify">Verify Team</option>
+                            </select>
+                            <i class="input-icon uil-user"></i>
+                          </div>
+
+                          <!-- Common Fields for All Users -->
+                          <div class="form-group mt-2">
+                            <input
+                              name="name"
+                              type="text"
+                              class="form-style"
+                              placeholder="Full Name"
+                              required
+                            />
+                            <i class="input-icon uil uil-user"></i>
+                          </div>
+
+                          <div class="form-group mt-2">
+                            <input
+                              name="email"
+                              type="email"
+                              class="form-style"
+                              placeholder="Email"
+                              required
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+
+                          <div class="form-group mt-2">
+                            <input
+                              name="password"
+                              type="password"
+                              class="form-style"
+                              placeholder="Password"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+
+                          <div class="form-group mt-2">
+                            <input
+                              name="phone"
+                              type="tel"
+                              class="form-style"
+                              placeholder="Phone Number"
+                              required
+                            />
+                            <i class="input-icon uil uil-phone-alt"></i>
+                          </div>
+
+                          <!-- Student Specific Fields -->
+                          <div id="studentFields">
+                            <div class="form-group mt-2">
+                              <img
+                                id="avatarImage"
+                                width="100px"
+                                height="100px"
+                                src="../public/img/seeker/BEAR.png"
+                                alt="bear"
+                              />
+                            </div>
+                            <div class="form-group mt-2">
+                              <select
+                                id="avatar"
+                                name="avatar"
+                                class="form-select form-style"
+                              >
+                                <option
+                                  selected
+                                  value="../public/img/seeker/BEAR.png"
+                                >
+                                  Bear
+                                </option>
+                                <option
+                                  value="../public/img/seeker/CIMPANZEE.png"
+                                >
+                                  Cimpanzee
+                                </option>
+                                <option
+                                  value="../public/img/seeker/ELEPHANT.png"
+                                >
+                                  Elephant
+                                </option>
+                                <option value="../public/img/seeker/HIPPO.png">
+                                  Hippo
+                                </option>
+                                <option value="../public/img/seeker/LION.png">
+                                  Lion
+                                </option>
+                                <option
+                                  value="../public/img/seeker/OCTOPUS.png"
+                                >
+                                  Octopus
+                                </option>
+                                <option value="../public/img/seeker/PANDA.png">
+                                  Panda
+                                </option>
+                                <option value="../public/img/seeker/PIG.png">
+                                  Pig
+                                </option>
+                                <option value="../public/img/seeker/RHINO.png">
+                                  Rhino
+                                </option>
+                                <option value="../public/img/seeker/ZEBRA.png">
+                                  Zebra
+                                </option>
+                              </select>
+                              <i class="input-icon uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="collegeName"
+                                type="text"
+                                class="form-style"
+                                placeholder="College Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <select
+                                name="stream"
+                                class="form-select form-style"
+                              >
+                                <option value="">Select Stream</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="M.Tech">M.Tech</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="ITI">ITI</option>
+                              </select>
+                              <i class="input-icon uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <select
+                                name="branch"
+                                class="form-select form-style"
+                              >
+                                <option value="">Select Branch</option>
+                                <option value="MECH">MECH</option>
+                                <option value="CIVIL">CIVIL</option>
+                                <option value="ECE">ECE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="CSE">CSE</option>
+                                <option value="CHE">CHE</option>
+                                <option value="Other">Other</option>
+                              </select>
+                              <i class="input-icon uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="currentYear"
+                                type="number"
+                                class="form-style"
+                                placeholder="Current Year"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="passedOutYear"
+                                type="number"
+                                class="form-style"
+                                placeholder="Pass out Year"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                          </div>
+
+                          <!-- Industry Specific Fields -->
+                          <div id="industryFields" style="display: none">
+                            <div class="form-group mt-2">
+                              <input
+                                name="industryName"
+                                type="text"
+                                class="form-style"
+                                placeholder="Industry Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="employeeID"
+                                type="text"
+                                class="form-style"
+                                placeholder="Employee ID"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="role"
+                                type="text"
+                                class="form-style"
+                                placeholder="Role in the company"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="siteLink"
+                                type="text"
+                                class="form-style"
+                                placeholder="Official site link"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="officialNumber"
+                                type="tel"
+                                class="form-style"
+                                placeholder="Official Phone Number"
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                            </div>
+                          </div>
+
+                          <!-- Verify Team Specific Fields -->
+                          <div id="verifyFields" style="display: none">
+                            <div class="form-group mt-2">
+                              <input
+                                name="collegeName"
+                                type="text"
+                                class="form-style"
+                                placeholder="College Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="designation"
+                                type="text"
+                                class="form-style"
+                                placeholder="Designation"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <select
+                                name="dept"
+                                class="form-select form-style"
+                              >
+                                <option value="">Select Branch</option>
+                                <option value="MECH">MECH</option>
+                                <option value="CIVIL">CIVIL</option>
+                                <option value="ECE">ECE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="CSE">CSE</option>
+                                <option value="CHE">CHE</option>
+                                <option value="Other">Other</option>
+                              </select>
+                              <i class="input-icon uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="areaOfExpertise"
+                                type="text"
+                                class="form-style"
+                                placeholder="Area of expertise"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="experience"
+                                type="text"
+                                class="form-style"
+                                placeholder="No of years of experience"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                          </div>
+
+                          <button type="submit" class="btn mt-4">
+                            Register
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- signup form end -->
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
-
     <script>
-        var login = true;
-        $(document).ready(function () {
-             $('select[name="login-type"]').change(function () {
-                var action;
-                switch ($(this).val()) {
-                    case '1':
-                        action = '/login/student';
-                        break;
-                    case '2':
-                        action = '/login/team';
-                        break;
-                    case '3':
-                        action = '/login/industry';
-                        break;
-                    default:
-                        action = '/login';
-                        break;
-                }
-                $('#login-method').attr('action', action);
-            });
-            $("#reg-log").on('change', function () {
-                if(login){
-                    $('.card-back').show();
-                    $('.card-front').hide();
-                    $('#label-ls').hide()
-                    $('label').hide();
-                    $('.chechbox').hide()
-                    login = false;
-                }else{
-                    $('.card-back').hide();
-                    $('.card-front').show();
-                    $('#label-ls').show();
-                    
-                    login = true;
-                }
-            });
-
-            $("#name").on('change', function () {
-                $(".data").hide();
-                $("#" + $(this).val()).fadeIn(500);
-                
-            }).change();
+      var login = true;
+      $(document).ready(function () {
+        $('select[name="login-type"]').change(function () {
+          var action;
+          switch ($(this).val()) {
+            case "1":
+              action = "/login/student";
+              break;
+            case "2":
+              action = "/login/team";
+              break;
+            case "3":
+              action = "/login/industry";
+              break;
+            default:
+              action = "/login";
+              break;
+          }
+          $("#login-method").attr("action", action);
         });
-         document.getElementById('avatar').addEventListener('change', function () {
-               
-                document.getElementById('avatarImage').src = this.value;
-            });
+        $("#reg-log").on("change", function () {
+          if (login) {
+            $(".card-back").show();
+            $(".card-front").hide();
+            $("#label-ls").hide();
+            $("label").hide();
+            $(".chechbox").hide();
+            login = false;
+          } else {
+            $(".card-back").hide();
+            $(".card-front").show();
+            $("#label-ls").show();
+
+            login = true;
+          }
+        });
+
+        $("#name")
+          .on("change", function () {
+            $(".data").hide();
+            $("#" + $(this).val()).fadeIn(500);
+          })
+          .change();
+
+        // Signup form type change
+        $("#userType").change(function () {
+          const selectedType = $(this).val();
+
+          // Hide all specific fields first
+          $("#studentFields, #industryFields, #verifyFields").hide();
+
+          // Show fields based on selection
+          switch (selectedType) {
+            case "student":
+              $("#studentFields").show();
+              $("#signupForm").attr("action", "/student/signup");
+              break;
+            case "industry":
+              $("#industryFields").show();
+              $("#signupForm").attr("action", "/industry/signup");
+              break;
+            case "verify":
+              $("#verifyFields").show();
+              $("#signupForm").attr("action", "/verify/signup");
+              break;
+          }
+        });
+
+        // Avatar image change
+        $("#avatar").change(function () {
+          $("#avatarImage").attr("src", $(this).val());
+        });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
