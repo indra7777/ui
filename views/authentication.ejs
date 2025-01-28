@@ -1,182 +1,472 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Webleb</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!--favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-<link rel="manifest" href="../public/favicon/site.webmanifest">
-<link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../public/css/authentication.css">
-</head>
-<body>
-	<div class="section">
-		<div class="container">
-			<div class="row full-height justify-content-center">
-				<div class="col-12 text-center align-self-center py-5">
-					<div class="section pb-5 pt-5 pt-sm-2 text-center">
-						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-			          	<label for="reg-log"></label>
-						<div class="card-3d-wrap mx-auto">
-							<div class="card-3d-wrapper">
-								<div class="card-front">
-									<div class="center-wrap">
-										<div class="section text-center">
-											<h4 class="mb-4 pb-3">Log In</h4>
-											<div class="form-group">
-												<input type="email" class="form-style" placeholder="Email">
-												<i class="input-icon uil uil-at"></i>
-											</div>	
-											<div class="form-group mt-2">
-												<input type="password" class="form-style" placeholder="Password">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<div class="form-group mt-2">
-												<select class="form-select form-style" aria-label="Default select example">
-													<option selected>Select type of user</option>
-													<option value="1">Student</option>
-													<option value="2">Verify Team</option>
-													<option value="3">Indutsry</option>
-													
-												  </select>
-												  <i class="input-icon uil-user"></i>
-											</div>
-											
-											<a href="https://www.web-leb.com/code" class="btn mt-4">Login</a>
-                    						<p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code" class="link">Forgot your password?</a></p>
-				      					</div>
-			      					</div>
-			      				</div>
-								<div class="card-back" id="class-back">
-									<div class="center-wrap">
-										<div class="section text-center">
-											<h4 class="mb-3 pb-3">Sign Up</h4>
-											<div class="form-group mt-2">
-												<select id="name" class="form-select form-style" aria-label="Default select example">
-													<option selected>Select type of user</option>
-													<option value="sform">Student</option>
-													<option value="sform">Verify Team</option>
-													<option value="iform">Indutsry</option>
-													
-												  </select>
-												  <i class="input-icon uil-user"></i>
-											</div>
-											<div class="data sform mt-2" id="sform">
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Full Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>  
+  <head>
+    <title>Webleb</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!--favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../public/css/authentication.css" />
+    <style>
+      .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+      .form-group.has-error .form-style {
+        border-color: #dc3545;
+      }
+      .form-group.has-error .error-message {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <div class="row full-height justify-content-center">
+          <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center">
+              <h6 class="mb-0 pb-3">
+                <span>Log In </span><span>Sign Up</span>
+              </h6>
+              <input
+                class="checkbox"
+                type="checkbox"
+                id="reg-log"
+                name="reg-log"
+              />
+              <label for="reg-log"></label>
+              <div class="card-3d-wrap mx-auto">
+                <div class="card-3d-wrapper">
+                  <div class="card-front">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Log In</h4>
+                        <form id="loginForm" action="/auth/login" method="POST">
+                          <div class="form-group">
+                            <input
+                              type="email"
+                              name="email"
+                              class="form-style"
+                              placeholder="Email"
+                              required
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                            <div
+                              class="error-message"
+                              id="login-email-error"
+                            ></div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-style"
+                              placeholder="Password"
+                              required
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                            <div
+                              class="error-message"
+                              id="login-password-error"
+                            ></div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <select
+                              name="userType"
+                              class="form-select form-style"
+                              required
+                            >
+                              <option value="">Select type of user</option>
+                              <option value="student">Student</option>
+                              <option value="verify">Verify Team</option>
+                              <option value="industry">Industry</option>
+                            </select>
+                            <i class="input-icon uil-user"></i>
+                            <div
+                              class="error-message"
+                              id="login-usertype-error"
+                            ></div>
+                          </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="College Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                          <button type="submit" class="btn mt-4">Login</button>
+                        </form>
+                        <% if (typeof loginError !== 'undefined') { %>
+                        <div class="alert alert-danger mt-3">
+                          <%= loginError %>
+                        </div>
+                        <% } %>
+                        <p class="mb-0 mt-4 text-center">
+                          <a href="/auth/forgot-password" class="link"
+                            >Forgot your password?</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-back" id="class-back">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-3 pb-3">Sign Up</h4>
+                        <form
+                          id="signupForm"
+                          action="/auth/register"
+                          method="POST"
+                        >
+                          <div class="form-group mt-2">
+                            <select
+                              id="userType"
+                              name="userType"
+                              class="form-select form-style"
+                              required
+                            >
+                              <option value="">Select type of user</option>
+                              <option value="student">Student</option>
+                              <option value="verify">Verify Team</option>
+                              <option value="industry">Industry</option>
+                            </select>
+                            <i class="input-icon uil-user"></i>
+                            <div
+                              class="error-message"
+                              id="signup-usertype-error"
+                            ></div>
+                          </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Registration Number">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                          <div class="data sform mt-2" id="studentForm">
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="fullName"
+                                class="form-style"
+                                placeholder="Full Name"
+                                required
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                              <div
+                                class="error-message"
+                                id="signup-name-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Stream">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="collegeName"
+                                class="form-style"
+                                placeholder="College Name"
+                                required
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                              <div
+                                class="error-message"
+                                id="signup-college-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Branch">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                    
-                                                <div class="form-group mt-2">
-                                                    <input type="email" class="form-style" placeholder="Email">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="regNumber"
+                                class="form-style"
+                                placeholder="Registration Number"
+                                required
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                              <div
+                                class="error-message"
+                                id="signup-reg-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="stream"
+                                class="form-style"
+                                placeholder="Stream"
+                                required
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                              <div
+                                class="error-message"
+                                id="signup-stream-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
-                                                </div>
-                                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                name="branch"
+                                class="form-style"
+                                placeholder="Branch"
+                                required
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                              <div
+                                class="error-message"
+                                id="signup-branch-error"
+                              ></div>
+                            </div>
 
-                                            <div class="data iform mt-2" id="iform">
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Full Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>  
+                            <div class="form-group mt-2">
+                              <input
+                                type="email"
+                                name="email"
+                                class="form-style"
+                                placeholder="Email"
+                                required
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                              <div
+                                class="error-message"
+                                id="signup-email-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Industry Name">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="password"
+                                name="password"
+                                class="form-style"
+                                placeholder="Password"
+                                required
+                              />
+                              <i class="input-icon uil uil-lock-alt"></i>
+                              <div
+                                class="error-message"
+                                id="signup-password-error"
+                              ></div>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Employee Number">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="tel"
+                                name="phone"
+                                class="form-style"
+                                placeholder="Phone Number"
+                                required
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                              <div
+                                class="error-message"
+                                id="signup-phone-error"
+                              ></div>
+                            </div>
+                          </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Employee Role">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
+                          <div class="data iform mt-2" id="industryForm">
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                class="form-style"
+                                placeholder="Full Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="text" class="form-style" placeholder="Established Year">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                    
-                                                <div class="form-group mt-2">
-                                                    <input type="email" class="form-style" placeholder="Email">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                class="form-style"
+                                placeholder="Industry Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                class="form-style"
+                                placeholder="Employee Number"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
 
-                                                <div class="form-group mt-2">
-                                                    <input type="password" class="form-style" placeholder="Phone Number">
-                                                    <i class="input-icon uil uil-phone-alt"></i>
-                                                </div>
-                                            </div>
-											<a href="https://www.web-leb.com/code" class="btn mt-4">Register</a>
-				      					</div>
-			      					</div>
-			      				</div>
-			      			</div>
-			      		</div>
-			      	</div>
-		      	</div>
-	      	</div>
-	    </div>
-	</div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                class="form-style"
+                                placeholder="Employee Role"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <div class="form-group mt-2">
+                              <input
+                                type="text"
+                                class="form-style"
+                                placeholder="Established Year"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+
+                            <div class="form-group mt-2">
+                              <input
+                                type="email"
+                                class="form-style"
+                                placeholder="Email"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+
+                            <div class="form-group mt-2">
+                              <input
+                                type="password"
+                                class="form-style"
+                                placeholder="Password"
+                              />
+                              <i class="input-icon uil uil-lock-alt"></i>
+                            </div>
+
+                            <div class="form-group mt-2">
+                              <input
+                                type="password"
+                                class="form-style"
+                                placeholder="Phone Number"
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn mt-4">
+                            Register
+                          </button>
+                        </form>
+                        <% if (typeof registerError !== 'undefined') { %>
+                        <div class="alert alert-danger mt-3">
+                          <%= registerError %>
+                        </div>
+                        <% } %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-			// $(".card-back").css("overflow","hidden");
-            $("#name").on('change',function() {
-                $(".data").hide();
-                $("#"+$(this).val()).fadeIn(500);
-				//$(".card-back").css("height","auto");
-            }).change();
+      $(document).ready(function () {
+        // $(".card-back").css("overflow","hidden");
+        $("#userType")
+          .on("change", function () {
+            $(".data").hide();
+            $("#" + $(this).val()).fadeIn(500);
+            //$(".card-back").css("height","auto");
+          })
+          .change();
+
+        // Client-side validation for login form
+        $("#loginForm").on("submit", function (e) {
+          let hasError = false;
+
+          // Reset previous errors
+          $(".error-message").hide();
+          $(".form-group").removeClass("has-error");
+
+          // Validate email
+          const email = $('input[name="email"]').val();
+          if (!email || !email.includes("@")) {
+            $("#login-email-error")
+              .text("Please enter a valid email address")
+              .show();
+            $('input[name="email"]')
+              .closest(".form-group")
+              .addClass("has-error");
+            hasError = true;
+          }
+
+          // Validate password
+          const password = $('input[name="password"]').val();
+          if (!password || password.length < 6) {
+            $("#login-password-error")
+              .text("Password must be at least 6 characters")
+              .show();
+            $('input[name="password"]')
+              .closest(".form-group")
+              .addClass("has-error");
+            hasError = true;
+          }
+
+          // Validate user type
+          const userType = $('select[name="userType"]').val();
+          if (!userType) {
+            $("#login-usertype-error").text("Please select a user type").show();
+            $('select[name="userType"]')
+              .closest(".form-group")
+              .addClass("has-error");
+            hasError = true;
+          }
+
+          if (hasError) {
+            e.preventDefault();
+          }
         });
 
-        
-    </script>
+        // Similar validation for signup form
+        $("#signupForm").on("submit", function (e) {
+          let hasError = false;
 
-</body>
+          // Reset previous errors
+          $(".error-message").hide();
+          $(".form-group").removeClass("has-error");
+
+          // Add validation for each field...
+          // Example for name field:
+          const name = $('input[name="fullName"]').val();
+          if (!name || name.length < 2) {
+            $("#signup-name-error").text("Please enter your full name").show();
+            $('input[name="fullName"]')
+              .closest(".form-group")
+              .addClass("has-error");
+            hasError = true;
+          }
+
+          if (hasError) {
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
