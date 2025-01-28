@@ -445,11 +445,27 @@ app.get("/blogs/posts/:id", async function(req, res) {
 });
 
 app.get('/logout', protect, (req, res) => {
-  // clear the token cookie
-
   res.clearCookie('token');
-  // redirect the user to the login page
   res.redirect('/');
+});
+
+// Auth routes
+app.get('/auth/login', (req, res) => {
+  res.render('user', { 
+    loginError: undefined, 
+    registerError: undefined,
+    successMessage: undefined,
+    isSignup: false
+  });
+});
+
+app.get('/auth/signup', (req, res) => {
+  res.render('user', { 
+    loginError: undefined, 
+    registerError: undefined,
+    successMessage: undefined,
+    isSignup: true
+  });
 });
 
 //payment hanlde

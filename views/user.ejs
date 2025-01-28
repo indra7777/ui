@@ -518,8 +518,9 @@
     </div>
 
     <script>
-      var login = true;
+      var login = "<%= isSignup %>" !== "true";
       $(document).ready(function () {
+        // Login type selection
         $('select[name="login-type"]').change(function () {
           var action;
           switch ($(this).val()) {
@@ -538,23 +539,26 @@
           }
           $("#login-method").attr("action", action);
         });
+
+        // Toggle between login and signup
         $("#reg-log").on("change", function () {
           if (login) {
-            $(".card-back").show();
-            $(".card-front").hide();
-            $("#label-ls").hide();
-            $("label").hide();
-            $(".chechbox").hide();
-            login = false;
+            window.location.href = "/auth/signup";
           } else {
-            $(".card-back").hide();
-            $(".card-front").show();
-            $("#label-ls").show();
-
-            login = true;
+            window.location.href = "/auth/login";
           }
         });
 
+        // Show appropriate form based on isSignup flag
+        if (!login) {
+          $(".card-back").show();
+          $(".card-front").hide();
+          $("#label-ls").hide();
+          $("label").hide();
+          $(".checkbox").hide();
+        }
+
+        // User type selection for signup
         $("#name")
           .on("change", function () {
             $(".data").hide();
