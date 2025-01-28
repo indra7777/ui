@@ -133,73 +133,23 @@
                           <%= registerError %>
                         </div>
                         <% } %>
-                        <form
-                          id="signupForm"
-                          action="/student/signup"
-                          method="post"
-                        >
-                          <div class="form-group mt-2">
-                            <select
-                              name="role"
-                              id="name"
-                              class="form-select form-style"
-                              aria-label="Default select example"
-                            >
-                              <option selected>Select type of user</option>
-                              <option value="sform">Seeker</option>
-                              <option value="vform">Verify Team</option>
-                              <option value="iform">Industry</option>
-                            </select>
-                            <i class="input-icon uil-user"></i>
-                          </div>
-
-                          <!-- Common Fields for All Users -->
-                          <div class="form-group mt-2">
-                            <input
-                              name="name"
-                              type="text"
-                              class="form-style"
-                              placeholder="Full Name"
-                              required
-                            />
-                            <i class="input-icon uil uil-user"></i>
-                          </div>
-
-                          <div class="form-group mt-2">
-                            <input
-                              name="email"
-                              type="email"
-                              class="form-style"
-                              placeholder="Email"
-                              required
-                            />
-                            <i class="input-icon uil uil-at"></i>
-                          </div>
-
-                          <div class="form-group mt-2">
-                            <input
-                              name="password"
-                              type="password"
-                              class="form-style"
-                              placeholder="Password"
-                              required
-                            />
-                            <i class="input-icon uil uil-lock-alt"></i>
-                          </div>
-
-                          <div class="form-group mt-2">
-                            <input
-                              name="phone"
-                              type="tel"
-                              class="form-style"
-                              placeholder="Phone Number"
-                              required
-                            />
-                            <i class="input-icon uil uil-phone-alt"></i>
-                          </div>
-
-                          <!-- Student Specific Fields -->
-                          <div id="studentFields">
+                        <div class="form-group mt-2">
+                          <select
+                            name="role"
+                            id="name"
+                            class="form-select form-style"
+                            aria-label="Default select example"
+                          >
+                            <option selected>Select type of user</option>
+                            <option value="sform">Seeker</option>
+                            <option value="vform">Verify Team</option>
+                            <option value="iform">Industry</option>
+                          </select>
+                          <i class="input-icon uil-user"></i>
+                        </div>
+                        <form action="/student/signup" method="post">
+                          <div class="data sform mt-2" id="sform">
+                            <!-- Student fields -->
                             <div class="form-group mt-2">
                               <img
                                 id="avatarImage"
@@ -214,6 +164,7 @@
                                 id="avatar"
                                 name="avatar"
                                 class="form-select form-style"
+                                aria-label="Default select example"
                               >
                                 <option
                                   selected
@@ -259,6 +210,15 @@
                             </div>
                             <div class="form-group mt-2">
                               <input
+                                name="name"
+                                type="text"
+                                class="form-style"
+                                placeholder="Full Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
                                 name="collegeName"
                                 type="text"
                                 class="form-style"
@@ -271,7 +231,7 @@
                                 name="stream"
                                 class="form-select form-style"
                               >
-                                <option value="">Select Stream</option>
+                                <option selected>Stream</option>
                                 <option value="B.Tech">B.Tech</option>
                                 <option value="M.Tech">M.Tech</option>
                                 <option value="Diploma">Diploma</option>
@@ -284,7 +244,7 @@
                                 name="branch"
                                 class="form-select form-style"
                               >
-                                <option value="">Select Branch</option>
+                                <option selected>Branch</option>
                                 <option value="MECH">MECH</option>
                                 <option value="CIVIL">CIVIL</option>
                                 <option value="ECE">ECE</option>
@@ -313,10 +273,50 @@
                               />
                               <i class="input-icon uil uil-at"></i>
                             </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="email"
+                                type="email"
+                                class="form-style"
+                                placeholder="Email"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="password"
+                                type="password"
+                                class="form-style"
+                                placeholder="Password"
+                              />
+                              <i class="input-icon uil uil-lock-alt"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="phone"
+                                type="tel"
+                                class="form-style"
+                                placeholder="Phone Number"
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                            </div>
+                            <button class="btn btn-primary mt-2" type="submit">
+                              Register
+                            </button>
                           </div>
-
-                          <!-- Industry Specific Fields -->
-                          <div id="industryFields" style="display: none">
+                        </form>
+                        <form action="/industry/signup" method="post">
+                          <div class="data iform mt-2" id="iform">
+                            <!-- Industry fields -->
+                            <div class="form-group mt-2">
+                              <input
+                                name="name"
+                                type="text"
+                                class="form-style"
+                                placeholder="Full Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
                             <div class="form-group mt-2">
                               <input
                                 name="industryName"
@@ -337,21 +337,30 @@
                             </div>
                             <div class="form-group mt-2">
                               <input
-                                name="role"
-                                type="text"
-                                class="form-style"
-                                placeholder="Role in the company"
-                              />
-                              <i class="input-icon uil uil-user"></i>
-                            </div>
-                            <div class="form-group mt-2">
-                              <input
                                 name="siteLink"
                                 type="text"
                                 class="form-style"
                                 placeholder="Official site link"
                               />
                               <i class="input-icon uil uil-user"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="email"
+                                type="email"
+                                class="form-style"
+                                placeholder="Official Mail id"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="password"
+                                type="password"
+                                class="form-style"
+                                placeholder="Password"
+                              />
+                              <i class="input-icon uil uil-lock-alt"></i>
                             </div>
                             <div class="form-group mt-2">
                               <input
@@ -362,10 +371,32 @@
                               />
                               <i class="input-icon uil uil-phone-alt"></i>
                             </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="personalNumber"
+                                type="tel"
+                                class="form-style"
+                                placeholder="Personal Phone Number"
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                            </div>
+                            <button class="btn btn-primary mt-2" type="submit">
+                              Register
+                            </button>
                           </div>
-
-                          <!-- Verify Team Specific Fields -->
-                          <div id="verifyFields" style="display: none">
+                        </form>
+                        <form action="/verify/signup" method="post">
+                          <div class="data vform mt-2" id="vform">
+                            <!-- Verify Team fields -->
+                            <div class="form-group mt-2">
+                              <input
+                                name="name"
+                                type="text"
+                                class="form-style"
+                                placeholder="Full Name"
+                              />
+                              <i class="input-icon uil uil-user"></i>
+                            </div>
                             <div class="form-group mt-2">
                               <input
                                 name="collegeName"
@@ -389,7 +420,7 @@
                                 name="dept"
                                 class="form-select form-style"
                               >
-                                <option value="">Select Branch</option>
+                                <option selected>Branch</option>
                                 <option value="MECH">MECH</option>
                                 <option value="CIVIL">CIVIL</option>
                                 <option value="ECE">ECE</option>
@@ -418,11 +449,37 @@
                               />
                               <i class="input-icon uil uil-at"></i>
                             </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="email"
+                                type="email"
+                                class="form-style"
+                                placeholder="email"
+                              />
+                              <i class="input-icon uil uil-at"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="phone"
+                                type="tel"
+                                class="form-style"
+                                placeholder="Phone Number"
+                              />
+                              <i class="input-icon uil uil-phone-alt"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                name="password"
+                                type="password"
+                                class="form-style"
+                                placeholder="Password"
+                              />
+                              <i class="input-icon uil uil-lock-alt"></i>
+                            </div>
+                            <button class="btn btn-primary mt-2" type="submit">
+                              Register
+                            </button>
                           </div>
-
-                          <button type="submit" class="btn mt-4">
-                            Register
-                          </button>
                         </form>
                       </div>
                     </div>
@@ -481,30 +538,6 @@
             $("#" + $(this).val()).fadeIn(500);
           })
           .change();
-
-        // Signup form type change
-        $("#name").change(function () {
-          const selectedType = $(this).val();
-
-          // Hide all specific fields first
-          $("#studentFields, #industryFields, #verifyFields").hide();
-
-          // Show fields based on selection
-          switch (selectedType) {
-            case "sform":
-              $("#studentFields").show();
-              $("#signupForm").attr("action", "/student/signup");
-              break;
-            case "iform":
-              $("#industryFields").show();
-              $("#signupForm").attr("action", "/industry/signup");
-              break;
-            case "vform":
-              $("#verifyFields").show();
-              $("#signupForm").attr("action", "/verify/signup");
-              break;
-          }
-        });
 
         // Avatar image change
         $("#avatar").change(function () {
