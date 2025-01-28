@@ -520,6 +520,13 @@
     <script>
       var login = "<%= isSignup %>" !== "true";
       $(document).ready(function () {
+        // Initial form display based on URL
+        if (window.location.pathname === "/auth/signup") {
+          showSignupForm();
+        } else {
+          showLoginForm();
+        }
+
         // Login type selection
         $('select[name="login-type"]').change(function () {
           var action;
@@ -549,13 +556,22 @@
           }
         });
 
-        // Show appropriate form based on isSignup flag
-        if (!login) {
+        function showLoginForm() {
+          $(".card-back").hide();
+          $(".card-front").show();
+          $("#label-ls").show();
+          $("label").show();
+          $(".checkbox").show();
+          login = true;
+        }
+
+        function showSignupForm() {
           $(".card-back").show();
           $(".card-front").hide();
           $("#label-ls").hide();
           $("label").hide();
           $(".checkbox").hide();
+          login = false;
         }
 
         // User type selection for signup
