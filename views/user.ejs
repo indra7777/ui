@@ -60,6 +60,11 @@
                                             </div>
 
                                            <button class="btn mt-4"  type="submit">Log In</button>
+                                            <% if (typeof loginError !== 'undefined') { %>
+                                            <div class="alert alert-danger mt-3">
+                                                <%= loginError %>
+                                            </div>
+                                            <% } %>
                                             <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
                                                     class="link">Forgot your password?</a></p>
                                         </div>
@@ -73,6 +78,11 @@
                                         <div class="section text-center">
                                             <a href="/user" class="btn btn-secondary back-btn"><i class="back-btn"></i> Log in</a>
                                             <h4 class="mb-3 pb-3">Sign Up</h4>
+                                            <% if (typeof registerError !== 'undefined') { %>
+                                            <div class="alert alert-danger mt-3">
+                                                <%= registerError %>
+                                            </div>
+                                            <% } %>
                                             <div class="form-group mt-2">
                                                 <select name="role" id="name" class="form-select form-style"
                                                     aria-label="Default select example">

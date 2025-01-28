@@ -8,35 +8,51 @@ export const createStudent =  async (req,res)=>{
     & stream:${stream} & collegeName:${collegeName} `)
 
     if(!name | !collegeName | !stream | !branch | !email | !password | !phone | !currentYear | !passedOutYear){
-        res.send('invalid input')
-        return
-    }
-    const hashedPassword = await hashPassword(password)
-     const Role = "Student"
-    const student = new Student({
-        name:name,
-        collegeName:collegeName,
-        stream:stream,
-        branch:branch,
-        email:email,
-        role:Role,
-        password:hashedPassword,
-        phone:phone,
-        currentYear:currentYear,
-        passedOutYear:passedOutYear,
-        image:avatar, 
-    })
-
-    student.save()
-        .then(() => {
-           const token = createJWT(student)
-                    res.cookie('token', token, { httpOnly: true,maxAge:7000000 }); // set token as a cookie
-                    res.redirect('/home')
-    })
-        .catch((err) => {
-            console.log(err);
+        return res.render('user', {
+            registerError: 'All fields are required',
+            loginError: undefined
         })
     }
+
+    try {
+        // Check if email already exists
+        const existingStudent = await Student.findOne({ email: email })
+        if (existingStudent) {
+            return res.render('user', {
+                registerError: 'Email already registered',
+                loginError: undefined
+            })
+        }
+
+        const hashedPassword = await hashPassword(password)
+         const Role = "Student"
+        const student = new Student({
+            name:name,
+            collegeName:collegeName,
+            stream:stream,
+            branch:branch,
+            email:email,
+            role:Role,
+            password:hashedPassword,
+            phone:phone,
+            currentYear:currentYear,
+            passedOutYear:passedOutYear,
+            image:avatar, 
+        })
+
+        await student.save()
+        const token = createJWT(student)
+        res.cookie('token', token, { httpOnly: true,maxAge:7000000 }); // set token as a cookie
+        res.redirect('/home')
+
+    } catch (err) {
+        console.error(err)
+        res.render('user', {
+            registerError: 'An error occurred during registration. Please try again.',
+            loginError: undefined
+        })
+    }
+}
 
 
 
