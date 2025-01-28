@@ -109,9 +109,14 @@
                           <div class="alert alert-danger mt-3">
                             <%= loginError %>
                           </div>
+                          <% } %> <% if (typeof successMessage !== 'undefined')
+                          { %>
+                          <div class="alert alert-success mt-3">
+                            <%= successMessage %>
+                          </div>
                           <% } %>
                           <p class="mb-0 mt-4 text-center">
-                            <a href="https://www.web-leb.com/code" class="link"
+                            <a href="/forgot-password" class="link"
                               >Forgot your password?</a
                             >
                           </p>

@@ -21,6 +21,7 @@ import { Problem } from './models/problem.js'
 import { Solution } from './models/solution.js'
 
 import { Internship } from './models/internships.js'
+import { renderForgotPassword, handleForgotPassword, handleResetPassword } from './handlers/passwordReset.js'
 
 dotenv.config()
 const storage = multer.diskStorage({
@@ -491,6 +492,11 @@ app.get("/navbar", (req, res) => {
 app.get('/internships', (req, res) => {
   res.render('internships')
 })
+
+// Forgot password routes
+app.get('/forgot-password', renderForgotPassword)
+app.post('/forgot-password', handleForgotPassword)
+app.post('/reset-password', handleResetPassword)
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
