@@ -56,12 +56,8 @@
               <h6 id="label-ls" class="mb-0 pb-3">
                 <span>Log In </span><span>Sign Up</span>
               </h6>
-              <input
-                class="checkbox"
-                type="checkbox"
-                id="reg-log"
-                name="reg-log"
-              />
+              <input class="checkbox" type="checkbox" id="reg-log"
+              name="reg-log" <%= isSignup ? 'checked' : '' %> />
               <label for="reg-log"></label>
               <!-- </div> -->
               <div class="card-3d-wrap mx-auto">
@@ -518,13 +514,13 @@
     </div>
 
     <script>
-      var login = "<%= isSignup %>" !== "true";
       $(document).ready(function () {
-        // Initial form display based on URL
-        if (window.location.pathname === "/auth/signup") {
-          showSignupForm();
-        } else {
-          showLoginForm();
+        var isSignup = <%= isSignup %>;
+
+        // Set initial state based on isSignup
+        if (isSignup) {
+          $(".card-3d-wrapper").css("transform", "rotateY(180deg)");
+          $("#reg-log").prop("checked", true);
         }
 
         // Login type selection
@@ -547,32 +543,20 @@
           $("#login-method").attr("action", action);
         });
 
-        // Toggle between login and signup
+        // Toggle between login and signup with animation
         $("#reg-log").on("change", function () {
-          if (login) {
-            window.location.href = "/auth/signup";
+          if ($(this).is(":checked")) {
+            $(".card-3d-wrapper").css("transform", "rotateY(180deg)");
+            setTimeout(() => {
+              window.location.href = "/auth/signup";
+            }, 400);
           } else {
-            window.location.href = "/auth/login";
+            $(".card-3d-wrapper").css("transform", "rotateY(0deg)");
+            setTimeout(() => {
+              window.location.href = "/auth/login";
+            }, 400);
           }
         });
-
-        function showLoginForm() {
-          $(".card-back").hide();
-          $(".card-front").show();
-          $("#label-ls").show();
-          $("label").show();
-          $(".checkbox").show();
-          login = true;
-        }
-
-        function showSignupForm() {
-          $(".card-back").show();
-          $(".card-front").hide();
-          $("#label-ls").hide();
-          $("label").hide();
-          $(".checkbox").hide();
-          login = false;
-        }
 
         // User type selection for signup
         $("#name")
