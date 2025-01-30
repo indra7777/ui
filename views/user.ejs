@@ -65,7 +65,11 @@
                 <div class="card-3d-wrapper">
                   <div class="card-front">
                     <div class="center-wrap">
-                      <form id="login-method" action="/login" method="post">
+                      <form
+                        id="login-method"
+                        action="/auth/login"
+                        method="post"
+                      >
                         <div class="section text-center">
                           <h4 class="mb-4 pb-3">Log In</h4>
                           <div class="form-group">
@@ -523,24 +527,14 @@
           $("#reg-log").prop("checked", true);
         }
 
-        // Login type selection
+        // Form validation for login type
         $('select[name="login-type"]').change(function () {
-          var action;
-          switch ($(this).val()) {
-            case "1":
-              action = "/login/student";
-              break;
-            case "2":
-              action = "/login/team";
-              break;
-            case "3":
-              action = "/login/industry";
-              break;
-            default:
-              action = "/login";
-              break;
+          var selectedType = $(this).val();
+          if (!selectedType) {
+            $("#login-type-error").show();
+          } else {
+            $("#login-type-error").hide();
           }
-          $("#login-method").attr("action", action);
         });
 
         // Toggle between login and signup with animation

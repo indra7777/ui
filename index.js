@@ -568,6 +568,65 @@ app.get('/logout', protect, (req, res) => {
 });
 
 // Auth routes
+app.post('/auth/login', async (req, res) => {
+  const { email, password, 'login-type': userType } = req.body;
+  
+  try {
+    let Model;
+    switch(userType) {
+      case '1':
+        Model = Student;
+        break;
+      case '2':
+        Model = Team;
+        break;
+      case '3':
+        Model = Industry;
+        break;
+      default:
+        return res.render('user', {
+          loginError: 'Please select a valid user type',
+          registerError: undefined,
+          successMessage: undefined,
+          isSignup: false
+        });
+    }
+    
+    const user = await Model.findOne({ email });
+    if (!user) {
+      return res.render('user', {
+        loginError: 'Invalid email or password',
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
+    }
+    
+    const isValid = await comparePasswords(password, user.password);
+    if (!isValid) {
+      return res.render('user', {
+        loginError: 'Invalid email or password',
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
+    }
+    
+    const token = createJWT(user);
+    res.cookie('token', token, { httpOnly: true, maxAge: 7000000 });
+    res.redirect('/dashboard');
+    
+  } catch (err) {
+    console.error(err);
+    res.render('user', {
+      loginError: 'An error occurred during login. Please try again.',
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+  }
+});
+
 app.get('/auth/login', (req, res) => {
   if (req.cookies.token) {
     return res.redirect('/');
