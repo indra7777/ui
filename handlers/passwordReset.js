@@ -2,6 +2,21 @@ import { Student } from '../models/student.js'
 import { Industry } from '../models/industry.js'
 import { Team } from '../models/verifyTeam.js'
 import { hashPassword } from './auth.js'
+import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer'
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'uncalledinnovators@gmail.com',
+        pass: process.env.EMAIL_PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+})
 
 // Get the appropriate model based on user type
 const getUserModel = (userType) => {
@@ -18,85 +33,91 @@ const getUserModel = (userType) => {
 }
 
 export const renderForgotPassword = (req, res) => {
-    res.render('forgotPassword', { error: undefined });
+    res.render('forgotPassword', {
+        error: null,
+        success: null
+    });
 }
 
 export const handleForgotPassword = async (req, res) => {
-    const { email, userType } = req.body;
-
+    const { email } = req.body;
+    
     try {
-        const Model = getUserModel(userType);
-        if (!Model) {
-            return res.render('forgotPassword', { error: 'Invalid user type' });
-        }
-
-        const user = await Model.findOne({ email });
+        const user = await Student.findOne({ email });
+        
         if (!user) {
-            return res.render('forgotPassword', { error: 'No account found with this email' });
+            return res.render('forgotPassword', {
+                error: 'No account found with this email',
+                success: null
+            });
         }
 
-        // If user exists, render reset password page
-        res.render('resetPassword', { 
-            email,
-            userType,
-            error: undefined 
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        const resetLink = `${process.env.BASE_URL}/reset-password?token=${token}`;
+
+        const mailOptions = {
+            from: 'uncalledinnovators@gmail.com',
+            to: email,
+            subject: 'Password Reset Request',
+            html: `
+                <h1>Password Reset Request</h1>
+                <p>Click the link below to reset your password. This link will expire in 1 hour.</p>
+                <a href="${resetLink}">Reset Password</a>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        res.render('forgotPassword', {
+            error: null,
+            success: 'Password reset link has been sent to your email'
         });
 
-    } catch (err) {
-        console.error(err);
-        res.render('forgotPassword', { error: 'An error occurred. Please try again.' });
+    } catch (error) {
+        console.error('Password reset error:', error);
+        res.render('forgotPassword', {
+            error: 'An error occurred. Please try again.',
+            success: null
+        });
     }
 }
 
 export const handleResetPassword = async (req, res) => {
-    const { email, userType, newPassword, confirmPassword } = req.body;
-
+    const { token, password } = req.body;
+    
     try {
-        // Validate passwords match
-        if (newPassword !== confirmPassword) {
-            return res.render('resetPassword', { 
-                email,
-                userType,
-                error: 'Passwords do not match' 
-            });
-        }
-
-        const Model = getUserModel(userType);
-        if (!Model) {
-            return res.render('resetPassword', { 
-                email,
-                userType,
-                error: 'Invalid user type' 
-            });
-        }
-
-        const user = await Model.findOne({ email });
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await Student.findById(decoded.id);
+        
         if (!user) {
-            return res.render('resetPassword', { 
-                email,
-                userType,
-                error: 'User not found' 
+            return res.render('resetPassword', {
+                error: 'Invalid or expired reset link',
+                success: null,
+                token
             });
         }
 
-        // Update password
-        const hashedPassword = await hashPassword(newPassword);
+        const hashedPassword = await hashPassword(password);
         user.password = hashedPassword;
         await user.save();
 
-        // Redirect to login with success message
-        res.render('user', { 
-            loginError: undefined,
-            registerError: undefined,
-            successMessage: 'Password has been reset successfully. Please login with your new password.'
+        res.render('resetPassword', {
+            error: null,
+            success: 'Password has been reset successfully. You can now login with your new password.',
+            token
         });
 
-    } catch (err) {
-        console.error(err);
-        res.render('resetPassword', { 
-            email,
-            userType,
-            error: 'An error occurred while resetting password. Please try again.' 
+    } catch (error) {
+        console.error('Reset password error:', error);
+        res.render('resetPassword', {
+            error: 'Invalid or expired reset link',
+            success: null,
+            token
         });
     }
 } 
