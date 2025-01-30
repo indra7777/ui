@@ -385,8 +385,9 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'uncalledinnovators@gmail.com',
-    pass: process.env.EMAIL_PASSWORD // You'll need to set this in your .env file
-  }
+    pass: process.env.EMAIL_PASSWORD
+  },
+  debug: true // Enable debug logs
 });
 
 // Contact form handler
@@ -394,9 +395,16 @@ app.post("/contact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
     
+    if (!name || !email || !subject || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "All fields are required" 
+      });
+    }
+    
     // Email content
     const mailOptions = {
-      from: email,
+      from: `"${name}" <${email}>`,
       to: 'uncalledinnovators@gmail.com',
       subject: `Contact Form: ${subject}`,
       html: `
@@ -409,15 +417,18 @@ app.post("/contact", async (req, res) => {
       `
     };
     
+    console.log('Attempting to send email with options:', mailOptions);
+    
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info);
     
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("Contact form detailed error:", error);
     res.status(500).json({ 
       success: false, 
-      message: "Failed to send message. Please try again." 
+      message: error.message || "Failed to send message. Please try again." 
     });
   }
 });

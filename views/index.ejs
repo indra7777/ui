@@ -932,11 +932,26 @@
 
           const form = this;
           const formData = {
-            name: form.name.value,
-            email: form.email.value,
-            subject: form.subject.value,
-            message: form.message.value,
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            subject: form.subject.value.trim(),
+            message: form.message.value.trim(),
           };
+
+          // Validate form data
+          if (
+            !formData.name ||
+            !formData.email ||
+            !formData.subject ||
+            !formData.message
+          ) {
+            form.querySelector(".error-message").textContent =
+              "All fields are required";
+            form.querySelector(".error-message").style.display = "block";
+            form.querySelector(".loading").style.display = "none";
+            form.querySelector(".sent-message").style.display = "none";
+            return;
+          }
 
           // Show loading
           form.querySelector(".loading").style.display = "block";
@@ -958,15 +973,14 @@
                 form.querySelector(".sent-message").style.display = "block";
                 form.reset();
               } else {
-                form.querySelector(".error-message").textContent =
-                  data.message || "An error occurred";
-                form.querySelector(".error-message").style.display = "block";
+                throw new Error(data.message || "Failed to send message");
               }
             })
             .catch((error) => {
+              console.error("Contact form error:", error);
               form.querySelector(".loading").style.display = "none";
               form.querySelector(".error-message").textContent =
-                "An error occurred. Please try again.";
+                error.message || "An error occurred. Please try again.";
               form.querySelector(".error-message").style.display = "block";
             });
         });
