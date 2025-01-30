@@ -927,7 +927,7 @@
     <script>
       document
         .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
+        .addEventListener("submit", async function (e) {
           e.preventDefault();
 
           const form = this;
@@ -945,45 +945,57 @@
             !formData.subject ||
             !formData.message
           ) {
-            form.querySelector(".error-message").textContent =
-              "All fields are required";
-            form.querySelector(".error-message").style.display = "block";
-            form.querySelector(".loading").style.display = "none";
-            form.querySelector(".sent-message").style.display = "none";
+            showError("All fields are required");
             return;
           }
 
-          // Show loading
-          form.querySelector(".loading").style.display = "block";
-          form.querySelector(".error-message").style.display = "none";
-          form.querySelector(".sent-message").style.display = "none";
+          showLoading();
 
-          fetch("/contact", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              form.querySelector(".loading").style.display = "none";
-
-              if (data.success) {
-                form.querySelector(".sent-message").style.display = "block";
-                form.reset();
-              } else {
-                throw new Error(data.message || "Failed to send message");
-              }
-            })
-            .catch((error) => {
-              console.error("Contact form error:", error);
-              form.querySelector(".loading").style.display = "none";
-              form.querySelector(".error-message").textContent =
-                error.message || "An error occurred. Please try again.";
-              form.querySelector(".error-message").style.display = "block";
+          try {
+            const response = await fetch("/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
             });
+
+            const data = await response.json();
+
+            if (data.success) {
+              showSuccess();
+              form.reset();
+            } else {
+              showError(data.message || "Failed to send message");
+            }
+          } catch (error) {
+            console.error("Contact form error:", error);
+            showError("Unable to send message. Please try again later.");
+          }
         });
+
+      // Helper functions to manage UI states
+      function showLoading() {
+        const form = document.getElementById("contactForm");
+        form.querySelector(".loading").style.display = "block";
+        form.querySelector(".error-message").style.display = "none";
+        form.querySelector(".sent-message").style.display = "none";
+      }
+
+      function showError(message) {
+        const form = document.getElementById("contactForm");
+        form.querySelector(".loading").style.display = "none";
+        form.querySelector(".error-message").textContent = message;
+        form.querySelector(".error-message").style.display = "block";
+        form.querySelector(".sent-message").style.display = "none";
+      }
+
+      function showSuccess() {
+        const form = document.getElementById("contactForm");
+        form.querySelector(".loading").style.display = "none";
+        form.querySelector(".error-message").style.display = "none";
+        form.querySelector(".sent-message").style.display = "block";
+      }
     </script>
   </body>
 </html>

@@ -382,12 +382,25 @@ app.post("/verify/signup", (req, res) => {
 
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
     user: 'uncalledinnovators@gmail.com',
     pass: process.env.EMAIL_PASSWORD
   },
-  debug: true // Enable debug logs
+  tls: {
+    rejectUnauthorized: false // Only for development, remove in production
+  }
+});
+
+// Verify transporter connection
+transporter.verify(function(error, success) {
+  if (error) {
+    console.error('SMTP connection error:', error);
+  } else {
+    console.log('SMTP server is ready to take our messages');
+  }
 });
 
 // Contact form handler
@@ -404,7 +417,8 @@ app.post("/contact", async (req, res) => {
     
     // Email content
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: 'uncalledinnovators@gmail.com', // Always send from your verified email
+      replyTo: email, // Set reply-to as the form submitter's email
       to: 'uncalledinnovators@gmail.com',
       subject: `Contact Form: ${subject}`,
       html: `
@@ -417,18 +431,22 @@ app.post("/contact", async (req, res) => {
       `
     };
     
-    console.log('Attempting to send email with options:', mailOptions);
+    console.log('Attempting to send email with options:', {
+      ...mailOptions,
+      auth: '**hidden**' // Don't log auth details
+    });
     
     // Send email
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info);
+    console.log('Email sent successfully:', info.messageId);
     
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
     console.error("Contact form detailed error:", error);
+    // Send a user-friendly error message
     res.status(500).json({ 
       success: false, 
-      message: error.message || "Failed to send message. Please try again." 
+      message: "Unable to send message at this time. Please try again later." 
     });
   }
 });
