@@ -950,7 +950,7 @@
             !formData.subject ||
             !formData.message
           ) {
-            showError("All fields are required");
+            showMessage("All fields are required", "error");
             return;
           }
 
@@ -972,21 +972,20 @@
             const data = await response.json();
 
             if (data.success) {
-              showSuccess();
+              showMessage("Your message has been sent. Thank you!", "success");
               form.reset();
             } else {
-              showError(data.message || "Failed to send message");
+              showMessage(data.message || "Failed to send message", "error");
             }
           } catch (error) {
             console.error("Contact form error:", error);
-            showError("Unable to send message. Please try again later.");
-          } finally {
-            // Ensure loading is hidden even if there's an error
-            form.querySelector(".loading").style.display = "none";
+            showMessage(
+              "Unable to send message. Please try again later.",
+              "error"
+            );
           }
         });
 
-      // Helper functions to manage UI states
       function showLoading() {
         const form = document.getElementById("contactForm");
         form.querySelector(".loading").style.display = "block";
@@ -994,19 +993,25 @@
         form.querySelector(".sent-message").style.display = "none";
       }
 
-      function showError(message) {
+      function showMessage(message, type) {
         const form = document.getElementById("contactForm");
         form.querySelector(".loading").style.display = "none";
-        form.querySelector(".error-message").textContent = message;
-        form.querySelector(".error-message").style.display = "block";
-        form.querySelector(".sent-message").style.display = "none";
-      }
 
-      function showSuccess() {
-        const form = document.getElementById("contactForm");
-        form.querySelector(".loading").style.display = "none";
-        form.querySelector(".error-message").style.display = "none";
-        form.querySelector(".sent-message").style.display = "block";
+        if (type === "error") {
+          form.querySelector(".error-message").textContent = message;
+          form.querySelector(".error-message").style.display = "block";
+          form.querySelector(".sent-message").style.display = "none";
+        } else {
+          form.querySelector(".sent-message").textContent = message;
+          form.querySelector(".sent-message").style.display = "block";
+          form.querySelector(".error-message").style.display = "none";
+        }
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          form.querySelector(".error-message").style.display = "none";
+          form.querySelector(".sent-message").style.display = "none";
+        }, 3000);
       }
     </script>
   </body>
