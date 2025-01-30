@@ -322,11 +322,19 @@
 
     <script>
       $(document).ready(function () {
+        // Set initial state based on isSignup
+        const initialIsSignup = <%= isSignup %>;
+        if (initialIsSignup) {
+          $(".card-front").hide();
+          $(".card-back").show();
+        } else {
+          $(".card-front").show();
+          $(".card-back").hide();
+        }
+
         // Handle form switch
         $("#reg-log").on("change", function () {
           const isSignup = $(this).is(":checked");
-
-          // Instead of animation, just toggle display immediately
           if (isSignup) {
             $(".card-front").hide();
             $(".card-back").show();
@@ -337,16 +345,6 @@
             window.history.pushState({}, "", "/auth/login");
           }
         });
-
-        // Set initial state based on server-side isSignup value
-        const initialIsSignup = Boolean("<%= isSignup %>"); // Convert string to boolean
-        if (initialIsSignup) {
-          $(".card-front").hide();
-          $(".card-back").show();
-        } else {
-          $(".card-front").show();
-          $(".card-back").hide();
-        }
 
         // Update form action based on user type selection
         window.updateFormAction = function (userType) {
