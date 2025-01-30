@@ -25,13 +25,7 @@ export const protect = (req, res, next) => {
   const bearer = req.cookies.token;
 
   if (!bearer) {
-    res.render('user', {
-      loginError: undefined,
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return;
+    return res.redirect('/auth/login');
   }
 
   try {
@@ -41,13 +35,7 @@ export const protect = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('user', {
-      loginError: 'Invalid or expired session',
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return
+    return res.redirect('/auth/login');
   }
 }
 
@@ -56,13 +44,8 @@ export const checkLogin = (req, res, next) => {
   console.log(token)
 
   if (!token) {
-    res.render('user', {
-      loginError: undefined,
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return
+    req.user = null;
+    return next();
   }
 
   try {
@@ -72,13 +55,8 @@ export const checkLogin = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('user', {
-      loginError: 'Invalid or expired session',
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return
+    req.user = null;
+    next()
   }
 }
 
@@ -86,13 +64,7 @@ export const userCheck = (req, res, next) => {
   const bearer = req.cookies.token;
 
   if (!bearer) {
-    res.render('user', {
-      loginError: undefined,
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return;
+    return res.redirect('/auth/login');
   }
 
   try {
@@ -102,12 +74,6 @@ export const userCheck = (req, res, next) => {
     next()
   } catch (e) {
     console.error(e)
-    res.render('user', {
-      loginError: 'Invalid or expired session',
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return
+    return res.redirect('/auth/login');
   }
 }

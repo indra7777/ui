@@ -44,20 +44,16 @@ app.set('view engine', 'ejs')
 
 
 app.get("/", checkLogin, (req, res) => {
-  if (!req.user) {
-    res.render('user', {
-      loginError: undefined,
-      registerError: undefined,
-      successMessage: undefined,
-      isSignup: false
-    });
-    return;
-  } else {
+  if (req.user) {
     res.render('dashboard', {
       user: req.user
     });
+  } else {
+    res.render('index', {
+      user: null
+    });
   }
-})
+});
 
 app.get("/user", userCheck, protect, (req, res) => {
   console.log(req.user)
@@ -573,6 +569,9 @@ app.get('/logout', protect, (req, res) => {
 
 // Auth routes
 app.get('/auth/login', (req, res) => {
+  if (req.cookies.token) {
+    return res.redirect('/');
+  }
   res.render('user', { 
     loginError: undefined, 
     registerError: undefined,
@@ -582,6 +581,9 @@ app.get('/auth/login', (req, res) => {
 });
 
 app.get('/auth/signup', (req, res) => {
+  if (req.cookies.token) {
+    return res.redirect('/');
+  }
   res.render('user', { 
     loginError: undefined, 
     registerError: undefined,
