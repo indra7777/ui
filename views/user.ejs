@@ -346,6 +346,32 @@
           }
         });
 
+        // Handle signup form user type selection
+        $("#userType").on("change", function() {
+          const userType = $(this).val();
+
+          // Hide all fields first
+          $("#studentFields").hide();
+          $("#verifyFields").hide();
+          $("#industryFields").hide();
+
+          // Show fields based on selection
+          switch(userType) {
+            case "student":
+              $("#studentFields").show();
+              break;
+            case "verify":
+              $("#verifyFields").show();
+              break;
+            case "industry":
+              $("#industryFields").show();
+              break;
+          }
+
+          // Update form action
+          updateFormAction(userType);
+        });
+
         // Update form action based on user type selection
         window.updateFormAction = function (userType) {
           const form = document.getElementById("signup-form");
@@ -362,9 +388,11 @@
           }
         };
 
-        // Initialize form action for signup form
+        // Initialize form fields based on initial user type
         if (document.getElementById("userType")) {
-          updateFormAction(document.getElementById("userType").value);
+          const initialUserType = document.getElementById("userType").value;
+          $("#userType").trigger("change");
+          updateFormAction(initialUserType);
         }
       });
     </script>
