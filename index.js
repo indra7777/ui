@@ -23,6 +23,7 @@ import { Solution } from './models/solution.js'
 import { Internship } from './models/internships.js'
 import { renderForgotPassword, handleForgotPassword, handleResetPassword } from './handlers/passwordReset.js'
 import nodemailer from 'nodemailer'
+import { getStudentCount } from './handlers/getStudent'
 
 dotenv.config()
 const storage = multer.diskStorage({
@@ -89,11 +90,21 @@ app.get('/home', protect, (req, res) => {
   })
 })
 
-app.get('/dashboard', protect, (req, res) => {
-  res.render('dashboard', {
-    user: req.user
-  })
-})
+app.get('/dashboard', protect, async (req, res) => {
+  try {
+    const studentCount = await getStudentCount();
+    res.render('dashboard', { 
+      user: req.user,
+      studentCount: studentCount
+    });
+  } catch (error) {
+    console.error('Error rendering dashboard:', error);
+    res.render('dashboard', { 
+      user: req.user,
+      studentCount: 0
+    });
+  }
+});
 app.post("/login/student", verifyStudent)
 // app.post("/login/industry",verifyIndustry)
 app.post("/login/industry", verifyIndustry)
