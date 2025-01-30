@@ -1,6 +1,6 @@
-const Student = require('../models/student');
+import { Student } from '../models/student.js';
 
-const getStudentCount = async (req, res) => {
+export const getStudentCount = async () => {
     try {
         const count = await Student.countDocuments();
         return count;
@@ -8,8 +8,4 @@ const getStudentCount = async (req, res) => {
         console.error('Error getting student count:', error);
         return 0;
     }
-};
-
-module.exports = {
-    getStudentCount
 };
