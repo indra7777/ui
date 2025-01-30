@@ -6,7 +6,7 @@ import { hashPassword } from './auth.js'
 // Get the appropriate model based on user type
 const getUserModel = (userType) => {
     switch(userType) {
-        case 'student':
+        case 'seeker':
             return Student;
         case 'industry':
             return Industry;
@@ -36,11 +36,10 @@ export const handleForgotPassword = async (req, res) => {
             });
         }
 
-        // Validate password strength
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        if (!passwordRegex.test(newPassword)) {
+        // Simpler password strength validation
+        if (newPassword.length < 8) {
             return res.render('forgotPassword', {
-                error: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number',
+                error: 'Password must be at least 8 characters long',
                 success: null
             });
         }
