@@ -400,66 +400,7 @@ transporter.verify(function(error, success) {
 });
 
 // Contact form handler
-app.post("/contact", async (req, res) => {
-  try {
-    const { name, email, subject, message } = req.body;
-    
-    console.log('Received contact form submission:', { name, email, subject });
-    
-    if (!name || !email || !subject || !message) {
-      console.log('Missing required fields');
-      return res.status(400).json({ 
-        success: false, 
-        message: "All fields are required" 
-      });
-    }
-    
-    // Email content
-    const mailOptions = {
-      from: 'uncalledinnovators@gmail.com',
-      replyTo: email,
-      to: 'uncalledinnovators@gmail.com',
-      subject: `Contact Form: ${subject}`,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `
-    };
-    
-    console.log('Attempting to send email...');
-    
-    // Verify transporter before sending
-    await new Promise((resolve, reject) => {
-      transporter.verify(function(error, success) {
-        if (error) {
-          console.error('Transporter verification failed:', error);
-          reject(error);
-        } else {
-          console.log('Transporter verified successfully');
-          resolve(success);
-        }
-      });
-    });
-    
-    // Send email
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
-    
-    res.json({ success: true, message: "Message sent successfully!" });
-  } catch (error) {
-    console.error("Contact form detailed error:", error);
-    // Send a user-friendly error message
-    res.status(500).json({ 
-      success: false, 
-      message: "Unable to send message at this time. Please try again later.",
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
-    });
-  }
-});
+app.post("/contact", contactUS);
 
 //blogs
 
