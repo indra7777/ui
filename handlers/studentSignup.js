@@ -10,7 +10,9 @@ export const createStudent =  async (req,res)=>{
     if(!name | !collegeName | !stream | !branch | !email | !password | !phone | !currentYear | !passedOutYear){
         return res.render('user', {
             registerError: 'All fields are required',
-            loginError: undefined
+            loginError: undefined,
+            successMessage: undefined,
+            isSignup: true
         })
     }
 
@@ -20,7 +22,9 @@ export const createStudent =  async (req,res)=>{
         if (existingStudent) {
             return res.render('user', {
                 registerError: 'Email already registered',
-                loginError: undefined
+                loginError: undefined,
+                successMessage: undefined,
+                isSignup: true
             })
         }
 
@@ -49,7 +53,9 @@ export const createStudent =  async (req,res)=>{
         console.error(err)
         res.render('user', {
             registerError: 'An error occurred during registration. Please try again.',
-            loginError: undefined
+            loginError: undefined,
+            successMessage: undefined,
+            isSignup: true
         })
     }
 }

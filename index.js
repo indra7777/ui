@@ -44,14 +44,18 @@ app.set('view engine', 'ejs')
 
 
 app.get("/", checkLogin, (req, res) => {
-
   if (!req.user) {
-    res.render('index')
-    return
+    res.render('user', {
+      loginError: undefined,
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+    return;
   } else {
     res.render('dashboard', {
       user: req.user
-    })
+    });
   }
 })
 
@@ -148,18 +152,28 @@ app.get('/submit/:id', protect, async (req, res) => {
 
     //checking whether student has
     if (!userDetails) {
-      res.render('user')
-      return
+      res.render('user', {
+        loginError: undefined,
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
+      return;
     } else {
       console.log("userDetails", userDetails);
       res.render('solution', {
         user: userDetails, id: reqProblemID
-      })
+      });
     }
   } catch (e) {
-    console.error(e)
-    res.render('user')
-    return
+    console.error(e);
+    res.render('user', {
+      loginError: undefined,
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+    return;
   }
 });
 
@@ -237,8 +251,13 @@ app.get('/personal', protect, async (req, res) => {
     const token = req.cookies.token;
 
     if (!token) {
-      res.render('index')
-      return
+      res.render('user', {
+        loginError: undefined,
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
+      return;
     }
 
     try {
@@ -251,7 +270,12 @@ app.get('/personal', protect, async (req, res) => {
       })
     } catch (e) {
       console.error(e)
-      res.render('user')
+      res.render('user', {
+        loginError: undefined,
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
       return
 
     }
@@ -267,8 +291,13 @@ app.get('/profile', protect, async (req, res) => {
     const token = req.cookies.token;
 
     if (!token) {
-      res.render('user')
-      return
+      res.render('user', {
+        loginError: undefined,
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
+      return;
     }
 
     try {
@@ -277,7 +306,12 @@ app.get('/profile', protect, async (req, res) => {
       const student = await Student.findById(user.id).select('-password');
       if (!student) {
         console.error('No student found with this id');
-        res.render('user');
+        res.render('user', {
+          loginError: undefined,
+          registerError: undefined,
+          successMessage: undefined,
+          isSignup: false
+        });
         return;
       }
       console.log(student)
@@ -286,7 +320,12 @@ app.get('/profile', protect, async (req, res) => {
       })
     } catch (e) {
       console.error(e)
-      res.render('user')
+      res.render('user', {
+        loginError: undefined,
+        registerError: undefined,
+        successMessage: undefined,
+        isSignup: false
+      });
       return
 
     }

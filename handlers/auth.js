@@ -22,71 +22,92 @@ export const createJWT = (user) => {
 }
 
 export const protect = (req, res, next) => {
+  const bearer = req.cookies.token;
 
-  const token = req.cookies.token;
-  console.log(token)
-
-  if (!token) {
-    res.render('user')
-    return
+  if (!bearer) {
+    res.render('user', {
+      loginError: undefined,
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+    return;
   }
 
   try {
-    const user = jwt.verify(token, process.env.JWT_SECRET)
+    const user = jwt.verify(bearer, process.env.JWT_SECRET)
     req.user = user
-
     console.log(req.user)
     next()
   } catch (e) {
     console.error(e)
-    res.render('index')
+    res.render('user', {
+      loginError: 'Invalid or expired session',
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
     return
-
   }
 }
+
 export const checkLogin = (req, res, next) => {
-
   const token = req.cookies.token;
   console.log(token)
 
   if (!token) {
-    res.render('index')
+    res.render('user', {
+      loginError: undefined,
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
     return
   }
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET)
     req.user = user
-
     console.log(req.user)
     next()
   } catch (e) {
     console.error(e)
-    res.render('index')
+    res.render('user', {
+      loginError: 'Invalid or expired session',
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
     return
-
   }
 }
+
 export const userCheck = (req, res, next) => {
+  const bearer = req.cookies.token;
 
-  const token = req.cookies.token;
-  console.log(token)
-
-  if (!token) {
-    res.render('user')
-    return
+  if (!bearer) {
+    res.render('user', {
+      loginError: undefined,
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+    return;
   }
 
   try {
-    const user = jwt.verify(token, process.env.JWT_SECRET)
+    const user = jwt.verify(bearer, process.env.JWT_SECRET)
     req.user = user
-
     console.log(req.user)
     next()
   } catch (e) {
     console.error(e)
-    res.render('index')
+    res.render('user', {
+      loginError: 'Invalid or expired session',
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
     return
-
   }
 }
