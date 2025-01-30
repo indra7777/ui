@@ -2,21 +2,6 @@ import { Student } from '../models/student.js'
 import { Industry } from '../models/industry.js'
 import { Team } from '../models/verifyTeam.js'
 import { hashPassword } from './auth.js'
-import jwt from 'jsonwebtoken'
-import nodemailer from 'nodemailer'
-
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-        user: 'uncalledinnovators@gmail.com',
-        pass: process.env.EMAIL_PASSWORD
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-})
 
 // Get the appropriate model based on user type
 const getUserModel = (userType) => {
@@ -40,9 +25,26 @@ export const renderForgotPassword = (req, res) => {
 }
 
 export const handleForgotPassword = async (req, res) => {
-    const { email, userType } = req.body;
+    const { email, userType, newPassword, confirmPassword } = req.body;
     
     try {
+        // Validate password match
+        if (newPassword !== confirmPassword) {
+            return res.render('forgotPassword', {
+                error: 'Passwords do not match',
+                success: null
+            });
+        }
+
+        // Validate password strength
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if (!passwordRegex.test(newPassword)) {
+            return res.render('forgotPassword', {
+                error: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number',
+                success: null
+            });
+        }
+
         const Model = getUserModel(userType);
         if (!Model) {
             return res.render('forgotPassword', {
@@ -52,7 +54,6 @@ export const handleForgotPassword = async (req, res) => {
         }
         
         const user = await Model.findOne({ email });
-        
         if (!user) {
             return res.render('forgotPassword', {
                 error: 'No account found with this email',
@@ -60,32 +61,16 @@ export const handleForgotPassword = async (req, res) => {
             });
         }
 
-        const token = jwt.sign(
-            { id: user._id, userType },
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
-        );
+        const hashedPassword = await hashPassword(newPassword);
+        user.password = hashedPassword;
+        await user.save();
 
-        const resetLink = `${process.env.BASE_URL}/reset-password?token=${token}`;
-
-        const mailOptions = {
-            from: 'uncalledinnovators@gmail.com',
-            to: email,
-            subject: 'Password Reset Request',
-            html: `
-                <h1>Password Reset Request</h1>
-                <p>Click the link below to reset your password. This link will expire in 1 hour.</p>
-                <a href="${resetLink}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Reset Password</a>
-                <p>If you did not request this password reset, please ignore this email.</p>
-                <p>This link will expire in 1 hour for security purposes.</p>
-            `
-        };
-
-        await transporter.sendMail(mailOptions);
+        // Log the password reset for security
+        console.log(`Password reset successful for user ${user.email} (${userType})`);
 
         res.render('forgotPassword', {
             error: null,
-            success: 'Password reset link has been sent to your email'
+            success: 'Password has been reset successfully. You can now login with your new password.'
         });
 
     } catch (error) {
