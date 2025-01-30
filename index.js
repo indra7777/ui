@@ -22,6 +22,7 @@ import { Solution } from './models/solution.js'
 
 import { Internship } from './models/internships.js'
 import { renderForgotPassword, handleForgotPassword, handleResetPassword } from './handlers/passwordReset.js'
+import nodemailer from 'nodemailer'
 
 dotenv.config()
 const storage = multer.diskStorage({
@@ -340,18 +341,45 @@ app.post("/verify/signup", (req, res) => {
 })
 
 
-//contact
+// Configure nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'uncalledinnovators@gmail.com',
+    pass: process.env.EMAIL_PASSWORD // You'll need to set this in your .env file
+  }
+});
+
+// Contact form handler
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
     
-    // Here you would typically send an email or store the contact form data
-    // For now, we'll just send a success response
+    // Email content
+    const mailOptions = {
+      from: email,
+      to: 'uncalledinnovators@gmail.com',
+      subject: `Contact Form: ${subject}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `
+    };
+    
+    // Send email
+    await transporter.sendMail(mailOptions);
     
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
     console.error("Contact form error:", error);
-    res.status(500).json({ success: false, message: "Failed to send message. Please try again." });
+    res.status(500).json({ 
+      success: false, 
+      message: "Failed to send message. Please try again." 
+    });
   }
 });
 
