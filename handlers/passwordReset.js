@@ -40,10 +40,18 @@ export const renderForgotPassword = (req, res) => {
 }
 
 export const handleForgotPassword = async (req, res) => {
-    const { email } = req.body;
+    const { email, userType } = req.body;
     
     try {
-        const user = await Student.findOne({ email });
+        const Model = getUserModel(userType);
+        if (!Model) {
+            return res.render('forgotPassword', {
+                error: 'Invalid user type',
+                success: null
+            });
+        }
+        
+        const user = await Model.findOne({ email });
         
         if (!user) {
             return res.render('forgotPassword', {
@@ -53,7 +61,7 @@ export const handleForgotPassword = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { id: user._id },
+            { id: user._id, userType },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
@@ -67,7 +75,9 @@ export const handleForgotPassword = async (req, res) => {
             html: `
                 <h1>Password Reset Request</h1>
                 <p>Click the link below to reset your password. This link will expire in 1 hour.</p>
-                <a href="${resetLink}">Reset Password</a>
+                <a href="${resetLink}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Reset Password</a>
+                <p>If you did not request this password reset, please ignore this email.</p>
+                <p>This link will expire in 1 hour for security purposes.</p>
             `
         };
 
@@ -88,12 +98,40 @@ export const handleForgotPassword = async (req, res) => {
 }
 
 export const handleResetPassword = async (req, res) => {
-    const { token, password } = req.body;
+    const { token, password, confirmPassword } = req.body;
     
     try {
+        // Validate password match
+        if (password !== confirmPassword) {
+            return res.render('resetPassword', {
+                error: 'Passwords do not match',
+                success: null,
+                token
+            });
+        }
+
+        // Validate password strength
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if (!passwordRegex.test(password)) {
+            return res.render('resetPassword', {
+                error: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number',
+                success: null,
+                token
+            });
+        }
+
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await Student.findById(decoded.id);
+        const Model = getUserModel(decoded.userType);
         
+        if (!Model) {
+            return res.render('resetPassword', {
+                error: 'Invalid user type',
+                success: null,
+                token
+            });
+        }
+
+        const user = await Model.findById(decoded.id);
         if (!user) {
             return res.render('resetPassword', {
                 error: 'Invalid or expired reset link',
@@ -105,6 +143,9 @@ export const handleResetPassword = async (req, res) => {
         const hashedPassword = await hashPassword(password);
         user.password = hashedPassword;
         await user.save();
+
+        // Log the password reset for security
+        console.log(`Password reset successful for user ${user.email} (${decoded.userType})`);
 
         res.render('resetPassword', {
             error: null,
