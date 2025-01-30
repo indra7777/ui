@@ -722,7 +722,7 @@
 
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
           <div class="section-header">
             <h2>Contact</h2>
             <p>Need Help? <span>Contact Us</span></p>
@@ -749,62 +749,68 @@
             </div>
           </div>
 
-          <form
-            id="contactForm"
-            class="php-email-form p-3 p-md-4"
-            action="javascript:void(0);"
-          >
+          <form id="contactForm" class="contact-form mt-4">
             <div class="row">
-              <div class="col-xl-6 form-group">
+              <div class="col-md-6 form-group">
                 <input
                   type="text"
                   name="name"
                   class="form-control"
-                  id="name"
                   placeholder="Your Name"
                   required
                 />
               </div>
-              <div class="col-xl-6 form-group">
+              <div class="col-md-6 form-group">
                 <input
                   type="email"
-                  class="form-control"
                   name="email"
-                  id="email"
+                  class="form-control"
                   placeholder="Your Email"
                   required
                 />
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
               <input
                 type="text"
-                class="form-control"
                 name="subject"
-                id="subject"
+                class="form-control"
                 placeholder="Subject"
                 required
               />
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
               <textarea
-                class="form-control"
                 name="message"
-                id="message"
+                class="form-control"
                 rows="5"
                 placeholder="Message"
                 required
               ></textarea>
             </div>
             <div class="my-3">
-              <div class="loading" style="display: none">Loading</div>
-              <div class="error-message" style="display: none"></div>
-              <div class="sent-message" style="display: none">
-                Your message has been sent. Thank you!
+              <div class="loading" style="display: none">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <div
+                class="alert alert-danger error-message"
+                style="display: none"
+                role="alert"
+              ></div>
+              <div
+                class="alert alert-success sent-message"
+                style="display: none"
+                role="alert"
+              >
+                Your message has been sent successfully!
               </div>
             </div>
             <div class="text-center">
-              <button type="submit">Send Message</button>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
             </div>
           </form>
         </div>
@@ -932,9 +938,38 @@
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("contactForm");
 
+        function showMessage(message, type) {
+          const errorDiv = form.querySelector(".error-message");
+          const successDiv = form.querySelector(".sent-message");
+          const loadingDiv = form.querySelector(".loading");
+
+          // Hide all messages first
+          errorDiv.style.display = "none";
+          successDiv.style.display = "none";
+          loadingDiv.style.display = "none";
+
+          if (type === "error") {
+            errorDiv.textContent = message;
+            errorDiv.style.display = "block";
+          } else if (type === "success") {
+            successDiv.textContent = message;
+            successDiv.style.display = "block";
+          } else if (type === "loading") {
+            loadingDiv.style.display = "block";
+          }
+
+          // Scroll the message into view
+          if (type !== "loading") {
+            const messageElement = type === "error" ? errorDiv : successDiv;
+            messageElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }
+
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
-          e.stopPropagation();
 
           const formData = {
             name: form.name.value.trim(),
@@ -950,11 +985,11 @@
             !formData.subject ||
             !formData.message
           ) {
-            showMessage("All fields are required", "error");
+            showMessage("Please fill in all fields", "error");
             return;
           }
 
-          showLoading();
+          showMessage("", "loading");
 
           try {
             const response = await fetch("/contact", {
@@ -969,9 +1004,15 @@
 
             if (data.success) {
               form.reset();
-              showMessage("Your message has been sent. Thank you!", "success");
+              showMessage(
+                "Your message has been sent successfully!",
+                "success"
+              );
             } else {
-              showMessage(data.message || "Failed to send message", "error");
+              showMessage(
+                data.message || "Failed to send message. Please try again.",
+                "error"
+              );
             }
           } catch (error) {
             console.error("Contact form error:", error);
@@ -980,37 +1021,7 @@
               "error"
             );
           }
-
-          return false;
         });
-
-        function showLoading() {
-          form.querySelector(".loading").style.display = "block";
-          form.querySelector(".error-message").style.display = "none";
-          form.querySelector(".sent-message").style.display = "none";
-        }
-
-        function showMessage(message, type) {
-          form.querySelector(".loading").style.display = "none";
-
-          if (type === "error") {
-            const errorDiv = form.querySelector(".error-message");
-            errorDiv.textContent = message;
-            errorDiv.style.display = "block";
-            form.querySelector(".sent-message").style.display = "none";
-          } else {
-            const successDiv = form.querySelector(".sent-message");
-            successDiv.textContent = message;
-            successDiv.style.display = "block";
-            form.querySelector(".error-message").style.display = "none";
-          }
-
-          // Hide the message after 3 seconds
-          setTimeout(() => {
-            form.querySelector(".error-message").style.display = "none";
-            form.querySelector(".sent-message").style.display = "none";
-          }, 3000);
-        }
       });
     </script>
   </body>
