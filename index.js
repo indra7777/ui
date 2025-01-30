@@ -95,7 +95,7 @@ app.get('/dashboard', protect, async (req, res) => {
     const studentCount = await getStudentCount();
     res.render('dashboard', { 
       user: req.user,
-      studentCount: studentCount
+      studentCount: studentCount || 0 // Ensure we always pass a number
     });
   } catch (error) {
     console.error('Error rendering dashboard:', error);
