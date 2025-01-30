@@ -749,7 +749,11 @@
             </div>
           </div>
 
-          <form id="contactForm" class="php-email-form p-3 p-md-4">
+          <form
+            id="contactForm"
+            class="php-email-form p-3 p-md-4"
+            onsubmit="return false;"
+          >
             <div class="row">
               <div class="col-xl-6 form-group">
                 <input
@@ -929,6 +933,7 @@
         .getElementById("contactForm")
         .addEventListener("submit", async function (e) {
           e.preventDefault();
+          e.stopPropagation();
 
           const form = this;
           const formData = {
@@ -960,6 +965,10 @@
               body: JSON.stringify(formData),
             });
 
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+
             const data = await response.json();
 
             if (data.success) {
@@ -971,6 +980,9 @@
           } catch (error) {
             console.error("Contact form error:", error);
             showError("Unable to send message. Please try again later.");
+          } finally {
+            // Ensure loading is hidden even if there's an error
+            form.querySelector(".loading").style.display = "none";
           }
         });
 

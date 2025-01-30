@@ -408,7 +408,10 @@ app.post("/contact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
     
+    console.log('Received contact form submission:', { name, email, subject });
+    
     if (!name || !email || !subject || !message) {
+      console.log('Missing required fields');
       return res.status(400).json({ 
         success: false, 
         message: "All fields are required" 
@@ -417,8 +420,8 @@ app.post("/contact", async (req, res) => {
     
     // Email content
     const mailOptions = {
-      from: 'uncalledinnovators@gmail.com', // Always send from your verified email
-      replyTo: email, // Set reply-to as the form submitter's email
+      from: 'uncalledinnovators@gmail.com',
+      replyTo: email,
       to: 'uncalledinnovators@gmail.com',
       subject: `Contact Form: ${subject}`,
       html: `
@@ -431,9 +434,19 @@ app.post("/contact", async (req, res) => {
       `
     };
     
-    console.log('Attempting to send email with options:', {
-      ...mailOptions,
-      auth: '**hidden**' // Don't log auth details
+    console.log('Attempting to send email...');
+    
+    // Verify transporter before sending
+    await new Promise((resolve, reject) => {
+      transporter.verify(function(error, success) {
+        if (error) {
+          console.error('Transporter verification failed:', error);
+          reject(error);
+        } else {
+          console.log('Transporter verified successfully');
+          resolve(success);
+        }
+      });
     });
     
     // Send email
@@ -446,7 +459,8 @@ app.post("/contact", async (req, res) => {
     // Send a user-friendly error message
     res.status(500).json({ 
       success: false, 
-      message: "Unable to send message at this time. Please try again later." 
+      message: "Unable to send message at this time. Please try again later.",
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
