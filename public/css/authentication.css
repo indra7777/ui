@@ -107,6 +107,9 @@ h6 span {
   border-radius: 6px;
   padding: 35px;
 }
+.card-front {
+  display: block;
+}
 .card-back {
   display: none;
 }
@@ -185,8 +188,10 @@ h6 span {
   display: -ms-inline-flexbox;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   background-color: var(--color2);
   color: white;
+  margin: 0 auto;
 }
 .btn:hover {
   background-color: var(--color1);
