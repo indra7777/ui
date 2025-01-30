@@ -23,7 +23,7 @@ import { Solution } from './models/solution.js'
 import { Internship } from './models/internships.js'
 import { renderForgotPassword, handleForgotPassword, handleResetPassword } from './handlers/passwordReset.js'
 import nodemailer from 'nodemailer'
-import { getStudentCount } from './handlers/getStudent'
+import { getStudentCount } from './handlers/getStudent.js'
 
 dotenv.config()
 const storage = multer.diskStorage({
