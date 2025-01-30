@@ -44,15 +44,33 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs')
 
 
-app.get("/", checkLogin, (req, res) => {
-  if (req.user) {
-    res.render('dashboard', {
-      user: req.user
-    });
-  } else {
-    res.render('index', {
-      user: null
-    });
+app.get("/", checkLogin, async (req, res) => {
+  try {
+    const studentCount = await getStudentCount();
+    if (req.user) {
+      res.render('dashboard', {
+        user: req.user,
+        studentCount: studentCount || 0
+      });
+    } else {
+      res.render('index', {
+        user: null,
+        studentCount: studentCount || 0
+      });
+    }
+  } catch (error) {
+    console.error('Error rendering page:', error);
+    if (req.user) {
+      res.render('dashboard', {
+        user: req.user,
+        studentCount: 0
+      });
+    } else {
+      res.render('index', {
+        user: null,
+        studentCount: 0
+      });
+    }
   }
 });
 
