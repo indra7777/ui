@@ -752,7 +752,7 @@
           <form
             id="contactForm"
             class="php-email-form p-3 p-md-4"
-            onsubmit="return false;"
+            action="javascript:void(0);"
           >
             <div class="row">
               <div class="col-xl-6 form-group">
@@ -797,9 +797,9 @@
               ></textarea>
             </div>
             <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">
+              <div class="loading" style="display: none">Loading</div>
+              <div class="error-message" style="display: none"></div>
+              <div class="sent-message" style="display: none">
                 Your message has been sent. Thank you!
               </div>
             </div>
@@ -929,13 +929,13 @@
   </script> -->
 
     <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", async function (e) {
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", async function (e) {
           e.preventDefault();
           e.stopPropagation();
 
-          const form = this;
           const formData = {
             name: form.name.value.trim(),
             email: form.email.value.trim(),
@@ -965,15 +965,11 @@
               body: JSON.stringify(formData),
             });
 
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-
             const data = await response.json();
 
             if (data.success) {
-              showMessage("Your message has been sent. Thank you!", "success");
               form.reset();
+              showMessage("Your message has been sent. Thank you!", "success");
             } else {
               showMessage(data.message || "Failed to send message", "error");
             }
@@ -984,35 +980,38 @@
               "error"
             );
           }
+
+          return false;
         });
 
-      function showLoading() {
-        const form = document.getElementById("contactForm");
-        form.querySelector(".loading").style.display = "block";
-        form.querySelector(".error-message").style.display = "none";
-        form.querySelector(".sent-message").style.display = "none";
-      }
-
-      function showMessage(message, type) {
-        const form = document.getElementById("contactForm");
-        form.querySelector(".loading").style.display = "none";
-
-        if (type === "error") {
-          form.querySelector(".error-message").textContent = message;
-          form.querySelector(".error-message").style.display = "block";
-          form.querySelector(".sent-message").style.display = "none";
-        } else {
-          form.querySelector(".sent-message").textContent = message;
-          form.querySelector(".sent-message").style.display = "block";
+        function showLoading() {
+          form.querySelector(".loading").style.display = "block";
           form.querySelector(".error-message").style.display = "none";
+          form.querySelector(".sent-message").style.display = "none";
         }
 
-        // Hide the message after 3 seconds
-        setTimeout(() => {
-          form.querySelector(".error-message").style.display = "none";
-          form.querySelector(".sent-message").style.display = "none";
-        }, 3000);
-      }
+        function showMessage(message, type) {
+          form.querySelector(".loading").style.display = "none";
+
+          if (type === "error") {
+            const errorDiv = form.querySelector(".error-message");
+            errorDiv.textContent = message;
+            errorDiv.style.display = "block";
+            form.querySelector(".sent-message").style.display = "none";
+          } else {
+            const successDiv = form.querySelector(".sent-message");
+            successDiv.textContent = message;
+            successDiv.style.display = "block";
+            form.querySelector(".error-message").style.display = "none";
+          }
+
+          // Hide the message after 3 seconds
+          setTimeout(() => {
+            form.querySelector(".error-message").style.display = "none";
+            form.querySelector(".sent-message").style.display = "none";
+          }, 3000);
+        }
+      });
     </script>
   </body>
 </html>
