@@ -103,46 +103,41 @@ h6 span {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .card-3d-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: all 600ms ease-out;
 }
-.card-front {
-  width: 100%;
-  height: 100%;
-  background-color: #f2ecec;
-  background-image: url("/img/pattern_japanese-pattern-2_1_2_0-0_0_1__ffffff00_000000.png");
-  position: absolute;
-  border-radius: 6px;
-  -webkit-transform-style: preserve-3d;
-  background: none;
-}
+.card-front,
 .card-back {
   width: 100%;
   height: 100%;
   background-color: #f2ecec;
-  background-image: url("/img/pattern_japanese-pattern-2_1_2_0-0_0_1__ffffff00_000000.png");
-  position: relative;
+  position: absolute;
   border-radius: 6px;
   -webkit-transform-style: preserve-3d;
-  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
-.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+.card-back {
   transform: rotateY(180deg);
+  display: none;
+}
+.checkbox:checked ~ .card-3d-wrap .card-front {
+  display: none;
+}
+.checkbox:checked ~ .card-3d-wrap .card-back {
+  display: block;
 }
 .center-wrap {
-  position: absolute;
+  position: relative;
   width: 100%;
-  padding: 0 35px;
-  top: 50%;
-  left: 0;
-  transform: translate3d(0, -50%, 35px) perspective(100px);
+  padding: 35px;
   z-index: 20;
   display: block;
 }
