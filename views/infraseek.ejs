@@ -109,6 +109,34 @@
         margin-bottom: 30px;
       }
 
+      /* Search Bar Styles */
+      .search-container {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+
+      .search-bar {
+        width: 100%;
+        padding: 15px 25px;
+        font-size: 1.1rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 30px;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .search-bar:focus {
+        outline: none;
+        box-shadow: 0 4px 20px rgba(142, 69, 116, 0.2);
+        border-color: var(--secondary-color);
+      }
+
+      .search-bar::placeholder {
+        color: #999;
+      }
+
       .infraseek-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -238,6 +266,14 @@
         .card-content {
           padding: 20px;
         }
+
+        .search-container {
+          max-width: 90%;
+        }
+        .search-bar {
+          padding: 12px 20px;
+          font-size: 1rem;
+        }
       }
 
       /* Mobile Navigation */
@@ -323,15 +359,20 @@
     <section class="infraseek-hero">
       <div class="hero-content">
         <h1>Welcome to Infraseek</h1>
-        <p>
-          Discover cutting-edge infrastructure solutions and innovations that
-          shape the future of technology.
-        </p>
+        <p>Discover and explore infrastructure resources and opportunities</p>
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-bar"
+            id="searchBar"
+            placeholder="Search for infrastructure resources..."
+          />
+        </div>
       </div>
     </section>
 
     <!-- Main Content -->
-    <div class="infraseek-grid">
+    <div class="infraseek-grid" id="infraseekGrid">
       <!-- Card 1 -->
       <div class="infraseek-card">
         <div class="card-image">
@@ -432,5 +473,39 @@
     <!-- Vendor JS Files -->
     <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/main.js"></script>
+
+    <script>
+      // Mobile nav toggle
+      document
+        .querySelector(".mobile-nav-toggle")
+        .addEventListener("click", function () {
+          document.querySelector("#navbar").classList.toggle("navbar-mobile");
+          this.classList.toggle("bi-list");
+          this.classList.toggle("bi-x");
+        });
+
+      // Search functionality
+      document
+        .getElementById("searchBar")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          filterInfraseekItems(searchTerm);
+        });
+
+      function filterInfraseekItems(searchTerm) {
+        const items = document.querySelectorAll(".infraseek-card");
+        items.forEach((item) => {
+          const title = item
+            .querySelector(".card-title")
+            .textContent.toLowerCase();
+          const description = item
+            .querySelector(".card-description")
+            .textContent.toLowerCase();
+          const matchesSearch =
+            title.includes(searchTerm) || description.includes(searchTerm);
+          item.style.display = matchesSearch ? "block" : "none";
+        });
+      }
+    </script>
   </body>
 </html>
