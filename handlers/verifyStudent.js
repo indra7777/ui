@@ -32,7 +32,7 @@ export const verifyStudent = async (req, res) => {
     } catch (err) {
         console.error(err)
         res.render('authentication', {
-            loginError: 'An error occurred during login. Please try again.',
+            loginError: 'An error occurred during signin. Please try again.',
             registerError: undefined
         })
     }
