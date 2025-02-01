@@ -85,28 +85,33 @@
         .search-container {
             max-width: 600px;
             margin: 0 auto 40px;
-            position: relative;
+            display: flex;
+            gap: 10px;
         }
 
         .search-bar {
             width: 100%;
-            padding: 15px 25px;
-            font-size: 1.1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 30px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .search-bar:focus {
-            outline: none;
-            box-shadow: 0 4px 20px rgba(142, 69, 116, 0.2);
-            border-color: var(--secondary-color);
+        .search-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #5fcf80;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .search-bar::placeholder {
-            color: #999;
+        .search-button:hover {
+            background-color: #4baf6c;
         }
 
         .course-item {
@@ -275,6 +280,7 @@
             <h2>Discover and explore infrastructure resources and opportunities</h2>
             <div class="search-container">
                 <input type="text" class="search-bar" id="searchBar" placeholder="Search for infrastructure resources...">
+                <button id="searchButton" class="search-button">Search</button>
             </div>
         </div>
     </section><!-- End Hero -->
@@ -456,8 +462,8 @@
         });
 
         // Search functionality
-        document.getElementById('searchBar').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
             filterInfraseekItems(searchTerm);
         });
 
