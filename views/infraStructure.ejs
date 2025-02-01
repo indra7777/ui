@@ -83,33 +83,30 @@
         }
 
         .search-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
+            position: relative;
         }
 
-        .search-container input,
-        .search-container select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .search-container button {
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+        .search-bar {
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
-        .search-container button:hover {
-            background: var(--secondary-color);
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 4px 20px rgba(142, 69, 116, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .search-bar::placeholder {
+            color: #999;
         }
 
         .course-item {
@@ -187,14 +184,11 @@
 
         @media (max-width: 768px) {
             .search-container {
-                flex-direction: column;
-                padding: 0 15px;
+                max-width: 90%;
             }
-
-            .search-container input,
-            .search-container select,
-            .search-container button {
-                width: 100%;
+            .search-bar {
+                padding: 12px 20px;
+                font-size: 1rem;
             }
 
             .course-item {
@@ -274,19 +268,20 @@
         </div>
     </header>
 
-    <main id="main" style="padding-top: 100px;">
-        <div class="container mb-4">
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-content-center align-items-center">
+        <div class="container position-relative">
+            <h1>Welcome to Infraseek</h1>
+            <h2>Discover and explore infrastructure resources and opportunities</h2>
             <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search for Infra...">
-                <select id="locationFilter">
-                    <option value="">All Locations</option>
-                    <option value="Location1">Guntur</option>
-                </select>
-                <button type="submit"><i class="bi bi-search"></i> Search</button>
+                <input type="text" class="search-bar" id="searchBar" placeholder="Search for infrastructure resources...">
             </div>
         </div>
+    </section><!-- End Hero -->
 
-        <section id="courses" class="courses">
+    <main id="main">
+        <!-- ======= Popular Courses Section ======= -->
+        <section id="popular-courses" class="courses">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
@@ -463,25 +458,16 @@
         // Search functionality
         document.getElementById('searchBar').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            const location = document.getElementById('locationFilter').value;
-            filterItems(searchTerm, location);
+            filterInfraseekItems(searchTerm);
         });
 
-        document.getElementById('locationFilter').addEventListener('change', function(e) {
-            const location = e.target.value;
-            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
-            filterItems(searchTerm, location);
-        });
-
-        function filterItems(searchTerm, location) {
+        function filterInfraseekItems(searchTerm) {
             const items = document.querySelectorAll('.course-item');
             items.forEach(item => {
                 const title = item.querySelector('h3').textContent.toLowerCase();
-                const itemLocation = item.querySelector('h4').textContent;
-                const matchesSearch = title.includes(searchTerm);
-                const matchesLocation = !location || itemLocation.includes(location);
-                item.closest('.col-lg-4').style.display = 
-                    (matchesSearch && matchesLocation) ? 'block' : 'none';
+                const description = item.querySelector('p').textContent.toLowerCase();
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                item.closest('.col-lg-4').style.display = matchesSearch ? 'block' : 'none';
             });
         }
     </script>
