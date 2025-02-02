@@ -435,37 +435,37 @@
     <!-- Template Main JS File -->
     <script src="../public/js/infra.js"></script>
     <script>
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('active');
-        });
+        // Search functionality
+        const searchBar = document.getElementById('searchBar');
+        const searchButton = document.getElementById('searchButton');
+        const courseItems = document.querySelectorAll('.course-item');
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menuToggle');
-            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-                menu.classList.remove('active');
+        function performSearch() {
+            const searchTerm = searchBar.value.toLowerCase().trim();
+            
+            courseItems.forEach(item => {
+                const title = item.querySelector('h3 a').textContent.toLowerCase();
+                const description = item.querySelector('.course-content p').textContent.toLowerCase();
+                const parent = item.closest('.col-lg-4');
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || searchTerm === '') {
+                    parent.style.display = 'block';
+                } else {
+                    parent.style.display = 'none';
+                }
+            });
+        }
+
+        // Search on button click
+        searchButton.addEventListener('click', performSearch);
+
+        // Search on Enter key
+        searchBar.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
             }
         });
 
-        // Search functionality
-        document.getElementById('searchButton').addEventListener('click', function() {
-            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
-            filterInfraseekItems(searchTerm);
-        });
-
-        function filterInfraseekItems(searchTerm) {
-            const items = document.querySelectorAll('.course-item');
-            items.forEach(item => {
-                const title = item.querySelector('h3').textContent.toLowerCase();
-                const description = item.querySelector('p').textContent.toLowerCase();
-                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-                item.closest('.col-lg-4').style.display = matchesSearch ? 'block' : 'none';
-            });
-        }
-    </script>
-
-    <script>
         // Mobile nav toggle
         document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
             document.querySelector('#navbar').classList.toggle('navbar-mobile');
