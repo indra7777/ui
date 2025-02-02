@@ -7,7 +7,7 @@ export const createStudent =  async (req,res)=>{
     console.log(`name:${name} & email:${email} & password:${password} & phone:${phone}  & branch:${branch}
     & stream:${stream} & collegeName:${collegeName} `)
 
-    if(!name | !collegeName | !stream | !branch | !email | !password | !phone | !currentYear | !passedOutYear){
+    if(!name || !collegeName || !stream || !branch || !email || !password || !phone || !currentYear || !passedOutYear){
         return res.render('user', {
             registerError: 'All fields are required',
             loginError: undefined,
