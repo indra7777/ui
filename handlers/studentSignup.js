@@ -46,8 +46,13 @@ export const createStudent =  async (req,res)=>{
 
         await student.save()
         const token = createJWT(student)
-        res.cookie('token', token, { httpOnly: true,maxAge:7000000 }); // set token as a cookie
-        res.redirect('/home')
+        res.cookie('token', token, { 
+            httpOnly: true,
+            maxAge: 7000000,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        }); // set token as a cookie with enhanced security
+        res.redirect('/dashboard') // redirect to dashboard instead of home
 
     } catch (err) {
         console.error(err)
