@@ -83,18 +83,34 @@
         }
 
         .search-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
             display: flex;
             gap: 10px;
         }
 
         .search-bar {
+            flex: 2;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .location-dropdown {
             flex: 1;
             padding: 10px 15px;
             border: 2px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            background-color: white;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .location-dropdown:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
 
         .search-button {
@@ -267,6 +283,20 @@
         <div class="container position-relative">
             <div class="search-container">
                 <input type="text" class="search-bar" id="searchBar" placeholder="Search for infrastructure resources...">
+                <select class="location-dropdown" id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Guntur">Guntur</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                </select>
                 <button id="searchButton" class="search-button">Search</button>
             </div>
         </div>
@@ -438,21 +468,23 @@
         // Search functionality
         const searchBar = document.getElementById('searchBar');
         const searchButton = document.getElementById('searchButton');
+        const locationFilter = document.getElementById('locationFilter');
         const courseItems = document.querySelectorAll('.course-item');
 
         function performSearch() {
             const searchTerm = searchBar.value.toLowerCase().trim();
+            const selectedLocation = locationFilter.value.toLowerCase();
             
             courseItems.forEach(item => {
                 const title = item.querySelector('h3 a').textContent.toLowerCase();
                 const description = item.querySelector('.course-content p').textContent.toLowerCase();
+                const location = item.querySelector('.course-header h4').textContent.toLowerCase();
                 const parent = item.closest('.col-lg-4');
                 
-                if (title.includes(searchTerm) || description.includes(searchTerm) || searchTerm === '') {
-                    parent.style.display = 'block';
-                } else {
-                    parent.style.display = 'none';
-                }
+                const matchesSearch = searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesLocation = selectedLocation === '' || location.includes(selectedLocation);
+                
+                parent.style.display = (matchesSearch && matchesLocation) ? 'block' : 'none';
             });
         }
 
@@ -465,6 +497,9 @@
                 performSearch();
             }
         });
+
+        // Search when location changes
+        locationFilter.addEventListener('change', performSearch);
 
         // Mobile nav toggle
         document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
