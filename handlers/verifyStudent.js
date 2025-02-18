@@ -51,7 +51,13 @@ export const verifyStudent = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict'
         })
-        res.redirect('/dashboard')
+        
+        // Redirect based on user type
+        if (userType === 'industry') {
+            res.redirect('/problem')
+        } else {
+            res.redirect('/dashboard')
+        }
 
     } catch (err) {
         console.error('Login error:', err)

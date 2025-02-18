@@ -135,13 +135,23 @@ app.post("/login/team", (req, res) => {
 
 
 
-app.get('/problem', (req, res) => {
-
-  res.render('ind')
+app.get('/problem', protect, (req, res) => {
+  // Check if user is industry type
+  if (req.user.role !== 'Industry') {
+    return res.redirect('/dashboard');
+  }
+  res.render('ind', {
+    user: req.user
+  });
 })
 
 //problem
-app.post('/problem', upload.single('file'), async (req, res) => {
+app.post('/problem', protect, upload.single('file'), async (req, res) => {
+  // Check if user is industry type
+  if (req.user.role !== 'Industry') {
+    return res.status(403).send("Unauthorized access");
+  }
+  
   try {
     if (!req.file) {
       res.status(400).send("No file uploaded");
