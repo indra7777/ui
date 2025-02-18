@@ -1,197 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Problem Statement - Uncalled Innovators</title>
 
-<head>
-    <title>Your Solution</title>
-    <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
     <style>
-        h1 {
-            text-align: center;
-            font-size: 40px;
-            margin-top: 1px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            letter-spacing: 2px;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            animation: colorChange 5s infinite alternate; /* Change color every 5 seconds */
+      :root {
+        --primary-color: #8e4574;
+        --primary-hover: #ff7eff;
+        --bg-light: #f8f9fa;
+        --text-dark: #37423b;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        font-family: "Poppins", sans-serif;
+        padding-top: 80px;
+      }
+
+      .header {
+        background: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+      }
+
+      .header .logo img {
+        max-height: 40px;
+      }
+
+      .navbar ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+
+      .navbar li {
+        position: relative;
+        padding: 10px 0 10px 28px;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: 0.3s;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .navbar a:hover {
+        color: var(--primary-color);
+      }
+
+      .main-content {
+        padding: 40px 0;
+      }
+
+      .problem-form {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-header h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .form-header p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+
+      .form-control {
+        border: 2px solid #e1e1e1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(142, 69, 116, 0.25);
+      }
+
+      .form-select {
+        border: 2px solid #e1e1e1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+      }
+
+      .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(142, 69, 116, 0.25);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .file-upload {
+        border: 2px dashed #e1e1e1;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .file-upload:hover {
+        border-color: var(--primary-color);
+        background-color: rgba(142, 69, 116, 0.05);
+      }
+
+      .submit-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .problem-form {
+          padding: 20px;
         }
 
-        @keyframes colorChange {
-            0% {
-                color: #FFBDF6; /* Dodger Blue */
-            }
-            25% {
-                color: #64305D; /* Tomato */
-            }
-            50% {
-                color: #FFDEFB; /* Lime Green */
-            }
-            75% {
-                color: #8E4574; /* Gold */
-            }
-            100% {
-                color: #64305D; /* Blue Violet */
-            }
+        .form-header h2 {
+          font-size: 1.8rem;
         }
-        .profile {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            
-        }
-
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-            color: #64305D;
-            overflow: hidden;
-            background-image: whitesmoke;
-            position: relative;
-        }
-
-        #confetti-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #FFDEFB;
-            z-index: -1;
-        }
-
-        
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(100, 48, 93, 0.2);
-            position: relative;
-            z-index: 1;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: 3px solid #FF69B4;
-        }
-        .header-img{
-            border-radius: 10px;
-            border: 3px solid #FF69B4;
-            position: relative;
-            padding: 2px;
-            margin-top: 30px;
-            width: 50px;
-            height: 50px;
-
-
-        }
-
-        .container:hover {
-            background-color: whitesmoke;
-            transform: scale(0.98);
-        }
-
-        h2 {
-            text-align: center;
-            color: #64305D;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .box {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        textarea,
-        input[type="file"] {
-            width: calc(100% - 20px);
-            padding: 15px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 12px;
-            background-color: #8E4574;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        button:hover {
-            background-color: #A44E83;
-        }
-
-        
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <img class="header-img" src="../public/img/logo.jpg" alt="Header Image" width="50" height="50">
-    <div id="confetti-container"></div>
-    <h1>Uncalled Innovators</h1>
-    <br>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <a href="/" class="logo d-flex align-items-center">
+            <img src="../public/img/ui_full.png" alt="Uncalled Innovators" />
+          </a>
 
-    <h2>PROBLEM STATEMENT</h2>
-    <div class="container">
-        <form action="/problem" method="post" enctype="multipart/form-data">
+          <nav class="navbar">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/explore">Challenges</a></li>
+              <li><a href="/infra">Infraseek</a></li>
+              <li><a href="/hackathon">Hackathon</a></li>
+              <li>
+                <a href="/profile">
+                  <img
+                    id="avatarImage"
+                    width="40"
+                    height="40"
+                    style="border-radius: 50%"
+                    src="<%=user.image%>"
+                    alt="Profile"
+                  />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
 
-        
-        <div class="box">
-            <label for="department">Choose a department:</label>
-            <select id="department" name="department">
-                <option selected value="Computer Science and Engineering">Computer Science and Engineering</option>
-                <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
-                <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
-                <option value="Mechanical Engineering">Mechanical Engineering</option>
-                <option value="Civil Engineering">Civil Engineering</option>
-                <option value="Chemical Engineering">Chemical Engineering</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <div class="box">
-            <label for="problemStatement">Problem Statement :</label>
-            <input type="text" id="problemStatement" name="title" placeholder="Enter Problem Statement">
-        </div>
-        <div class="box">
-            <label for="userId">user id:</label>
-            <input value="<%=user.id%>" type="text" id="userId" name="userId" placeholder="<%=user.id%>">
-        </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="problem-form">
+              <div class="form-header">
+                <h2>Post a Problem Statement</h2>
+                <p>Share your industry challenge with innovative minds</p>
+              </div>
 
-        <div class="box">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" placeholder="Enter the description..."></textarea>
-        </div>
+              <form
+                action="/problem"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <div class="form-group">
+                  <label for="department" class="form-label">Department</label>
+                  <select
+                    id="department"
+                    name="department"
+                    class="form-select"
+                    required
+                  >
+                    <option value="Computer Science and Engineering">
+                      Computer Science and Engineering
+                    </option>
+                    <option value="Electronics and Communication Engineering">
+                      Electronics and Communication Engineering
+                    </option>
+                    <option value="Electrical and Electronics Engineering">
+                      Electrical and Electronics Engineering
+                    </option>
+                    <option value="Mechanical Engineering">
+                      Mechanical Engineering
+                    </option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Chemical Engineering">
+                      Chemical Engineering
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
 
-        <div class="box">
-            <label for="file">Add File:</label>
-            <input type="file" id="file" name="file">
+                <div class="form-group">
+                  <label for="problemStatement" class="form-label"
+                    >Problem Title</label
+                  >
+                  <input
+                    type="text"
+                    id="problemStatement"
+                    name="title"
+                    class="form-control"
+                    placeholder="Enter a clear, concise title"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="description" class="form-label"
+                    >Problem Description</label
+                  >
+                  <textarea
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    placeholder="Describe the problem in detail..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="file" class="form-label"
+                    >Supporting Documents</label
+                  >
+                  <div class="file-upload">
+                    <input
+                      type="file"
+                      id="file"
+                      name="file"
+                      class="form-control"
+                      required
+                    />
+                    <p class="text-muted mt-2 mb-0">
+                      Upload relevant documents, diagrams, or specifications
+                    </p>
+                  </div>
+                </div>
+
+                <input
+                  type="hidden"
+                  id="userId"
+                  name="userId"
+                  value="<%=user.id%>"
+                />
+
+                <button type="submit" class="submit-btn">
+                  <i class="bi bi-cloud-upload me-2"></i>
+                  Submit Problem Statement
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-        <button class="btn primary-btn" type="submit">Submit Problem</button>
-        </form>
-       
+      </div>
     </div>
-    
-</body>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
