@@ -3,15 +3,8 @@
 import mongoose from 'mongoose'
 
 const industrySchema = mongoose.Schema({
-    name: String,
-    industryName: String,
-    role:String,
-    employeeID: String,
-    role: String,
-    siteLink: String,
     email: String,
     password: String,
-    officialNumber: Number,
     personalNumber: Number,
     createdAt: {
         type: Date,
