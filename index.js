@@ -541,23 +541,23 @@ app.get('/logout', protect, (req, res) => {
 
 // Auth routes
 app.post('/auth/login', async (req, res) => {
-  const { email, password, userType } = req.body;
-  console.log('Login attempt:', { email, userType }); // Add logging
+  const { email, password, 'login-type': loginType } = req.body;
+  console.log('Login attempt:', { email, loginType }); // Add logging
   
   try {
     let Model;
-    switch(userType) {
-      case 'seeker':
+    switch(loginType) {
+      case '1':
         Model = Student;
         break;
-      case 'verify':
+      case '2':
         Model = Team;
         break;
-      case 'industry':
+      case '3':
         Model = Industry;
         break;
       default:
-        console.log('Invalid user type:', userType);
+        console.log('Invalid login type:', loginType);
         return res.render('user', {
           loginError: 'Please select a valid user type',
           registerError: undefined,
