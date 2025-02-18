@@ -24,6 +24,8 @@ import { Internship } from './models/internships.js'
 import { renderForgotPassword, handleForgotPassword, handleResetPassword } from './handlers/passwordReset.js'
 import nodemailer from 'nodemailer'
 import { getStudentCount } from './handlers/getStudent.js'
+import { Team } from './models/verifyTeam.js'
+import { Industry } from './models/industry.js'
 
 dotenv.config()
 const storage = multer.diskStorage({
@@ -539,21 +541,23 @@ app.get('/logout', protect, (req, res) => {
 
 // Auth routes
 app.post('/auth/login', async (req, res) => {
-  const { email, password, 'login-type': userType } = req.body;
+  const { email, password, userType } = req.body;
+  console.log('Login attempt:', { email, userType }); // Add logging
   
   try {
     let Model;
     switch(userType) {
-      case '1':
+      case 'seeker':
         Model = Student;
         break;
-      case '2':
+      case 'verify':
         Model = Team;
         break;
-      case '3':
+      case 'industry':
         Model = Industry;
         break;
       default:
+        console.log('Invalid user type:', userType);
         return res.render('user', {
           loginError: 'Please select a valid user type',
           registerError: undefined,
@@ -564,6 +568,7 @@ app.post('/auth/login', async (req, res) => {
     
     const user = await Model.findOne({ email });
     if (!user) {
+      console.log('User not found:', email);
       return res.render('user', {
         loginError: 'Invalid email or password',
         registerError: undefined,
@@ -574,6 +579,7 @@ app.post('/auth/login', async (req, res) => {
     
     const isValid = await comparePasswords(password, user.password);
     if (!isValid) {
+      console.log('Invalid password for user:', email);
       return res.render('user', {
         loginError: 'Invalid email or password',
         registerError: undefined,
@@ -583,11 +589,16 @@ app.post('/auth/login', async (req, res) => {
     }
     
     const token = createJWT(user);
-    res.cookie('token', token, { httpOnly: true, maxAge: 7000000 });
+    res.cookie('token', token, { 
+      httpOnly: true, 
+      maxAge: 7000000,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict'
+    });
     res.redirect('/dashboard');
     
   } catch (err) {
-    console.error(err);
+    console.error('Login error:', err);
     res.render('user', {
       loginError: 'An error occurred during login. Please try again.',
       registerError: undefined,
