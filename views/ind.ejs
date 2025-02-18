@@ -5,17 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Post Problem Statement - Uncalled Innovators</title>
 
-    <!-- Bootstrap CSS -->
+    <!--favicon -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap Icons -->
+    <!-- Vendor CSS Files -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      href="../public/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      href="../public/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../public/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="../public/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link
+      href="../public/vendor/swiper/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../public/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="../public/css/main.css" rel="stylesheet" />
 
     <style>
       :root {
@@ -30,49 +74,6 @@
         color: var(--text-dark);
         font-family: "Poppins", sans-serif;
         padding-top: 80px;
-      }
-
-      .header {
-        background: white;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        padding: 15px 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-      }
-
-      .header .logo img {
-        max-height: 40px;
-      }
-
-      .navbar ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        list-style: none;
-        align-items: center;
-      }
-
-      .navbar li {
-        position: relative;
-        padding: 10px 0 10px 28px;
-      }
-
-      .navbar a {
-        text-decoration: none;
-        color: var(--text-dark);
-        transition: 0.3s;
-        font-size: 15px;
-        font-weight: 500;
-      }
-
-      .navbar a:hover {
-        color: var(--primary-color);
-      }
-
-      .main-content {
-        padding: 40px 0;
       }
 
       .problem-form {
@@ -180,37 +181,37 @@
       }
     </style>
   </head>
-
   <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-          <a href="/" class="logo d-flex align-items-center">
-            <img src="../public/img/ui_full.png" alt="Uncalled Innovators" />
-          </a>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <img src="../public/img/ui_full.png" alt="" />
+        </a>
 
-          <nav class="navbar">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/explore">Challenges</a></li>
-              <li><a href="/infra">Infraseek</a></li>
-              <li><a href="/hackathon">Hackathon</a></li>
-              <li>
-                <a href="/profile">
-                  <img
-                    id="avatarImage"
-                    width="40"
-                    height="40"
-                    style="border-radius: 50%"
-                    src="<%=user.image%>"
-                    alt="Profile"
-                  />
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/explore">Challenges</a></li>
+            <li><a href="/infra">Infraseek</a></li>
+            <li><a href="/hackathon">Hackathon</a></li>
+            <li>
+              <a href="/profile">
+                <img
+                  id="avatarImage"
+                  width="40"
+                  height="40"
+                  style="border-radius: 50%"
+                  src="<%=user.image%>"
+                  alt="Profile"
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       </div>
     </header>
 
@@ -321,7 +322,14 @@
       </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/vendor/aos/aos.js"></script>
+    <script src="../public/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../public/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../public/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../public/js/main.js"></script>
   </body>
 </html>
