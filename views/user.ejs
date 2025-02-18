@@ -57,7 +57,8 @@
                 <span>Sign Up</span>
               </h6>
               <div style="margin-bottom: 40px">
-                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" <%= isSignup ? 'checked="checked"' : '' %> />
+                <input class="checkbox" type="checkbox" id="reg-log"
+                name="reg-log" <%= isSignup ? 'checked="checked"' : '' %> />
                 <label for="reg-log"></label>
               </div>
               <div class="card-3d-wrap mx-auto" style="margin-top: 20px">
@@ -137,13 +138,14 @@
                           <h4 class="mb-4 pb-3">Sign Up</h4>
                           <div class="form-group">
                             <select
-                              id="userType"
                               name="userType"
                               class="form-style"
+                              id="userTypeSelect"
+                              onchange="toggleFields()"
                               required
-                              onchange="updateFormAction(this.value)"
                             >
-                              <option value="student">Student</option>
+                              <option value="">Select User Type</option>
+                              <option value="seeker">Seeker</option>
                               <option value="verify">Verify Team</option>
                               <option value="industry">Industry</option>
                             </select>
@@ -155,75 +157,72 @@
                           </div>
                           <% } %>
 
-                          <!-- Student Fields -->
-                          <div id="studentFields">
+                          <!-- Student/Seeker Fields -->
+                          <div id="seekerFields" style="display: none">
                             <div class="form-group mt-2">
                               <input
-                                name="name"
                                 type="text"
-                                class="form-style"
+                                name="name"
+                                class="form-style seeker-field"
                                 placeholder="Full Name"
-                                required
                               />
                               <i class="input-icon uil uil-user"></i>
                             </div>
                             <div class="form-group mt-2">
                               <input
-                                name="collegeName"
                                 type="text"
-                                class="form-style"
+                                name="collegeName"
+                                class="form-style seeker-field"
                                 placeholder="College Name"
-                                required
                               />
                               <i class="input-icon uil uil-building"></i>
                             </div>
                             <div class="form-group mt-2">
-                              <input
-                                name="currentYear"
-                                type="number"
-                                class="form-style"
-                                placeholder="Current Year"
-                                required
-                              />
-                              <i class="input-icon uil uil-calendar-alt"></i>
-                            </div>
-                            <div class="form-group mt-2">
-                              <input
-                                name="passedOutYear"
-                                type="number"
-                                class="form-style"
-                                placeholder="Passed Out Year"
-                                required
-                              />
-                              <i class="input-icon uil uil-graduation-cap"></i>
-                            </div>
-                            <div class="form-group mt-2">
-                              <select name="stream" class="form-style" required>
+                              <select
+                                name="stream"
+                                class="form-style seeker-field"
+                              >
                                 <option value="">Select Stream</option>
-                                <option value="B.Tech">B.Tech</option>
-                                <option value="M.Tech">M.Tech</option>
-                                <option value="Diploma">Diploma</option>
-                                <option value="ITI">ITI</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Science">Science</option>
                               </select>
                               <i class="input-icon uil uil-book-open"></i>
                             </div>
                             <div class="form-group mt-2">
                               <input
-                                name="branch"
                                 type="text"
-                                class="form-style"
+                                name="branch"
+                                class="form-style seeker-field"
                                 placeholder="Branch"
-                                required
                               />
-                              <i class="input-icon uil uil-books"></i>
+                              <i class="input-icon uil uil-graduation-cap"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="number"
+                                name="currentYear"
+                                class="form-style seeker-field"
+                                placeholder="Current Year"
+                              />
+                              <i class="input-icon uil uil-calendar-alt"></i>
+                            </div>
+                            <div class="form-group mt-2">
+                              <input
+                                type="number"
+                                name="passedOutYear"
+                                class="form-style seeker-field"
+                                placeholder="Passed Out Year"
+                              />
+                              <i class="input-icon uil uil-calendar-alt"></i>
                             </div>
                           </div>
 
-                          <!-- Common Fields -->
+                          <!-- Common Fields for All Users -->
                           <div class="form-group mt-2">
                             <input
-                              name="email"
                               type="email"
+                              name="email"
                               class="form-style"
                               placeholder="Email"
                               required
@@ -232,8 +231,8 @@
                           </div>
                           <div class="form-group mt-2">
                             <input
-                              name="password"
                               type="password"
+                              name="password"
                               class="form-style"
                               placeholder="Password"
                               required
@@ -242,13 +241,13 @@
                           </div>
                           <div class="form-group mt-2">
                             <input
-                              name="phone"
                               type="tel"
+                              name="phone"
                               class="form-style"
                               placeholder="Phone Number"
                               required
                             />
-                            <i class="input-icon uil uil-phone-alt"></i>
+                            <i class="input-icon uil uil-phone"></i>
                           </div>
                           <button
                             class="btn btn-primary mt-4 w-100"
@@ -295,16 +294,16 @@
         });
 
         // Handle signup form user type selection
-        $("#userType").on("change", function() {
+        $("#userTypeSelect").on("change", function() {
           const userType = $(this).val();
 
           // Hide all fields first
-          $("#studentFields").hide();
+          $("#seekerFields").hide();
 
           // Show fields based on selection
           switch(userType) {
-            case "student":
-              $("#studentFields").show();
+            case "seeker":
+              $("#seekerFields").show();
               break;
             case "verify":
             case "industry":
@@ -319,7 +318,7 @@
         window.updateFormAction = function (userType) {
           const form = document.getElementById("signup-form");
           switch (userType) {
-            case "student":
+            case "seeker":
               form.action = "/student/signup";
               break;
             case "verify":
@@ -332,13 +331,37 @@
         };
 
         // Initialize form fields based on initial user type
-        const initialUserType = document.getElementById("userType")?.value;
+        const initialUserType = document.getElementById("userTypeSelect")?.value;
         if (initialUserType) {
           // Trigger change event to set initial state
-          $("#userType").trigger("change");
+          $("#userTypeSelect").trigger("change");
           updateFormAction(initialUserType);
         }
       });
+
+      function toggleFields() {
+        const userType = document.getElementById('userTypeSelect').value;
+        const seekerFields = document.getElementById('seekerFields');
+        const seekerInputs = document.getElementsByClassName('seeker-field');
+
+        if (userType === 'seeker') {
+          seekerFields.style.display = 'block';
+          // Make seeker fields required
+          for (let input of seekerInputs) {
+            input.required = true;
+          }
+        } else {
+          seekerFields.style.display = 'none';
+          // Remove required attribute from seeker fields
+          for (let input of seekerInputs) {
+            input.required = false;
+            input.value = ''; // Clear values
+          }
+        }
+      }
+
+      // Call toggleFields on page load to set initial state
+      document.addEventListener('DOMContentLoaded', toggleFields);
     </script>
   </body>
 </html>
