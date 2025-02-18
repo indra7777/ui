@@ -2,12 +2,12 @@ import { createJWT, hashPassword } from "./auth.js"
 import { Industry } from "../models/industry.js"
 
 export const createIndustry = async (req, res) => {
-    const { name, industryName, employeeID, siteLink, email, password, officialNumber, personalNumber } = req.body
-    console.log(`name:${name} & email:${email} & password:${password} & phone:${officialNumber} & phone:${personalNumber} & siteLink:${siteLink} & employeeID:${employeeID}`)
+    const { email, password, phone } = req.body
+    console.log(`email:${email} & password:${password} & phone:${phone}`)
 
-    if (!name || !industryName || !employeeID || !siteLink || !email || !password || !officialNumber || !personalNumber) {
+    if (!email || !password || !phone) {
         return res.render('user', {
-            registerError: 'All fields are required',
+            registerError: 'Email, password and phone number are required',
             loginError: undefined,
             successMessage: undefined,
             isSignup: true
@@ -30,15 +30,10 @@ export const createIndustry = async (req, res) => {
         const Role = "Industry"
 
         const industry = new Industry({
-            name: name,
-            industryName: industryName,
-            employeeID: employeeID,
-            siteLink: siteLink,
             email: email,
-            role: Role,
             password: hashedPassword,
-            officialNumber: officialNumber,
-            personalNumber: personalNumber
+            phone: phone,
+            role: Role
         })
 
         await industry.save()

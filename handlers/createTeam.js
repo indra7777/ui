@@ -3,12 +3,12 @@ import { createJWT, hashPassword } from './auth.js'
 import { Team } from '../models/verifyTeam.js'
 
 export const createTeam = async (req, res) => {
-    const { name, collegeName, designation, dept, areaOfExpertise, email, password, phone, experience } = req.body
-    console.log(`name:${name} & email:${email} & password:${password}`)
+    const { email, password, phone } = req.body
+    console.log(`email:${email} & password:${password} & phone:${phone}`)
 
-    if (!name || !collegeName || !designation || !dept || !areaOfExpertise || !email || !password || !phone || !experience) {
+    if (!email || !password || !phone) {
         return res.render('user', {
-            registerError: 'All fields are required',
+            registerError: 'Email, password and phone number are required',
             loginError: undefined,
             successMessage: undefined,
             isSignup: true
@@ -31,16 +31,10 @@ export const createTeam = async (req, res) => {
         const Role = "Verify-Team"
 
         const team = await Team.create({
-            name,
-            collegeName,
-            designation,
-            dept,
-            role: Role,
-            areaOfExpertise,
             email,
             password: hashedPassword,
             phone,
-            experience
+            role: Role
         })
 
         const token = createJWT(team)
