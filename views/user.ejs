@@ -129,7 +129,13 @@
                         <div class="section text-center">
                           <h4 class="mb-4 pb-3">Sign Up</h4>
                           <div class="form-group">
-                            <select name="userType" class="form-style" required>
+                            <select
+                              name="userType"
+                              class="form-style"
+                              id="userTypeSelect"
+                              onchange="toggleFields()"
+                              required
+                            >
                               <option value="">Select User Type</option>
                               <option value="seeker">Seeker</option>
                               <option value="verify">Verify Team</option>
@@ -256,7 +262,7 @@
     <script>
       $(document).ready(function () {
         // Set initial state based on isSignup
-        const initialIsSignup = <%= isSignup %>;
+        const initialIsSignup = "<%= isSignup %>" === "true";
         if (initialIsSignup) {
           $(".card-front").hide();
           $(".card-back").show();
@@ -280,74 +286,60 @@
         });
 
         // Handle signup form user type selection
-        $("#userTypeSelect").on("change", function() {
+        $("#userTypeSelect").on("change", function () {
           const userType = $(this).val();
-
-          // Hide all fields first
-          $("#seekerFields").hide();
-
-          // Show fields based on selection
-          switch(userType) {
-            case "seeker":
-              $("#seekerFields").show();
-              break;
-            case "verify":
-            case "industry":
-              break;
-          }
-
-          // Update form action
+          toggleFields();
           updateFormAction(userType);
         });
-
-        // Update form action based on user type selection
-        window.updateFormAction = function (userType) {
-          const form = document.getElementById("signup-form");
-          switch (userType) {
-            case "seeker":
-              form.action = "/student/signup";
-              break;
-            case "verify":
-              form.action = "/verify/signup";
-              break;
-            case "industry":
-              form.action = "/industry/signup";
-              break;
-          }
-        };
-
-        // Initialize form fields based on initial user type
-        const initialUserType = document.getElementById("userTypeSelect")?.value;
-        if (initialUserType) {
-          // Trigger change event to set initial state
-          $("#userTypeSelect").trigger("change");
-          updateFormAction(initialUserType);
-        }
       });
 
       function toggleFields() {
-        const userType = document.getElementById('userTypeSelect').value;
-        const seekerFields = document.getElementById('seekerFields');
-        const seekerInputs = document.getElementsByClassName('seeker-field');
+        const userTypeSelect = document.getElementById("userTypeSelect");
+        if (!userTypeSelect) return; // Guard clause to prevent errors
 
-        if (userType === 'seeker') {
-          seekerFields.style.display = 'block';
+        const userType = userTypeSelect.value;
+        const seekerFields = document.getElementById("seekerFields");
+        const seekerInputs = document.getElementsByClassName("seeker-field");
+
+        if (userType === "seeker") {
+          seekerFields.style.display = "block";
           // Make seeker fields required
           for (let input of seekerInputs) {
             input.required = true;
           }
         } else {
-          seekerFields.style.display = 'none';
+          seekerFields.style.display = "none";
           // Remove required attribute from seeker fields
           for (let input of seekerInputs) {
             input.required = false;
-            input.value = ''; // Clear values
+            input.value = ""; // Clear values
           }
         }
       }
 
-      // Call toggleFields on page load to set initial state
-      document.addEventListener('DOMContentLoaded', toggleFields);
+      function updateFormAction(userType) {
+        const form = document.getElementById("signup-form");
+        switch (userType) {
+          case "seeker":
+            form.action = "/student/signup";
+            break;
+          case "verify":
+            form.action = "/verify/signup";
+            break;
+          case "industry":
+            form.action = "/industry/signup";
+            break;
+        }
+      }
+
+      // Initialize fields on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const userTypeSelect = document.getElementById("userTypeSelect");
+        if (userTypeSelect) {
+          toggleFields();
+          updateFormAction(userTypeSelect.value);
+        }
+      });
     </script>
   </body>
 </html>
