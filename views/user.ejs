@@ -57,8 +57,7 @@
                 <span>Sign Up</span>
               </h6>
               <div style="margin-bottom: 40px">
-                <input class="checkbox" type="checkbox" id="reg-log"
-                name="reg-log" <%= isSignup ? 'checked' : '' %> />
+                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" <%= isSignup ? 'checked="checked"' : '' %> />
                 <label for="reg-log"></label>
               </div>
               <div class="card-3d-wrap mx-auto" style="margin-top: 20px">
@@ -301,8 +300,6 @@
 
           // Hide all fields first
           $("#studentFields").hide();
-          $("#verifyFields").hide();
-          $("#industryFields").hide();
 
           // Show fields based on selection
           switch(userType) {
@@ -310,10 +307,7 @@
               $("#studentFields").show();
               break;
             case "verify":
-              $("#verifyFields").show();
-              break;
             case "industry":
-              $("#industryFields").show();
               break;
           }
 
@@ -338,8 +332,9 @@
         };
 
         // Initialize form fields based on initial user type
-        if (document.getElementById("userType")) {
-          const initialUserType = document.getElementById("userType").value;
+        const initialUserType = document.getElementById("userType")?.value;
+        if (initialUserType) {
+          // Trigger change event to set initial state
           $("#userType").trigger("change");
           updateFormAction(initialUserType);
         }
