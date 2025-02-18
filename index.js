@@ -626,7 +626,13 @@ app.post('/auth/login', async (req, res) => {
     });
     
     console.log('Login successful:', { email, role: user.role });
-    res.redirect('/dashboard');
+    
+    // Redirect based on user role
+    if (user.role === 'Industry') {
+      console.log('Redirecting industry user to /problem');
+      return res.redirect('/problem');
+    }
+    return res.redirect('/dashboard');
     
   } catch (err) {
     console.error('Login error:', err);

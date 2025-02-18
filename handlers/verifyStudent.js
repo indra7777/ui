@@ -54,9 +54,11 @@ export const verifyStudent = async (req, res) => {
         
         // Redirect based on user type
         if (userType === 'industry') {
-            res.redirect('/problem')
+            console.log('Redirecting industry user to /problem')
+            return res.redirect('/problem')
         } else {
-            res.redirect('/dashboard')
+            console.log('Redirecting non-industry user to /dashboard')
+            return res.redirect('/dashboard')
         }
 
     } catch (err) {
