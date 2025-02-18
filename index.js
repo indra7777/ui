@@ -542,24 +542,37 @@ app.get('/logout', protect, (req, res) => {
 // Auth routes
 app.post('/auth/login', async (req, res) => {
   const { email, password, 'login-type': loginType } = req.body;
-  console.log('Login attempt:', { email, loginType }); // Add logging
+  console.log('Login attempt:', { email, loginType });
   
+  if (!email || !password || !loginType) {
+    return res.render('user', {
+      loginError: 'All fields are required',
+      registerError: undefined,
+      successMessage: undefined,
+      isSignup: false
+    });
+  }
+
   try {
     let Model;
+    let role;
+    
     switch(loginType) {
       case '1':
         Model = Student;
+        role = 'Student';
         break;
       case '2':
         Model = Team;
+        role = 'Verify-Team';
         break;
       case '3':
         Model = Industry;
+        role = 'Industry';
         break;
       default:
-        console.log('Invalid login type:', loginType);
         return res.render('user', {
-          loginError: 'Please select a valid user type',
+          loginError: 'Invalid user type',
           registerError: undefined,
           successMessage: undefined,
           isSignup: false
@@ -588,6 +601,12 @@ app.post('/auth/login', async (req, res) => {
       });
     }
     
+    // Add role if not present
+    if (!user.role) {
+      user.role = role;
+      await user.save();
+    }
+    
     const token = createJWT(user);
     res.cookie('token', token, { 
       httpOnly: true, 
@@ -595,6 +614,8 @@ app.post('/auth/login', async (req, res) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
     });
+    
+    console.log('Login successful:', { email, role: user.role });
     res.redirect('/dashboard');
     
   } catch (err) {
@@ -620,16 +641,97 @@ app.get('/auth/login', (req, res) => {
   });
 });
 
-app.get('/auth/signup', (req, res) => {
-  if (req.cookies.token) {
-    return res.redirect('/');
+app.post('/auth/signup', async (req, res) => {
+  const { email, password, phone, userType } = req.body;
+  console.log('Signup attempt:', { email, userType });
+
+  if (!email || !password || !phone || !userType) {
+    return res.render('user', {
+      loginError: undefined,
+      registerError: 'All fields are required',
+      successMessage: undefined,
+      isSignup: true
+    });
   }
-  res.render('user', { 
-    loginError: undefined, 
-    registerError: undefined,
-    successMessage: undefined,
-    isSignup: true
-  });
+
+  try {
+    let Model;
+    let role;
+    let additionalFields = {};
+
+    switch(userType) {
+      case 'seeker':
+        Model = Student;
+        role = 'Student';
+        additionalFields = {
+          name: req.body.name,
+          collegeName: req.body.collegeName,
+          stream: req.body.stream,
+          branch: req.body.branch,
+          currentYear: req.body.currentYear,
+          passedOutYear: req.body.passedOutYear
+        };
+        break;
+      case 'verify':
+        Model = Team;
+        role = 'Verify-Team';
+        break;
+      case 'industry':
+        Model = Industry;
+        role = 'Industry';
+        break;
+      default:
+        return res.render('user', {
+          loginError: undefined,
+          registerError: 'Invalid user type',
+          successMessage: undefined,
+          isSignup: true
+        });
+    }
+
+    // Check if email already exists
+    const existingUser = await Model.findOne({ email });
+    if (existingUser) {
+      return res.render('user', {
+        loginError: undefined,
+        registerError: 'Email already registered',
+        successMessage: undefined,
+        isSignup: true
+      });
+    }
+
+    const hashedPassword = await hashPassword(password);
+    
+    const userData = {
+      email,
+      password: hashedPassword,
+      phone,
+      role,
+      ...additionalFields
+    };
+
+    const user = await Model.create(userData);
+    console.log('User created:', { email, role });
+
+    const token = createJWT(user);
+    res.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 7000000,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict'
+    });
+
+    res.redirect('/dashboard');
+
+  } catch (err) {
+    console.error('Signup error:', err);
+    res.render('user', {
+      loginError: undefined,
+      registerError: 'An error occurred during registration. Please try again.',
+      successMessage: undefined,
+      isSignup: true
+    });
+  }
 });
 
 //payment hanlde
@@ -677,6 +779,19 @@ app.get('/internships', (req, res) => {
 app.get('/forgot-password', renderForgotPassword)
 app.post('/forgot-password', handleForgotPassword)
 app.post('/reset-password', handleResetPassword)
+
+// Remove old signup routes since we have a unified route now
+app.get('/auth/signup', (req, res) => {
+  if (req.cookies.token) {
+    return res.redirect('/');
+  }
+  res.render('user', { 
+    loginError: undefined, 
+    registerError: undefined,
+    successMessage: undefined,
+    isSignup: true
+  });
+});
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
