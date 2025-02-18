@@ -1,22 +1,41 @@
 import mongoose from 'mongoose'
 import { Student } from '../models/student.js'
+import { Industry } from '../models/industry.js'
+import { Team } from '../models/verifyTeam.js'
 import { comparePasswords, hashPassword, protect, createJWT } from './auth.js'
 
 export const verifyStudent = async (req, res) => {
-    const { email, password } = req.body
-    console.log(`email:${email} & password:${password}`)
+    const { email, password, userType } = req.body
+    console.log(`email:${email} & password:${password} & userType:${userType}`)
     
     try {
-        const student = await Student.findOne({ email: email })
+        let user;
+        // Check user type and query appropriate model
+        switch(userType) {
+            case 'seeker':
+                user = await Student.findOne({ email });
+                break;
+            case 'industry':
+                user = await Industry.findOne({ email });
+                break;
+            case 'verify':
+                user = await Team.findOne({ email });
+                break;
+            default:
+                return res.render('authentication', {
+                    loginError: 'Invalid user type',
+                    registerError: undefined
+                });
+        }
         
-        if (!student) {
+        if (!user) {
             return res.render('authentication', {
                 loginError: 'Invalid email address',
                 registerError: undefined
             })
         }
 
-        const isValid = await comparePasswords(password, student.password)
+        const isValid = await comparePasswords(password, user.password)
         
         if (!isValid) {
             return res.render('authentication', {
@@ -25,8 +44,13 @@ export const verifyStudent = async (req, res) => {
             })
         }
 
-        const token = createJWT(student)
-        res.cookie('token', token, { httpOnly: true, maxAge: 7000000 }) // set token as a cookie
+        const token = createJWT(user)
+        res.cookie('token', token, { 
+            httpOnly: true, 
+            maxAge: 7000000,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        })
         res.redirect('/dashboard')
 
     } catch (err) {
