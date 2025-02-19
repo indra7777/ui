@@ -630,9 +630,9 @@ app.post('/auth/login', async (req, res) => {
     // Redirect based on user role
     if (user.role === 'Industry') {
       console.log('Redirecting industry user to /problem');
-      return res.redirect('/dashboard');
+      return res.redirect('/industry');
     }
-    return res.redirect('/dashboard');
+    return res.redirect('/industry');
     
   } catch (err) {
     console.error('Login error:', err);
