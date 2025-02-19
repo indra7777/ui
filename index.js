@@ -135,44 +135,44 @@ app.post("/login/team", (req, res) => {
 
 
 
-app.get('/problem', protect, (req, res) => {
-  // Check if user is industry type
-  if (req.user.role !== 'Industry') {
-    return res.redirect('/dashboard');
-  }
-  res.render('ind', {
-    user: req.user
-  });
-})
-
-//problem
-app.post('/problem', protect, upload.single('file'), async (req, res) => {
-  // Check if user is industry type
-  if (req.user.role !== 'Industry') {
-    return res.status(403).send("Unauthorized access");
-  }
-  
-  try {
-    if (!req.file) {
-      res.status(400).send("No file uploaded");
-      return;
+// Middleware to check if user is industry
+const isIndustry = (req, res, next) => {
+    if (req.user && req.user.role === 'Industry') {
+        next();
+    } else {
+        res.redirect('/dashboard');
     }
-    const problem = new Problem({
-      title: req.body.title,
-      department: req.body.department,
-      description: req.body.description,
-      image: req.file ? req.file.filename : null,
-      industrialist: req.body.userId
-    });
-    await problem.save();
-    console.log(problem)
-    res.send("successfully problem is uploaded");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("An error occurred while saving the post");
-  }
+};
 
-})
+// Protected problem route for industry users
+app.get('/problem', protect, isIndustry, (req, res) => {
+    console.log('Rendering problem page for industry user:', req.user.id);
+    res.render('ind', { user: req.user });
+});
+
+// Protected POST route for problem submissions
+app.post('/problem', protect, isIndustry, upload.single('file'), async (req, res) => {
+    try {
+        if (!req.file) {
+            res.status(400).send("No file uploaded");
+            return;
+        }
+        const problem = new Problem({
+            title: req.body.title,
+            department: req.body.department,
+            description: req.body.description,
+            image: req.file ? req.file.filename : null,
+            industrialist: req.body.userId
+        });
+        await problem.save();
+        console.log(problem)
+        res.send("successfully problem is uploaded");
+    } catch (error) {
+        console.error('Error submitting problem:', error);
+        res.status(500).send('Error submitting problem');
+    }
+});
+
 app.get('/explore', protect, (req, res) => {
 
   res.render('explore', {
@@ -629,10 +629,10 @@ app.post('/auth/login', async (req, res) => {
     
     // Redirect based on user role
     if (user.role === 'Industry') {
-      console.log('Redirecting industry user to /problem');
+      console.log('Redirecting industry user to /industry');
       return res.redirect('/industry');
     }
-    return res.redirect('/industry');
+    return res.redirect('/dashboard');
     
   } catch (err) {
     console.error('Login error:', err);
@@ -807,6 +807,23 @@ app.get('/auth/signup', (req, res) => {
     successMessage: undefined,
     isSignup: true
   });
+});
+
+// Industry dashboard route
+app.get('/industry', protect, isIndustry, async (req, res) => {
+    try {
+        const studentCount = await getStudentCount();
+        res.render('industryDashboard', { 
+            user: req.user,
+            studentCount: studentCount || 0
+        });
+    } catch (error) {
+        console.error('Error rendering industry dashboard:', error);
+        res.render('industryDashboard', { 
+            user: req.user,
+            studentCount: 0
+        });
+    }
 });
 
 mongoose.connect(process.env.MONGO_URL)
