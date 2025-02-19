@@ -100,6 +100,9 @@
             <li><a href="/explore">Challenges</a></li>
             <li><a href="/infra">Infraseek</a></li>
             <!-- <li><a href="/blogs">Blogs</a></li> -->
+            <% if (user && user.role === 'Industry') { %>
+              <li><a href="/problem">Problems</a></li>
+            <% } %>
             <li>
               <a href="/profile"
                 ><img
