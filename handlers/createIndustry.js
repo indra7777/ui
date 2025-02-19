@@ -44,7 +44,8 @@ export const createIndustry = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict'
         })
-        res.redirect('/dashboard')
+        console.log('Redirecting new industry user to /problem')
+        res.redirect('/problem')
 
     } catch (err) {
         console.error(err)
