@@ -813,15 +813,18 @@ app.get('/auth/signup', (req, res) => {
 app.get('/industry', protect, isIndustry, async (req, res) => {
     try {
         const studentCount = await getStudentCount();
+        const totalSolutions = await Solution.countDocuments();
         res.render('industryDashboard', { 
             user: req.user,
-            studentCount: studentCount || 0
+            totalInnovators: studentCount || 0,
+            totalSolutions: totalSolutions || 0
         });
     } catch (error) {
         console.error('Error rendering industry dashboard:', error);
         res.render('industryDashboard', { 
             user: req.user,
-            studentCount: 0
+            totalInnovators: 0,
+            totalSolutions: 0
         });
     }
 });
