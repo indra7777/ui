@@ -630,7 +630,7 @@ app.post('/auth/login', async (req, res) => {
     // Redirect based on user role
     if (user.role === 'Industry') {
       console.log('Redirecting industry user to /problem');
-      return res.redirect('/problem');
+      return res.redirect('/dashboard');
     }
     return res.redirect('/dashboard');
     
