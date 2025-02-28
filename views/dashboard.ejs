@@ -12,6 +12,8 @@
       content="Uncalled Innovators - Empowering Tomorrow, Connecting Today. Learn and collaborate with hands-on experience in a rapidly changing world."
     />
 
+    <%- include('partials/analytics') %>
+
     <!-- Favicons -->
     <!--favicon -->
     <link
@@ -101,7 +103,7 @@
             <li><a href="/infra">Infraseek</a></li>
             <!-- <li><a href="/blogs">Blogs</a></li> -->
             <% if (user && user.role === 'Industry') { %>
-              <li><a href="/problem">Problems</a></li>
+            <li><a href="/problem">Problems</a></li>
             <% } %>
             <li>
               <a href="/profile">
@@ -663,7 +665,9 @@
                 style="width: 15px; height: 15px"
                 src="../public/Icons/mail.png"
                 alt="call"
-              /><a href="mailto:contact@uncalledinnovators.com" class="d-inline nav-link text-light"
+              /><a
+                href="mailto:contact@uncalledinnovators.com"
+                class="d-inline nav-link text-light"
                 >contact@uncalledinnovators.com</a
               >
             </li>

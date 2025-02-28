@@ -1,148 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
+
+    <%- include('partials/analytics') %>
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
     <!--favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../public/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../public/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
+      body {
+        background-color: #f8f9fa;
+      }
 
-        .profile-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+      .profile-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+      .form-group {
+        margin-bottom: 20px;
+      }
 
-        #avatarImage {
-            margin-bottom: 20px;
-        }
+      #avatarImage {
+        margin-bottom: 20px;
+      }
 
-        .avatar-select {
-            margin-top: 20px;
-        }
+      .avatar-select {
+        margin-top: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-
+  <body>
     <div class="container profile-container">
-        <a href="/home" class="btn btn-secondary back-btn">Back to Home</a>
-        <h2>Edit Profile</h2>
+      <a href="/home" class="btn btn-secondary back-btn">Back to Home</a>
+      <h2>Edit Profile</h2>
 
-        <form action="/update-profile" method="post">
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" name="name" class="form-control" id="fullName" placeholder="Enter your full name"
-                    value="<%= user.name %>">
-            </div>
+      <form action="/update-profile" method="post">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            id="fullName"
+            placeholder="Enter your full name"
+            value="<%= user.name %>"
+          />
+        </div>
 
-            <div class="avatar-select">
-                <img id="avatarImage" width="100px" height="100px" src="<%= user.image %>" alt="bear">
-                <div class="form-group mt-2">
-                    <select id="avatar" name="avatar" class="form-select form-style"
-                        aria-label="Default select example">
-                        <option selected value="../public/img/seeker/BEAR.png"><img src="../public/img/seeker/BEAR.png"
-                                alt="bear">Bear</option>
-                        <option value="../public/img/seeker/CIMPANZEE.png"><img src="../public/img/seeker/CIMPANZEE.png"
-                                alt="Cimpanzee">Chimpanzee</option>
-                                <option value="../public/img/seeker/ELEPHANT.png"><img src="../public/img/seeker/ELEPHANT.png" alt="bear">Elephant
-                                </option>
-                                <option value="../public/img/seeker/HIPPO.png"><img src="../public/img/seeker/HIPPO.png" alt="bear">Hippo
-                                </option>
-                                <option value="../public/img/seeker/LION.png"><img src="../public/img/seeker/LION.png" alt="bear">Lion</option>
-                                <option value="../public/img/seeker/OCTOPUS.png"><img src="../public/img/seeker/OCTOPUS.png" alt="bear">Octopus
-                                </option>
-                                <option value="../public/img/seeker/PANDA.png"><img src="../public/img/seeker/PANDA.png" alt="bear">Panda
-                                </option>
-                                <option value="../public/img/seeker/PIG.png"><img src="../public/img/seeker/PIG.png" alt="bear">Pig</option>
-                                <option value="../public/img/seeker/RHINO.png"><img src="../public/img/seeker/RHINO.png" alt="bear">Rhino
-                                </option>
-                                <option value="../public/img/seeker/ZEBRA.png"><img src="../public/img/seeker/ZEBRA.png" alt="bear">Zebra
-                                </option>
-                        <!-- Add other options as needed -->
-                    </select>
-                    <i class="input-icon uil-user"></i>
-                </div>
-            </div>
+        <div class="avatar-select">
+          <img
+            id="avatarImage"
+            width="100px"
+            height="100px"
+            src="<%= user.image %>"
+            alt="bear"
+          />
+          <div class="form-group mt-2">
+            <select
+              id="avatar"
+              name="avatar"
+              class="form-select form-style"
+              aria-label="Default select example"
+            >
+              <option selected value="../public/img/seeker/BEAR.png">
+                <img src="../public/img/seeker/BEAR.png" alt="bear" />Bear
+              </option>
+              <option value="../public/img/seeker/CIMPANZEE.png">
+                <img
+                  src="../public/img/seeker/CIMPANZEE.png"
+                  alt="Cimpanzee"
+                />Chimpanzee
+              </option>
+              <option value="../public/img/seeker/ELEPHANT.png">
+                <img
+                  src="../public/img/seeker/ELEPHANT.png"
+                  alt="bear"
+                />Elephant
+              </option>
+              <option value="../public/img/seeker/HIPPO.png">
+                <img src="../public/img/seeker/HIPPO.png" alt="bear" />Hippo
+              </option>
+              <option value="../public/img/seeker/LION.png">
+                <img src="../public/img/seeker/LION.png" alt="bear" />Lion
+              </option>
+              <option value="../public/img/seeker/OCTOPUS.png">
+                <img src="../public/img/seeker/OCTOPUS.png" alt="bear" />Octopus
+              </option>
+              <option value="../public/img/seeker/PANDA.png">
+                <img src="../public/img/seeker/PANDA.png" alt="bear" />Panda
+              </option>
+              <option value="../public/img/seeker/PIG.png">
+                <img src="../public/img/seeker/PIG.png" alt="bear" />Pig
+              </option>
+              <option value="../public/img/seeker/RHINO.png">
+                <img src="../public/img/seeker/RHINO.png" alt="bear" />Rhino
+              </option>
+              <option value="../public/img/seeker/ZEBRA.png">
+                <img src="../public/img/seeker/ZEBRA.png" alt="bear" />Zebra
+              </option>
+              <!-- Add other options as needed -->
+            </select>
+            <i class="input-icon uil-user"></i>
+          </div>
+        </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Enter your email"
-                    value="<%=  user.email %>">
-            </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+            value="<%=  user.email %>"
+          />
+        </div>
 
-            <div class="form-group">
-                <label for="collegeName">College Name</label>
-                <input name="collegeName" type="text" class="form-control" id="collegeName" placeholder="Enter your college name"
-                    value="<%=  user.collegeName %>">
-            </div>
+        <div class="form-group">
+          <label for="collegeName">College Name</label>
+          <input
+            name="collegeName"
+            type="text"
+            class="form-control"
+            id="collegeName"
+            placeholder="Enter your college name"
+            value="<%=  user.collegeName %>"
+          />
+        </div>
 
-            <div class="form-group">
-                <label for="stream">Stream</label>
-                <select id="stream" name="stream" placeholder="<%= user.stream %>" class="form-select form-style" aria-label="Default select example">
-                    <option value="B.Tech">B.Tech</option>
-                    <option value="M.Tech">M.Tech</option>
-                    <option value="Diploma">Diploma </option>
-                    <option value="ITI">ITI </option>
-                </select>
-                <i class="input-icon uil-user"></i>
-            </div>
+        <div class="form-group">
+          <label for="stream">Stream</label>
+          <select
+            id="stream"
+            name="stream"
+            placeholder="<%= user.stream %>"
+            class="form-select form-style"
+            aria-label="Default select example"
+          >
+            <option value="B.Tech">B.Tech</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="Diploma">Diploma</option>
+            <option value="ITI">ITI</option>
+          </select>
+          <i class="input-icon uil-user"></i>
+        </div>
 
-            <div class="form-group">
-                <label for="branch">Branch</label>
-                <select id="branch" name="branch" class="form-select form-style" aria-label="Default select example">
-                    <option value="MECH">MECH</option>
-                    <option value="CIVIL">CIVIL </option>
-                    <option value="ECE">ECE</option>
-                    <option value="EEE">EEE </option>
-                    <option value="CSE">CSE</option>
-                    <option value="CHE">CHE </option>
-                    <option value="Other">Other </option>
-                </select>
-                <i class="input-icon uil-user"></i>
-            </div>
+        <div class="form-group">
+          <label for="branch">Branch</label>
+          <select
+            id="branch"
+            name="branch"
+            class="form-select form-style"
+            aria-label="Default select example"
+          >
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="CSE">CSE</option>
+            <option value="CHE">CHE</option>
+            <option value="Other">Other</option>
+          </select>
+          <i class="input-icon uil-user"></i>
+        </div>
 
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input name="phone" type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
-                    value="<%=   user.phone %>">
-            </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            name="phone"
+            type="tel"
+            class="form-control"
+            id="phone"
+            placeholder="Enter your phone number"
+            value="<%=   user.phone %>"
+          />
+        </div>
 
-            <div class="form-group">
-                <label for="currentYear">Current Year</label>
-                <input name="currentYear" type="number" class="form-control" id="currentYear" placeholder="Enter your current year"
-                    value="<%= user.currentYear %>">
-            </div>
+        <div class="form-group">
+          <label for="currentYear">Current Year</label>
+          <input
+            name="currentYear"
+            type="number"
+            class="form-control"
+            id="currentYear"
+            placeholder="Enter your current year"
+            value="<%= user.currentYear %>"
+          />
+        </div>
 
-            <div class="form-group">
-                <label for="passedOutYear">Passed Out Year</label>
-                <input name="passedOutYear" type="number" class="form-control" id="passedOutYear" placeholder="Enter your passed out year"
-                    value="<%= user.passedOutYear %>">
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-        </form>
+        <div class="form-group">
+          <label for="passedOutYear">Passed Out Year</label>
+          <input
+            name="passedOutYear"
+            type="number"
+            class="form-control"
+            id="passedOutYear"
+            placeholder="Enter your passed out year"
+            value="<%= user.passedOutYear %>"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
     </div>
 
     <!-- Bootstrap JS and dependencies (jQuery) -->
@@ -151,54 +247,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-        
-// Add the following code if you want the name field to auto-fill with the user'    
- document.addEventListener('DOMContentLoaded',function() {
-            document.getElementById('fullName').value = "<%=user.name%>";
-            document.getElementById('email').value = "<%=user.email%>";
-            document.getElementById('collegeName').value = "<%=user.collegeName%>";
-            document.getElementById('phone').value = "<%=user.phone%>";
-            document.getElementById('currentYear').value = "<%=user.currentYear%>";
-            document.getElementById('passedOutYear').value = "<%=user.passedOutYear%>";
-            var selectElement = document.getElementById('stream');
-     selectElement.value = "<%=user.stream%>";
-     var selectElement = document.getElementById('branch');
-     selectElement.value = "<%=user.branch%>";
-     var selectElement = document.getElementById('avatar');
-     selectElement.value = "<%=user.image%>";
-        });     
-document.getElementById('avatar').addEventListener('change', function () {
-            document.getElementById('avatarImage').src = this.value;
-        });
-        
+      // Add the following code if you want the name field to auto-fill with the user'
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("fullName").value = "<%=user.name%>";
+        document.getElementById("email").value = "<%=user.email%>";
+        document.getElementById("collegeName").value = "<%=user.collegeName%>";
+        document.getElementById("phone").value = "<%=user.phone%>";
+        document.getElementById("currentYear").value = "<%=user.currentYear%>";
+        document.getElementById("passedOutYear").value =
+          "<%=user.passedOutYear%>";
+        var selectElement = document.getElementById("stream");
+        selectElement.value = "<%=user.stream%>";
+        var selectElement = document.getElementById("branch");
+        selectElement.value = "<%=user.branch%>";
+        var selectElement = document.getElementById("avatar");
+        selectElement.value = "<%=user.image%>";
+      });
+      document.getElementById("avatar").addEventListener("change", function () {
+        document.getElementById("avatarImage").src = this.value;
+      });
 
-            
+      // document.getElementById('profileForm').addEventListener('input', function (event) {
+      //     const elementId = event.target.id;
+      //     const elementValue = event.target.value;
 
-        // document.getElementById('profileForm').addEventListener('input', function (event) {
-        //     const elementId = event.target.id;
-        //     const elementValue = event.target.value;
+      //     switch (elementId) {
+      //         case 'fullName':
+      //             break;
+      //         case 'email':
+      //             break;
+      //         case 'collegeName':
+      //             break;
+      //         case 'stream':
+      //             break;
+      //         case 'branch':
+      //             break;
+      //         case 'phone':
+      //             break;
+      //         case 'currentYear':
+      //             break;
+      //         case 'passedOutYear':
+      //             break;
 
-        //     switch (elementId) {
-        //         case 'fullName':
-        //             break;
-        //         case 'email':
-        //             break;
-        //         case 'collegeName':
-        //             break;
-        //         case 'stream':
-        //             break;
-        //         case 'branch':
-        //             break;
-        //         case 'phone':
-        //             break;
-        //         case 'currentYear':
-        //             break;
-        //         case 'passedOutYear':
-        //             break;
-
-        //     }
-        // });
+      //     }
+      // });
     </script>
-</body>
-
+  </body>
 </html>
