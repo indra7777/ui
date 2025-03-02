@@ -52,12 +52,30 @@
   posthog.init("phc_7Jp87szcC4niVaBFxnBW6doaPScPpadAWxini2YUVgx", {
     api_host: "https://us.i.posthog.com",
     person_profiles: "always",
+    capture_pageview: true,
+    capture_pageleave: true,
+    autocapture: true,
   });
 
-  // After user logs in
-  posthog.identify(user.id, {
-    email: user.email,
-    name: user.name,
-    user_type: user.userType,
+  // Check if user data is available in localStorage
+  document.addEventListener("DOMContentLoaded", function () {
+    try {
+      const userData = localStorage.getItem("userData");
+      if (userData) {
+        const user = JSON.parse(userData);
+        if (user && user.email) {
+          // Use a consistent ID (email is usually best for identifying users)
+          posthog.identify(user.email, {
+            $email: user.email,
+            $name: user.name || user.email.split("@")[0],
+            user_type: user.userType || "Unknown",
+            user_id: user.id || null,
+          });
+          console.log("Posthog: User identified", user.email);
+        }
+      }
+    } catch (e) {
+      console.error("Error identifying user in Posthog:", e);
+    }
   });
 </script>

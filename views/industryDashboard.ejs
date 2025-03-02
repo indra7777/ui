@@ -12,6 +12,21 @@
       content="Uncalled Innovators - Empowering Tomorrow, Connecting Today. Learn and collaborate with hands-on experience in a rapidly changing world."
     />
 
+    <!-- Store user data for Posthog identification -->
+    <script>
+      // Store user data in localStorage for Posthog identification
+      <% if (typeof user !== 'undefined' && user) { %>
+        const userData = {
+          id: '<%= user._id %>',
+          email: '<%= user.email %>',
+          name: '<%= user.name || user.companyName || user.email.split('@')[0] %>',
+          userType: 'Industry'
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        console.log('User data stored for analytics', userData);
+      <% } %>
+    </script>
+
     <%- include('partials/analytics') %>
 
     <!--favicon -->
