@@ -51,6 +51,13 @@
   })(document, window.posthog || []);
   posthog.init("phc_7Jp87szcC4niVaBFxnBW6doaPScPpadAWxini2YUVgx", {
     api_host: "https://us.i.posthog.com",
-    person_profiles: "always", // or 'always' to create profiles for anonymous users as well
+    person_profiles: "always",
+  });
+
+  // After user logs in
+  posthog.identify(user.id, {
+    email: user.email,
+    name: user.name,
+    user_type: user.userType,
   });
 </script>
