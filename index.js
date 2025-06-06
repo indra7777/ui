@@ -42,6 +42,9 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/infra', express.static(process.cwd() + '/public/infra'));
+app.use('/img', express.static(process.cwd() + '/public/img'));
+app.use('/uploads', express.static(process.cwd() + '/public/uploads'));
 
 app.set('view engine', 'ejs')
 
