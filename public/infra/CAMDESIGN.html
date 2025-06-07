@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachabattuni Raja Vardhan - Infraseek</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/infra.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background: #8e4574;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-section h3 {
+            color: #5a6c60;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background: #8e4574;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #ff7eff;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            background: #8e4574;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .availability-badge {
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .profile-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-right: 20px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #8e4574;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .header-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .card-header {
+                padding: 15px;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            .profile-icon {
+                width: 80px;
+                height: 80px;
+                margin-right: 15px;
+                font-size: 2.5rem;
+            }
+
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-text p {
+                font-size: 1rem;
+            }
+
+            .info-section {
+                padding: 15px;
+            }
+
+            .info-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .badge {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+                margin: 3px;
+            }
+
+            .btn-primary {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-icon {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+                font-size: 2rem;
+            }
+
+            .header-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .header-text p {
+                font-size: 0.9rem;
+            }
+
+            .card-body {
+                padding: 15px;
+            }
+
+            .info-section {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-content">
+                    <div class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1 class="mb-0">Rachabattuni Raja Vardhan</h1>
+                        <p class="mb-0">Freelancer - Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="info-section">
+                    <h3>Basic Information</h3>
+                    <p><strong>Date Added:</strong> 05/06/2025</p>
+                    <p><strong>Type:</strong> Freelancer</p>
+                    <p><strong>Category:</strong> Design</p>
+                    <span class="availability-badge">Available</span>
+                </div>
+
+                <div class="info-section">
+                    <h3>Primary Skills</h3>
+                    <span class="badge">2D Designing</span>
+                    <span class="badge">3D Designing</span>
+                </div>
+
+                <div class="info-section">
+                    <h3>Additional Skills</h3>
+                    <span class="badge">CATIA</span>
+                    <span class="badge">AUTOCAD</span>
+                    <span class="badge">FUSION360</span>
+                </div>
+
+                <div class="info-section">
+                    <h3>Experience</h3>
+                    <p>No experience</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Certification</h3>
+                    <p>Course done on FUSION360</p>
+                    <a href="/uploads/CAMDESIGN.pdf" class="btn btn-primary" target="_blank">View Certificate</a>
+                </div>
+
+                <div class="info-section">
+                    <h3>Description</h3>
+                    <p>Hi, I'm Raja Vardhan, a passionate and curious final-year B.Tech student with a strong interest in design and understanding how things work. Over the years, I've explored my enthusiasm by creating numerous 2D models, not just for academic purposes, but also for fun and self-learning. I enjoy diving into design software and bringing concepts to life, constantly looking to improve my skills and knowledge in the field of engineering and product design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
