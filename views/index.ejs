@@ -15,6 +15,21 @@
     />
     <meta name="author" content="Uncalled Innovators" />
 
+    <!-- Store user data for Posthog identification -->
+    <% if (typeof user !== 'undefined' && user) { %>
+    <script>
+      // Store user data in localStorage for Posthog identification
+      const userData = {
+        id: '<%= user._id %>',
+        email: '<%= user.email %>',
+        name: '<%= user.name || user.firstName + " " + user.lastName %>',
+        userType: '<%= user.role || "Student" %>'
+      };
+      localStorage.setItem('userData', JSON.stringify(userData));
+      console.log('User data stored for analytics', userData);
+    </script>
+    <% } %>
+
     <%- include('partials/analytics') %>
 
     <!--favicon -->
@@ -148,6 +163,7 @@
             <!-- <li><a href=<%=process.env.BASE_URL+ "/hackathon"%>>Hackathon</a></li> -->
             <li><a href="#about">About</a></li>
             <li><a href="#events">Challenges</a></li>
+            <li><a href="#infraseek">Infraseek</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
             <!-- <li><a href="/blogs">Blogs</a></li> -->
@@ -602,6 +618,117 @@
         </div>
       </section>
       <!-- End Gallery Section -->
+
+      <!-- ======= Infraseek Section ======= -->
+      <section id="infraseek" class="infraseek section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-header">
+            <h2>Infraseek</h2>
+            <p>Book <span>Machines & Services</span> with Ease</p>
+          </div>
+          <div class="row align-items-center mb-5 gy-5">
+            <!-- Left: Features & Stats -->
+            <div class="col-lg-6">
+              <div style="background: #f8f9fa;" class="rounded-4 p-4 p-md-5 shadow-sm border mb-4">
+                <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
+                  <span class="d-inline-flex align-items-center justify-content-center rounded-3 p-2 me-2" style="background: #e3c9d7;"><i class="bi bi-star-fill" style="color: #8e4c71;"></i></span>
+                  Why Choose Infraseek?
+                </h3>
+                <div class="row g-3">
+                  <div class="col-6 d-flex align-items-start gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded-3 p-2" style="background: #e3c9d7;"><i class="bi bi-calendar-event fs-5" style="color: #8e4c71;"></i></span>
+                    <div>
+                      <div class="fw-semibold text-dark">Easy Online Booking</div>
+                      <div class="text-secondary small">Book machines and services with just a few clicks</div>
+                    </div>
+                  </div>
+                  <div class="col-6 d-flex align-items-start gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded-3 p-2" style="background: #e3c9d7;"><i class="bi bi-cpu fs-5" style="color: #8e4c71;"></i></span>
+                    <div>
+                      <div class="fw-semibold text-dark">Advanced Equipment</div>
+                      <div class="text-secondary small">Access to state-of-the-art machines and technology</div>
+                    </div>
+                  </div>
+                  <div class="col-6 d-flex align-items-start gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded-3 p-2" style="background: #e3c9d7;"><i class="bi bi-clock-history fs-5" style="color: #8e4c71;"></i></span>
+                    <div>
+                      <div class="fw-semibold text-dark">Real-time Availability</div>
+                      <div class="text-secondary small">See live availability and book instantly</div>
+                    </div>
+                  </div>
+                  <div class="col-6 d-flex align-items-start gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded-3 p-2" style="background: #e3c9d7;"><i class="bi bi-shield-check fs-5" style="color: #8e4c71;"></i></span>
+                    <div>
+                      <div class="fw-semibold text-dark">Secure & Reliable</div>
+                      <div class="text-secondary small">Safe transactions and guaranteed service quality</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Stats -->
+              <div class="row g-3">
+                <div class="col-4 text-center bg-white rounded-3 p-3 shadow-sm">
+                  <div class="h3 fw-bold mb-1" style="color: #8e4c71;">500+</div>
+                  <div class="text-secondary small">Equipment Available</div>
+                </div>
+                <div class="col-4 text-center bg-white rounded-3 p-3 shadow-sm">
+                  <div class="h3 fw-bold mb-1" style="color: #8e4c71;">24/7</div>
+                  <div class="text-secondary small">Support Available</div>
+                </div>
+                <div class="col-4 text-center bg-white rounded-3 p-3 shadow-sm">
+                  <div class="h3 fw-bold mb-1" style="color: #8e4c71;">1000+</div>
+                  <div class="text-secondary small">Happy Users</div>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Services Preview -->
+            <div class="col-lg-6">
+              <h3 class="h4 fw-bold text-dark mb-4">Popular Services</h3>
+              <div class="vstack gap-4">
+                <div class="bg-white rounded-4 p-3 p-md-4 shadow-sm border d-flex gap-3 align-items-center">
+                  <img src="../public/img/infra/Machine1.jpeg" alt="3D Printing Services" class="rounded-3 object-fit-cover" style="width: 80px; height: 80px;" />
+                  <div class="flex-grow-1">
+                    <div class="fw-bold text-dark">3D Printing Services</div>
+                    <div class="text-secondary small mb-2">Professional 3D printing with various materials</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span style="color: #8e4c71; font-weight: 600;">Starting from ₹50/hour</span>
+                      <a href="/infra" style="color: #8e4c71;"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white rounded-4 p-3 p-md-4 shadow-sm border d-flex gap-3 align-items-center">
+                  <img src="../public/img/infra/Machine2.jpeg" alt="CNC Machining" class="rounded-3 object-fit-cover" style="width: 80px; height: 80px;" />
+                  <div class="flex-grow-1">
+                    <div class="fw-bold text-dark">CNC Machining</div>
+                    <div class="text-secondary small mb-2">Precision machining for your prototypes</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span style="color: #8e4c71; font-weight: 600;">Starting from ₹200/hour</span>
+                      <a href="/infra" style="color: #8e4c71;"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white rounded-4 p-3 p-md-4 shadow-sm border d-flex gap-3 align-items-center">
+                  <img src="../public/img/infra/Machine3.jpeg" alt="Testing Equipment" class="rounded-3 object-fit-cover" style="width: 80px; height: 80px;" />
+                  <div class="flex-grow-1">
+                    <div class="fw-bold text-dark">Testing Equipment</div>
+                    <div class="text-secondary small mb-2">Access to advanced testing and measurement tools</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span style="color: #8e4c71; font-weight: 600;">Starting from ₹100/hour</span>
+                      <a href="/infra" style="color: #8e4c71;"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <a href="/infra" style="background: #8e4c71; color: #fff; border-radius: 50px; font-weight: 600; padding: 14px 40px; font-size: 1.25rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+              Explore Infraseek <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- End Infraseek Section -->
 
       <section id="testimonials" class="testimonials section-bg">
         <div class="container" data-aos="fade-up">
